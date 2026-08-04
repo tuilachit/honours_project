@@ -1,0 +1,13 @@
+condition:
+  id: c2a
+  description: baseline RAG plus entailment-only verification
+
+generation:
+  prompt_template: |-
+    Answer the financial regulatory question using only the supplied context.
+    Cite the supporting context chunks for each material statement.
+
+verification:
+  enabled: true
+  routing: all_to_textual
+

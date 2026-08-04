@@ -1,0 +1,9 @@
+condition:
+  id: c1
+  description: baseline hybrid RAG
+
+generation:
+  prompt_template: |-
+    Answer the financial regulatory question using only the supplied context.
+    Cite the supporting context chunks for each material statement.
+

@@ -1,0 +1,13 @@
+condition:
+  id: c2b
+  description: baseline RAG plus type-routed verification
+
+generation:
+  prompt_template: |-
+    Answer the financial regulatory question using only the supplied context.
+    Cite the supporting context chunks for each material statement.
+
+verification:
+  enabled: true
+  routing: by_claim_type
+

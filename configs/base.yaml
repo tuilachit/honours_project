@@ -1,0 +1,71 @@
+project:
+  name: financial-rag-evaluation
+  seed: 20260804
+  results_dir: results
+  data_dir: data
+
+datasets:
+  finder:
+    source: Linq-AI-Research/FinDER
+    revision: null
+    split: test
+  financebench:
+    repository: https://github.com/patronus-ai/financebench
+    revision: null
+    subset: open
+    question_limit: 150
+    filings_dir: data/financebench/filings
+
+retrieval:
+  dense:
+    model: null
+    top_k: 50
+  sparse:
+    algorithm: bm25
+    top_k: 50
+  hybrid:
+    fusion: reciprocal_rank_fusion
+    rrf_k: 60
+    top_k: 50
+  reranker:
+    model: null
+    top_k: 10
+
+generation:
+  provider: null
+  model: null
+  temperature: 0.0
+  max_output_tokens: 1024
+  prompt_template: null
+
+claims:
+  decomposition_model: null
+  classification_model: null
+  decomposition_prompt: null
+  classification_prompt: null
+
+verification:
+  enabled: false
+  routing: none
+  textual:
+    nli_model: null
+    judge_provider: null
+    judge_model: null
+    judge_prompt: null
+    entailment_threshold: 0.5
+  numeric:
+    tolerance_absolute: 0.0
+    tolerance_relative: 0.0
+
+abstention:
+  enabled: false
+  calibration_fraction: 0.2
+  target_error_rate: 0.05
+  score_aggregation: minimum
+
+evaluation:
+  retrieval_cutoffs: [1, 5, 10]
+  bootstrap_samples: 1000
+  confidence_level: 0.95
+  agreement_statistics: [cohens_kappa]
+
