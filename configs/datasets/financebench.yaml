@@ -1,0 +1,30 @@
+dataset:
+  name: PatronusAI/financebench
+  source: huggingface
+  revision: e04404e3a97f69f79c14d42f24981a1c9c3bcd18
+  config: default
+  split: train
+  expected_rows: 150
+  expected_columns: 15
+  license: cc-by-nc-4.0
+  fields:
+    - financebench_id
+    - company
+    - doc_name
+    - question_type
+    - question_reasoning
+    - domain_question_num
+    - question
+    - answer
+    - justification
+    - dataset_subset_label
+    - evidence
+    - gics_sector
+    - doc_type
+    - doc_period
+    - doc_link
+  pdfs:
+    required_for_exact_cell_verification: true
+    included_in_metadata_download: false
+    acquisition_policy: separately_verified
+    note: Filing PDFs must be acquired and verified separately before exact-cell annotation.

@@ -1,71 +1,303 @@
 project:
-  name: financial-rag-evaluation
-  seed: 20260804
+  name: schema-flexible-exact-cell-rag
+  seed: 20260815
   results_dir: results
   data_dir: data
+  cache_dir: data/cache
+  require_clean_git_for_release: false
 
 datasets:
-  finder:
-    source: Linq-AI-Research/FinDER
+  primary:
+    name: G4KMU/t2-ragbench
+    revision: adf7fe1541ac37351ce1142544d8e3b43010ed92
+    manifest_path: configs/datasets/t2_ragbench.yaml
+    raw_dir: data/t2_ragbench/raw
+    derived_dir: data/t2_ragbench/derived
+  external:
+    name: PatronusAI/financebench
+    revision: e04404e3a97f69f79c14d42f24981a1c9c3bcd18
+    manifest_path: configs/datasets/financebench.yaml
+    raw_dir: data/financebench/raw
+    derived_dir: data/financebench/derived
+    pdf_dir: data/financebench/pdfs
+  verify_revision: true
+  verify_file_hashes: true
+  immutable_raw_data: true
+
+audit:
+  output_path: results/data_audit/t2_ragbench.json
+  manifest_hash_algorithm: sha256
+  common_required_fields:
+    - id
+    - context_id
+    - split
+    - question
+    - program_answer
+    - original_answer
+    - context
+    - file_name
+    - company_name
+    - report_year
+  field_names:
+    id: id
+    context_id: context_id
+    question: question
+    program_answer: program_answer
+    original_answer: original_answer
+    context: context
+    file_name: file_name
+    company_name: company_name
+  markdown_min_pipe_count: 2
+  pilot_candidates_per_source: 20
+
+pilot:
+  enabled: false
+  condition_id: b0
+  sample_size: 30
+  candidates_per_source: 10
+  output_dir: results/pilot
+
+representation:
+  unit: financial_fact
+  flattened_chunk:
+    target_characters: 2000
+    overlap_characters: 200
+    preserve_table_boundaries: true
+  financial_fact:
+    core_field_mapping:
+      entity: entity
+      concept: concept
+      period: period
+      unit: measurement
+      raw_value: raw_value
+      normalized_value: normalized_value
+      source: source_address
+      provenance: source_address
+    preserve_raw_row_header_path: true
+    preserve_raw_column_header_path: true
+    arbitrary_dimensions_enabled: true
+    dimension_encoding: name_value_pairs
+    preserve_raw_dimension_names: true
+    preserve_raw_dimension_values: true
+    dimension_name_normalizer:
+      implementation: null
+      revision: null
+      learn_from_split: train
+    preserve_unknown_dimensions: true
+    missing_dimension_policy: explicit_unknown
+    stable_id_hash_algorithm: sha256
+    normalised_value_decimal_places: null
+
+normalisation:
+  implementation: null
+  revision: null
+  preserve_raw_values: true
+  preserve_accounting_negatives: true
+  preserve_currency: true
+  preserve_scale: true
+  output_dir: data/normalised
+
+splits:
+  group_keys:
+    - company_id
+    - filing_id
+    - derived_family_id
+  prevent_table_leakage: true
+  unseen_company_test: true
+  unseen_filing_test: true
+  unseen_table_structure_test: true
+
+query_context:
+  enabled: false
+  mode: none
+  apply_to_routes:
+    - structured
+  extractor:
+    implementation: null
+    model: null
     revision: null
-    split: test
-  financebench:
-    repository: https://github.com/patronus-ai/financebench
+    temperature: 0.0
+    max_output_tokens: 512
+  arbitrary_dimensions_enabled: true
+  missing_dimension_policy: mask
+  confidence_threshold: 0.0
+
+models:
+  dense_encoder:
+    name: null
     revision: null
-    subset: open
-    question_limit: 150
-    filings_dir: data/financebench/filings
+  generic_reranker:
+    name: null
+    revision: null
+  context_aware_reranker:
+    name: null
+    revision: null
+  generator:
+    name: null
+    revision: null
+
+indexes:
+  dense_path: data/indexes/dense
+  sparse_path: data/indexes/sparse
+  structured_path: data/indexes/structured
+  overwrite: false
+  batch_size: 64
 
 retrieval:
+  routes:
+    dense: false
+    sparse: false
+    structured: false
   dense:
-    model: null
+    model_profile: dense_encoder
+    similarity: cosine
     top_k: 50
+    batch_size: 64
   sparse:
     algorithm: bm25
     top_k: 50
-  hybrid:
-    fusion: reciprocal_rank_fusion
+    k1: 1.2
+    b: 0.75
+  structured:
+    top_k: 100
+    ranking_strategy: concept_then_context_compatibility
+    exact_match_boost: 1.0
+    partial_match_boost: 0.5
+    unknown_field_policy: no_penalty
+  candidate_union:
+    enabled: false
+    strategy: reciprocal_rank_fusion
     rrf_k: 60
-    top_k: 50
-  reranker:
-    model: null
-    top_k: 10
+    deduplicate_by: stable_evidence_id
+    top_k: 100
+  final_top_k: 20
+  budget_matched_sensitivity:
+    enabled: true
+    final_candidate_counts:
+      - 20
+      - 50
+      - 100
+
+reranker:
+  enabled: false
+  kind: none
+  model_profile: null
+  input_top_k: 100
+  output_top_k: 20
+  batch_size: 16
+  max_input_tokens: 512
+  field_features:
+    use_entity: true
+    use_concept: true
+    use_period: true
+    use_unit: true
+    use_arbitrary_dimensions: true
+    use_raw_header_paths: true
+    missing_value_indicator: true
+
+training:
+  enabled: false
+  project_training: false
+  negative_strategy: none
+  seeds:
+    - 20260815
+    - 20260816
+    - 20260817
+  train_split: train
+  validation_split: dev
+  epochs: 5
+  batch_size: 16
+  learning_rate: 0.00002
+  weight_decay: 0.01
+  negatives_per_positive: 4
+  early_stopping_patience: 2
+  checkpoint_dir: results/checkpoints
+  natural_hard_negative_types:
+    - same_concept_different_period
+    - same_concept_different_entity
+    - same_concept_different_unit
+    - same_headers_different_dimension
+    - nearby_value_wrong_context
 
 generation:
-  provider: null
-  model: null
+  deterministic_renderer_enabled: true
+  llm_enabled: false
+  model_profile: generator
   temperature: 0.0
-  max_output_tokens: 1024
-  prompt_template: null
-
-claims:
-  decomposition_model: null
-  classification_model: null
-  decomposition_prompt: null
-  classification_prompt: null
-
-verification:
-  enabled: false
-  routing: none
-  textual:
-    nli_model: null
-    judge_provider: null
-    judge_model: null
-    judge_prompt: null
-    entailment_threshold: 0.5
-  numeric:
-    tolerance_absolute: 0.0
-    tolerance_relative: 0.0
-
-abstention:
-  enabled: false
-  calibration_fraction: 0.2
-  target_error_rate: 0.05
-  score_aggregation: minimum
+  max_output_tokens: 256
+  prompt_template: |-
+    Answer the question using only the supplied evidence.
+    Preserve the reported value, unit, period, entity, and source context.
 
 evaluation:
-  retrieval_cutoffs: [1, 5, 10]
-  bootstrap_samples: 1000
+  split: test
+  chunk_metrics_enabled: false
+  exact_cell_metrics_enabled: true
+  downstream_answer_metrics_enabled: true
+  chunk_cutoffs:
+    - 1
+    - 5
+    - 10
+    - 20
+  exact_cell_cutoffs:
+    - 1
+    - 5
+    - 10
+    - 20
+  chunk_metrics:
+    - evidence_coverage_at_k
+    - context_recall_at_k
+  exact_cell_metrics:
+    - hit_at_1
+    - recall_at_k
+    - mean_reciprocal_rank
+  exact_cell_success_key: source_cell_id
+  exact_cell_deduplicate_by: source_cell_id
+  multiple_gold_comparison: closest_mismatch_then_cell_id
+  error_metrics:
+    - wrong_entity
+    - wrong_concept
+    - wrong_period
+    - wrong_unit
+    - wrong_dimension_by_canonical_name
+    - retrieval_miss
+    - reranking_miss
+  answer_metrics:
+    - normalised_exact_match
+    - value_accuracy
+    - unit_accuracy
+    - evidence_supported
+  bootstrap_samples: 10000
   confidence_level: 0.95
-  agreement_statistics: [cohens_kappa]
+  minimum_practical_improvement: 0.05
+  cluster_key: filing_id
+  report_by_company: true
+  report_by_filing: true
+  report_by_table_structure: true
 
+figures:
+  enabled: false
+  input_dir: results/evaluation
+  output_dir: results/figures
+  formats:
+    - pdf
+    - png
+  dpi: 300
+
+outputs:
+  runs_dir: results/runs
+  evaluation_dir: results/evaluation
+  rankings_filename: rankings.jsonl
+  metrics_filename: metrics.json
+  resolved_config_filename: resolved_config.json
+  include_full_candidate_traces: true
+  include_full_resolved_config: true
+  include_dataset_manifest_hashes: true
+  timestamp_timezone: UTC
+  hash_algorithm: sha256
+
+runtime:
+  device: auto
+  workers: 1
+  deterministic_algorithms: true
+  offline_primary_experiment: true

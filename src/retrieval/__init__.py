@@ -1,2 +1,1 @@
-"""Dense, sparse, hybrid, and reranking interfaces."""
-
+"""Indexing, candidate retrieval, fusion, and reranking interfaces."""

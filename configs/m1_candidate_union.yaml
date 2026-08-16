@@ -1,0 +1,40 @@
+condition:
+  id: m1
+  description: parallel dense sparse and structured candidate union with a generic reranker
+  evidence_unit: financial_fact
+  produces_exact_cell_ranking: true
+
+representation:
+  unit: financial_fact
+
+query_context:
+  enabled: true
+  mode: automatic
+
+retrieval:
+  routes:
+    dense: true
+    sparse: true
+    structured: true
+  candidate_union:
+    enabled: true
+    strategy: reciprocal_rank_fusion
+
+reranker:
+  enabled: true
+  kind: generic_cross_encoder
+  model_profile: generic_reranker
+
+training:
+  enabled: false
+  project_training: false
+  negative_strategy: none
+
+generation:
+  deterministic_renderer_enabled: true
+  llm_enabled: true
+
+evaluation:
+  chunk_metrics_enabled: false
+  exact_cell_metrics_enabled: true
+  downstream_answer_metrics_enabled: true

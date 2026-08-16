@@ -1,0 +1,30 @@
+project:
+  name: exact-cell-financial-rag
+  seed: 20260815
+  data_dir: data
+  results_dir: results
+
+audit:
+  output_path: results/data_audit/t2_ragbench.json
+  common_required_fields:
+    - id
+    - context_id
+    - split
+    - question
+    - program_answer
+    - original_answer
+    - context
+    - file_name
+    - company_name
+    - report_year
+  field_names:
+    id: id
+    context_id: context_id
+    question: question
+    program_answer: program_answer
+    original_answer: original_answer
+    context: context
+    file_name: file_name
+    company_name: company_name
+  markdown_min_pipe_count: 2
+  pilot_candidates_per_source: 20

@@ -1,36 +1,69 @@
 UV := uv
 PYTHON := $(UV) run python
+BASE_CONFIG := configs/base.yaml
+WORKFLOW_DIR := configs/workflows
 
-.PHONY: setup data run-c1 run-c2a run-c2b run-c3 eval figures test clean
+.PHONY: setup data audit-data pilot run-b0 run-b1 run-b2 run-m1 run-m2 run-m3 eval figures test clean
 
 setup:
 	$(UV) sync --frozen
 
 data:
-	$(PYTHON) scripts/run_condition.py --config configs/base.yaml
+	$(PYTHON) -m scripts.download_data \
+		--base-config $(BASE_CONFIG) \
+		--condition-config $(WORKFLOW_DIR)/data.yaml
 
-run-c1:
-	$(PYTHON) scripts/run_condition.py --config configs/c1.yaml
+audit-data:
+	$(PYTHON) -m scripts.audit_t2_ragbench \
+		--base-config configs/audit_base.yaml \
+		--dataset-config configs/datasets/t2_ragbench.yaml
 
-run-c2a:
-	$(PYTHON) scripts/run_condition.py --config configs/c2a.yaml
+pilot:
+	$(PYTHON) -m scripts.build_pilot_goldset \
+		--base-config $(BASE_CONFIG) \
+		--condition-config $(WORKFLOW_DIR)/pilot.yaml
 
-run-c2b:
-	$(PYTHON) scripts/run_condition.py --config configs/c2b.yaml
+run-b0:
+	$(PYTHON) -m scripts.run_condition \
+		--base-config $(BASE_CONFIG) \
+		--condition-config configs/b0_flattened_hybrid.yaml
 
-run-c3:
-	$(PYTHON) scripts/run_condition.py --config configs/c3.yaml
+run-b1:
+	$(PYTHON) -m scripts.run_condition \
+		--base-config $(BASE_CONFIG) \
+		--condition-config configs/b1_fact_hybrid.yaml
 
-eval: run-c1 run-c2a run-c2b run-c3
+run-b2:
+	$(PYTHON) -m scripts.run_condition \
+		--base-config $(BASE_CONFIG) \
+		--condition-config configs/b2_structured_lookup.yaml
+
+run-m1:
+	$(PYTHON) -m scripts.run_condition \
+		--base-config $(BASE_CONFIG) \
+		--condition-config configs/m1_candidate_union.yaml
+
+run-m2:
+	$(PYTHON) -m scripts.run_condition \
+		--base-config $(BASE_CONFIG) \
+		--condition-config configs/m2_context_aware.yaml
+
+run-m3:
+	$(PYTHON) -m scripts.run_condition \
+		--base-config $(BASE_CONFIG) \
+		--condition-config configs/m3_hard_negative.yaml
+
+eval: run-b0 run-b1 run-b2 run-m1 run-m2 run-m3
 
 figures:
-	$(PYTHON) scripts/make_figures.py --config configs/c3.yaml
+	$(PYTHON) -m scripts.make_figures \
+		--base-config $(BASE_CONFIG) \
+		--condition-config $(WORKFLOW_DIR)/figures.yaml
 
 test:
-	$(UV) run pytest
+	$(UV) run pytest -q
 	$(UV) run mypy src scripts
 	$(UV) run ruff check .
 
 clean:
 	find results -mindepth 1 ! -name .gitkeep -delete
-
