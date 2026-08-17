@@ -144,6 +144,22 @@ Within each subset, prioritise questions that:
 
 Record every exclusion reason, unexpected table dimension and raw header path. Time the annotation work. The full 300–500-question plan is feasible only if the pilot has acceptable ambiguity and annotation time, and if `FinancialFact` can preserve the heterogeneous source structures without ad hoc schema changes.
 
+## Pilot follow-up — 17 August 2026
+
+A purposive 30-question first pass has now been completed: 10 questions each
+from ConvFinQA, FinQA and TAT-DQA. The validator reproduced 30 gold cells and
+91 natural near-miss cells from the pinned raw files and generated stable IDs
+for all of them. This confirms that the three source schemas can supply a small
+exact-cell development sample.
+
+This does **not** close the Week 4 feasibility gate. Active annotation time was
+not measured, the screening/exclusion log is incomplete, the primary reviewer
+approved AI-assisted summaries rather than recording full-source inspection,
+and no blind independent annotation has been completed. The selected source
+families are development material and must not enter the later confirmatory
+test set. Full results and claim limits are in
+[`pilot_feasibility_report.md`](pilot_feasibility_report.md).
+
 ## Reproduction
 
 After acquiring the configured raw files, run:
@@ -152,7 +168,7 @@ After acquiring the configured raw files, run:
 make audit-data
 ```
 
-The command validates all file checksums and counts before reading the dataset. It writes a stamped JSON envelope containing the Git commit, stable config hash, timestamp, full resolved configuration, per-source statistics, and a deterministic list of screening candidates. This is the only implemented data algorithm in the current interface-only scaffold; retrieval and evaluation conditions remain intentional stubs.
+The command validates all file checksums and counts before reading the dataset. It writes a stamped JSON envelope containing the Git commit, stable config hash, timestamp, full resolved configuration, per-source statistics, and a deterministic list of screening candidates. The separate `make pilot` workflow validates the first-pass exact-cell labels after the raw metadata are present. Retrieval and evaluation conditions remain intentional stubs.
 
 ## Limitations of this audit
 

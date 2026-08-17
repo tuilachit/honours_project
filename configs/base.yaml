@@ -41,21 +41,50 @@ audit:
   field_names:
     id: id
     context_id: context_id
+    split: split
     question: question
     program_answer: program_answer
     original_answer: original_answer
     context: context
     file_name: file_name
     company_name: company_name
+    page_number: page_number
   markdown_min_pipe_count: 2
   pilot_candidates_per_source: 20
 
 pilot:
   enabled: false
-  condition_id: b0
   sample_size: 30
   candidates_per_source: 10
+  annotation_path: annotations/pilot_annotations.yaml
   output_dir: results/pilot
+  output_path: results/pilot/pilot_validation.json
+  expected_schema_version: 1
+  required_annotation_status: first_pass_review_complete
+  required_decision: include
+  required_reasoning_type: direct_lookup
+  required_review_status: user_approved
+  minimum_valid_cells_per_question: 1
+  minimum_near_misses_per_question: 2
+  subset_targets:
+    ConvFinQA: 10
+    FinQA: 10
+    TAT-DQA: 10
+  coordinate_transforms:
+    ConvFinQA:
+      drop_leading_synthetic_column: false
+    FinQA:
+      drop_leading_synthetic_column: true
+    TAT-DQA:
+      drop_leading_synthetic_column: false
+  table_hash_algorithm: sha256
+  cell_id_hash_algorithm: sha256
+  evaluation_use: project_development_only
+  exclude_source_families_from_confirmatory_test: true
+  require_per_question_annotation_seconds: false
+  annotation_timing_required_for_scale_decision: true
+  independent_review_target_fraction: 0.25
+  independent_review_completed: false
 
 representation:
   unit: financial_fact

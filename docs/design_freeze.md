@@ -150,6 +150,14 @@ Before implementing M1–M3, demonstrate that:
 
 If these conditions fail, revise the dataset construction or claims before implementing the full method. Do not silently force heterogeneous tables into a fixed schema to pass the gate.
 
+As of 17 August 2026, items 1–3 pass. Stable cell IDs have been
+materialised for the 30 gold cells and 91 natural alternatives, but complete
+`FinancialFact` round-trip materialisation in item 4 remains open. Items 5–6
+have not been implemented. Item 7 cannot be judged because active annotation
+time and blind independent agreement were not collected. The sample is
+therefore a validated first-pass development artifact, not a passed Week 4
+feasibility gate or confirmatory benchmark.
+
 ## Reproducibility rules
 
 - Python 3.11 and `uv` with a pinned lockfile;
@@ -169,3 +177,4 @@ During the interface-only scaffold phase, unimplemented scientific operations mu
 |---|---|---|---|
 | 2026-08-15 | Initial Week 4 design freeze | Begin dataset-feasibility pilot without further architectural expansion | Candidate; supervisor direction reported approved |
 | 2026-08-16 | Replaced fixed field routing with schema-flexible `FinancialFact`; separated B0 chunk metrics from exact-cell metrics; clarified M1–M3 training | Prevent false comparability and support unseen table structures | Pending detailed supervisor review |
+| 2026-08-17 | Recorded the validated 30-question first pass and its open gates | Separate reproducible cell-label validation from benchmark and scale claims | Primary researcher approved labels; methods gates remain open |

@@ -1,6 +1,6 @@
 workflow:
   id: pilot
-  description: run the configured B0 feasibility pilot
+  description: validate the human-reviewed exact-cell feasibility pilot
 
 pilot:
   enabled: true

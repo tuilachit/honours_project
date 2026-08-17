@@ -40,8 +40,13 @@ def test_entrypoint_requires_base_and_override_configs(
 
 @pytest.mark.parametrize(
     "entrypoint",
-    (download_data, build_pilot_goldset, run_condition, make_figures),
+    (download_data, run_condition, make_figures),
 )
 def test_unimplemented_workflow_fails_loudly(entrypoint: Callable[[Config], None]) -> None:
     with pytest.raises(NotImplementedError):
         entrypoint({})
+
+
+def test_pilot_workflow_rejects_missing_config() -> None:
+    with pytest.raises(ValueError, match="pilot must be a mapping"):
+        build_pilot_goldset({})
