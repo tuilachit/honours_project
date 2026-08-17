@@ -9,6 +9,8 @@ annotation_provenance:
   primary_review_blinded: false
   full_source_inspection_by_primary_reviewer: false
   independent_review_completed: false
+  delegated_source_review_completed: true
+  delegated_source_review_question_count: 26
   intended_use: project-development feasibility sample only
 selection_provenance:
   method: purposive selection of high-confidence direct-value examples
@@ -18,6 +20,60 @@ selection_provenance:
   note: >-
     Candidate exclusions and active annotation time were not recorded consistently
     during this first pass. They must be collected prospectively before scaling.
+source_review_round:
+  review_mode: delegated_ai_source_review
+  reviewer: Codex
+  authorized_by: primary_researcher
+  standing_approval_at: "2026-08-17T12:30:03Z"
+  decision_rule: >-
+    Include only when the requested answer is printed in a reproducible table
+    cell, requires no calculation, and the necessary metric, period, unit and
+    other dimensions can be resolved from the full extracted table and nearby
+    context; otherwise flag or exclude it.
+  individually_reviewed_by_primary_researcher:
+    - convfinqa_0
+    - convfinqa_1
+    - convfinqa_2
+    - convfinqa_5
+  delegated_include:
+    - convfinqa_14
+    - convfinqa_23
+    - convfinqa_27
+    - convfinqa_39
+    - convfinqa_43
+    - convfinqa_62
+    - finqa_train_1753
+    - finqa_train_2444
+    - finqa_train_2448
+    - finqa_train_2690
+    - finqa_train_2796
+    - finqa_train_3442
+    - finqa_train_4853
+    - finqa_dev_287
+    - finqa_dev_650
+    - finqa_test_810
+    - tatqa_train_10
+    - tatqa_train_18
+    - tatqa_train_30
+    - tatqa_train_75
+    - tatqa_dev_10234
+    - tatqa_dev_10269
+    - tatqa_dev_10299
+    - tatqa_test_9109
+    - tatqa_test_9122
+    - tatqa_test_9132
+  delegated_exclude: []
+  unresolved: []
+  resolved_caveats:
+    finqa_train_2444: >-
+      The dataset original_answer is corrupt, but the program answer and source
+      cell both identify the requested 2010 accounts-receivable value.
+    finqa_dev_650: >-
+      The operating margin can be derived, but it is also explicitly printed in
+      the table, so the question remains a direct lookup.
+    tat_dqa_page_provenance: >-
+      TAT-DQA does not provide page numbers in the pinned metadata; inclusion is
+      based on reproducible extracted-table provenance rather than PDF-page review.
 dataset:
   name: G4KMU/t2-ragbench
   revision: adf7fe1541ac37351ce1142544d8e3b43010ed92
@@ -103,6 +159,14 @@ annotations:
       status: user_approved
       approved_at: "2026-08-17T02:16:02Z"
       annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:24:28Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
 
   - question_id: convfinqa_1
     decision: include
@@ -175,6 +239,14 @@ annotations:
       status: user_approved
       approved_at: "2026-08-17T02:16:02Z"
       annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:25:29Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
 
   - question_id: convfinqa_2
     decision: include
@@ -246,6 +318,14 @@ annotations:
       status: user_approved
       approved_at: "2026-08-17T02:16:02Z"
       annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:26:17Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
 
   - question_id: convfinqa_5
     decision: include
@@ -313,6 +393,14 @@ annotations:
       status: user_approved
       approved_at: "2026-08-17T02:16:02Z"
       annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:28:55Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
 
   - question_id: convfinqa_14
     decision: include

@@ -7,6 +7,9 @@ retrieval experiment. It is not a model evaluation. The first-pass output is a
 small, researcher-approved development answer key containing 30 direct-value
 questions: 10 from ConvFinQA, 10 from FinQA and 10 from TAT-DQA. Researcher
 approval of AI-assisted pre-annotations is not an independent second annotation.
+If the researcher delegates later source decisions under a standing rule, those
+decisions are recorded separately as delegated AI review. They do not count as
+individual full-source inspection by the researcher.
 
 For every included question, the answer key identifies the complete set of
 source cells that count as correct and several real nearby cells that could
