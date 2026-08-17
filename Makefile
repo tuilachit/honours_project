@@ -3,7 +3,7 @@ PYTHON := $(UV) run python
 BASE_CONFIG := configs/base.yaml
 WORKFLOW_DIR := configs/workflows
 
-.PHONY: setup data audit-data pilot run-b0 run-b1 run-b2 run-m1 run-m2 run-m3 eval figures test clean
+.PHONY: setup data audit-data pilot review-pack run-b0 run-b1 run-b2 run-m1 run-m2 run-m3 eval figures test clean
 
 setup:
 	$(UV) sync --frozen
@@ -20,6 +20,11 @@ audit-data:
 
 pilot:
 	$(PYTHON) -m scripts.build_pilot_goldset \
+		--base-config $(BASE_CONFIG) \
+		--condition-config $(WORKFLOW_DIR)/pilot.yaml
+
+review-pack:
+	$(PYTHON) -m scripts.make_source_review_pack \
 		--base-config $(BASE_CONFIG) \
 		--condition-config $(WORKFLOW_DIR)/pilot.yaml
 

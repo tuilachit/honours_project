@@ -8,6 +8,7 @@ TARGETS = (
     "data",
     "audit-data",
     "pilot",
+    "review-pack",
     "run-b0",
     "run-b1",
     "run-b2",

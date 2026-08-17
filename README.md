@@ -73,6 +73,7 @@ make setup
 make test
 make audit-data
 make pilot
+make review-pack
 ```
 
 The run and evaluation targets are present as explicit workflow contracts. They will become executable end to end only after the intentionally stubbed algorithms are implemented; the scaffold does not generate placeholder scientific results. Raw data and generated result envelopes remain gitignored, while the pinned manifests, first-pass annotations and methods report are version controlled.

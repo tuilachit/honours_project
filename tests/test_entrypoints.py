@@ -14,6 +14,7 @@ from scripts.download_data import build_parser as build_data_parser
 from scripts.download_data import download_data
 from scripts.make_figures import build_parser as build_figures_parser
 from scripts.make_figures import make_figures
+from scripts.make_source_review_pack import build_parser as build_review_pack_parser
 from scripts.run_condition import build_parser as build_condition_parser
 from scripts.run_condition import run_condition
 from src.config import Config
@@ -21,6 +22,7 @@ from src.config import Config
 PARSERS: tuple[Callable[[], argparse.ArgumentParser], ...] = (
     build_data_parser,
     build_pilot_parser,
+    build_review_pack_parser,
     build_condition_parser,
     build_figures_parser,
 )

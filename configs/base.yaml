@@ -59,6 +59,7 @@ pilot:
   annotation_path: annotations/pilot_annotations.yaml
   output_dir: results/pilot
   output_path: results/pilot/pilot_validation.json
+  review_pack_output_path: results/pilot/human_source_review_pack.md
   expected_schema_version: 1
   required_annotation_status: first_pass_review_complete
   required_decision: include

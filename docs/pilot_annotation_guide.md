@@ -121,3 +121,9 @@ blind second annotator independently checks a configured sample before
 adjudication. All pilot companies, filings, tables and related question
 families are development material and must be excluded from the later
 confirmatory test split.
+
+Run `make review-pack` to generate a single human-readable file containing all
+30 questions, complete relevant tables, proposed cells, alternatives, source
+notes and expandable extracted context. A question counts as individually
+human-inspected only after the researcher actually reads its source section and
+records an INCLUDE, EXCLUDE or UNSURE decision.

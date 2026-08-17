@@ -118,6 +118,7 @@ After acquiring the pinned structured metadata, run:
 
 ```sh
 make pilot
+make review-pack
 ```
 
 The source annotations are in
@@ -126,3 +127,6 @@ and the procedure is defined in
 [`pilot_annotation_guide.md`](pilot_annotation_guide.md). The output status is
 `validated_with_open_feasibility_gates`; it must not be relabelled as a passed
 pilot until the missing evidence above is collected.
+
+The second command writes the gitignored human review artifact to
+`results/pilot/human_source_review_pack.md`.
