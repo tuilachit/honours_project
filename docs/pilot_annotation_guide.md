@@ -127,3 +127,12 @@ Run `make review-pack` to generate a single human-readable file containing all
 notes and expandable extracted context. A question counts as individually
 human-inspected only after the researcher actually reads its source section and
 records an INCLUDE, EXCLUDE or UNSURE decision.
+
+Run `make screening-batch` to reproduce the first prospective timing batch.
+The command uses a fixed seeded rank to select five previously unused automatic
+candidates from each source subset. It writes the human-readable pack to
+`results/pilot/prospective_screening_batch_01.md` and preserves decisions in
+`annotations/prospective_screening_batch_01.yaml`. The researcher must start a
+timer before the first item, review every item in the fixed order, record all
+exclusions and reasons, and report total active minutes. Automatic cell matches
+are deliberately not pre-filtered by a human or model.

@@ -106,8 +106,8 @@ claim that wrong-period or wrong-concept errors are prevalent.
 
 | Gate | Current status | Required action |
 |---|---|---|
-| Active annotation time | Not measured | Time fresh screening, annotation and adjudication prospectively. |
-| Complete screening trail | Not available | Log candidate order, decision and exclusion reason from the next batch onward. |
+| Active annotation time | Batch 1 prepared; not yet measured | Review the fixed 15-candidate batch with a stopwatch and record total active minutes. |
+| Complete screening trail | Fixed batch and blank log created; decisions pending | Review all 15 candidates in order and record every decision and exclusion reason. |
 | Full human source inspection | Complete: 30 of 30 | No remaining action for this first-pass source review. |
 | Independent agreement | Not performed | Blindly annotate a configured stratified sample before adjudication. |
 | `FinancialFact` round trip | Not implemented | Materialise target and negative facts without using oracle labels as retrieval inputs. |
@@ -121,6 +121,7 @@ After acquiring the pinned structured metadata, run:
 ```sh
 make pilot
 make review-pack
+make screening-batch
 ```
 
 The source annotations are in
@@ -132,3 +133,8 @@ pilot until the missing evidence above is collected.
 
 The second command writes the gitignored human review artifact to
 `results/pilot/human_source_review_pack.md`.
+
+The third command reproduces the fixed prospective batch and writes its
+gitignored review pack to `results/pilot/prospective_screening_batch_01.md`.
+Its version-controlled decision log is
+[`../annotations/prospective_screening_batch_01.yaml`](../annotations/prospective_screening_batch_01.yaml).

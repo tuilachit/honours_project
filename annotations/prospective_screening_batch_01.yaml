@@ -1,0 +1,138 @@
+schema_version: 1
+batch_id: prospective_screening_batch_01
+status: awaiting_human_screening
+generation:
+  timestamp: '2026-08-18T06:44:59.423977+00:00'
+  git_commit: 77bf06eaf05fd5b6fb3b5dfc73401eb2aaf7b47e
+  config_hash: 83766f54b7ad8ad6dddf6aae4398ad07858f7b6119f300604590c262e7499ad6
+selection:
+  method: seeded_sha256_rank_within_subset
+  seed: 20260815
+  excluded_prior_annotation_count: 30
+  human_prefiltering_before_selection: false
+  audit_git_commit: affed0fce0251a597f584864ddcda9a9c544b403
+  audit_config_hash: 6f7afee2fea3e1c8e611cbc7236695d50fdee8681ccc2db24ff0c395cff0f9b8
+review:
+  reviewer: null
+  started_at: null
+  completed_at: null
+  active_minutes: null
+  instructions: Start a timer before item 1. Review every item in order and stop the
+    timer after the final decision. Do not replace difficult candidates.
+allowed_decisions:
+- include
+- exclude
+- unsure
+allowed_exclusion_reason_codes:
+- requires_calculation
+- answer_not_a_table_cell
+- ambiguous_cell_identity
+- insufficient_context
+- duplicate_or_leaked_item
+- other
+decisions:
+- question_id: convfinqa_24
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_103
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_7
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_981
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_48
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_961
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_73
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_925
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_64
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_714
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_test_65
+  subset: FinQA
+  manifest_split: test
+  context_id: finqa_test_ctx_38
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_dev_393
+  subset: FinQA
+  manifest_split: dev
+  context_id: finqa_dev_ctx_157
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_test_236
+  subset: FinQA
+  manifest_split: test
+  context_id: finqa_test_ctx_175
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_train_475
+  subset: FinQA
+  manifest_split: train
+  context_id: finqa_train_ctx_1226
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_test_216
+  subset: FinQA
+  manifest_split: test
+  context_id: finqa_test_ctx_209
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_train_62
+  subset: TAT-DQA
+  manifest_split: train
+  context_id: d741ff8340e4ae8dc66f491a5add7e0d
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_test_9134
+  subset: TAT-DQA
+  manifest_split: test
+  context_id: 0dfb4455ae2e1b2066e99d9a3a05baf0
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_test_9082
+  subset: TAT-DQA
+  manifest_split: test
+  context_id: 0551beccb943904e051f6f2a1519bd3a
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_train_49
+  subset: TAT-DQA
+  manifest_split: train
+  context_id: d6e57b997cc342f4ca28f00fcc0dcc0c
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_train_1
+  subset: TAT-DQA
+  manifest_split: train
+  context_id: d58da8b044c0221e4ad5fb3c60a50486
+  decision: null
+  reason_codes: []
+  notes: null
