@@ -9,6 +9,7 @@ TARGETS = (
     "audit-data",
     "pilot",
     "review-pack",
+    "screening-batch",
     "run-b0",
     "run-b1",
     "run-b2",

@@ -87,6 +87,31 @@ pilot:
   independent_review_target_fraction: 0.25
   independent_review_completed: false
 
+screening:
+  enabled: false
+  batch_id: prospective_screening_batch_01
+  audit_result_path: results/data_audit/t2_ragbench.json
+  prior_annotation_path: annotations/pilot_annotations.yaml
+  decision_log_path: annotations/prospective_screening_batch_01.yaml
+  review_pack_output_path: results/pilot/prospective_screening_batch_01.md
+  sample_size: 15
+  subset_targets:
+    ConvFinQA: 5
+    FinQA: 5
+    TAT-DQA: 5
+  selection_method: seeded_sha256_rank_within_subset
+  decisions:
+    - include
+    - exclude
+    - unsure
+  exclusion_reason_codes:
+    - requires_calculation
+    - answer_not_a_table_cell
+    - ambiguous_cell_identity
+    - insufficient_context
+    - duplicate_or_leaked_item
+    - other
+
 representation:
   unit: financial_fact
   flattened_chunk:
