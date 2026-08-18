@@ -47,10 +47,13 @@ def _address_text(cell: dict[str, Any], default_table_index: int) -> str:
 
 def _source_statuses(annotations_root: dict[str, Any]) -> tuple[set[str], set[str]]:
     review_round = _mapping(annotations_root.get("source_review_round"), "source review round")
+    human_review_round = _mapping(
+        annotations_root.get("human_source_review_round"), "human source review round"
+    )
     individual = {
         str(value)
         for value in _list(
-            review_round.get("individually_reviewed_by_primary_researcher"),
+            human_review_round.get("reviewed_question_ids"),
             "individual source reviews",
         )
     }

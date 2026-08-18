@@ -249,6 +249,9 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
     source_review_round = _mapping(
         annotations_root.get("source_review_round"), "source review round"
     )
+    human_source_review_round = _mapping(
+        annotations_root.get("human_source_review_round"), "human source review round"
+    )
 
     expected_schema_version = _integer(pilot, "expected_schema_version")
     if annotations_root.get("schema_version") != expected_schema_version:
@@ -288,21 +291,29 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
         source_key = (_string(source, "subset"), _string(source, "manifest_split"))
         requested_ids[source_key].add(question_id)
 
-    def reviewed_ids(key: str) -> set[str]:
-        values = _list(source_review_round.get(key), f"source_review_round.{key}")
+    def reviewed_ids(review: dict[str, Any], key: str, label: str) -> set[str]:
+        values = _list(review.get(key), f"{label}.{key}")
         if not all(isinstance(value, str) for value in values):
-            raise ValueError(f"source_review_round.{key} must contain question IDs")
+            raise ValueError(f"{label}.{key} must contain question IDs")
         ids = {cast(str, value) for value in values}
         if len(ids) != len(values):
-            raise ValueError(f"source_review_round.{key} contains duplicate question IDs")
+            raise ValueError(f"{label}.{key} contains duplicate question IDs")
         return ids
 
-    individually_reviewed_ids = reviewed_ids("individually_reviewed_by_primary_researcher")
-    delegated_include_ids = reviewed_ids("delegated_include")
-    delegated_exclude_ids = reviewed_ids("delegated_exclude")
-    unresolved_review_ids = reviewed_ids("unresolved")
+    initially_individually_reviewed_ids = reviewed_ids(
+        source_review_round,
+        "individually_reviewed_by_primary_researcher",
+        "source_review_round",
+    )
+    delegated_include_ids = reviewed_ids(
+        source_review_round, "delegated_include", "source_review_round"
+    )
+    delegated_exclude_ids = reviewed_ids(
+        source_review_round, "delegated_exclude", "source_review_round"
+    )
+    unresolved_review_ids = reviewed_ids(source_review_round, "unresolved", "source_review_round")
     review_groups = (
-        individually_reviewed_ids,
+        initially_individually_reviewed_ids,
         delegated_include_ids,
         delegated_exclude_ids,
         unresolved_review_ids,
@@ -311,7 +322,7 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
         for right in review_groups[index + 1 :]:
             if left & right:
                 raise ValueError("Source-review question groups must not overlap")
-    reviewed_included_ids = individually_reviewed_ids | delegated_include_ids
+    reviewed_included_ids = initially_individually_reviewed_ids | delegated_include_ids
     if reviewed_included_ids != seen_question_ids:
         raise ValueError("Source review does not cover every included pilot question")
     if delegated_exclude_ids or unresolved_review_ids:
@@ -322,6 +333,46 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
         raise ValueError("Delegated source-review count does not match its question list")
     if _boolean(annotation_provenance, "delegated_source_review_completed") is not True:
         raise ValueError("Delegated source review is not marked complete")
+
+    human_reviewed_ids = reviewed_ids(
+        human_source_review_round,
+        "reviewed_question_ids",
+        "human_source_review_round",
+    )
+    human_include_ids = reviewed_ids(
+        human_source_review_round, "include", "human_source_review_round"
+    )
+    human_exclude_ids = reviewed_ids(
+        human_source_review_round, "exclude", "human_source_review_round"
+    )
+    human_unsure_ids = reviewed_ids(
+        human_source_review_round, "unsure", "human_source_review_round"
+    )
+    human_decision_groups = (human_include_ids, human_exclude_ids, human_unsure_ids)
+    for index, left in enumerate(human_decision_groups):
+        for right in human_decision_groups[index + 1 :]:
+            if left & right:
+                raise ValueError("Human source-review decision groups must not overlap")
+    if human_reviewed_ids != seen_question_ids:
+        raise ValueError("Human source review does not cover every pilot question")
+    if human_include_ids != seen_question_ids or human_exclude_ids or human_unsure_ids:
+        raise ValueError("Human source-review decisions do not match included annotations")
+    if _string(human_source_review_round, "review_mode") != "human_full_source_review":
+        raise ValueError("Human source-review mode is invalid")
+    if _integer(annotation_provenance, "human_source_review_question_count") != len(
+        human_reviewed_ids
+    ):
+        raise ValueError("Human source-review count does not match its question list")
+    if _boolean(annotation_provenance, "human_source_review_completed") is not True:
+        raise ValueError("Human source review is not marked complete")
+    _string(human_source_review_round, "reviewer")
+    _string(human_source_review_round, "completed_at")
+    _string(human_source_review_round, "declaration")
+    human_review_material = _mapping(
+        human_source_review_round.get("review_material"), "human source review material"
+    )
+    for key in ("path", "generator_git_commit", "config_hash"):
+        _string(human_review_material, key)
 
     records, source_integrity = _load_requested_records(
         repository=repository,
@@ -362,7 +413,7 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
         review = _mapping(annotation.get("review"), f"{question_id}.review")
         if review.get("status") != required_review_status:
             raise ValueError(f"{question_id} has not been user-approved")
-        if question_id in individually_reviewed_ids:
+        if question_id in initially_individually_reviewed_ids:
             full_source_review = _mapping(
                 review.get("full_source_review"), f"{question_id}.full_source_review"
             )
@@ -630,7 +681,7 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
     full_source_inspection = _boolean(
         annotation_provenance, "full_source_inspection_by_primary_reviewer"
     )
-    if full_source_inspection != (len(individually_reviewed_ids) == sample_size):
+    if full_source_inspection != (len(human_reviewed_ids) == sample_size):
         raise ValueError("Primary full-source review status disagrees with reviewed question IDs")
     scale_decision_ready = (
         (timing_ready or not timing_required_for_scale)
@@ -648,7 +699,7 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
     if not full_source_inspection:
         open_gates.append(
             "primary researcher full-source inspection is incomplete "
-            f"({len(individually_reviewed_ids)}/{sample_size})"
+            f"({len(human_reviewed_ids)}/{sample_size})"
         )
 
     exclusions = _list(annotations_root.get("exclusions"), "exclusions")
@@ -659,7 +710,7 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
             "validated" if not open_gates else "validated_with_open_feasibility_gates"
         ),
         "source_integrity_and_cell_addresses_validated": True,
-        "semantic_label_status": "researcher_approved_first_pass",
+        "semantic_label_status": "researcher_full_source_review_complete",
         "scale_decision_ready": scale_decision_ready,
         "open_feasibility_gates": open_gates,
         "dataset": {
@@ -670,11 +721,13 @@ def validate_pilot_annotations(config: Config, repository: Path) -> dict[str, An
         "annotation_provenance": annotation_provenance,
         "selection_provenance": selection_provenance,
         "source_review": {
-            "mode": _string(source_review_round, "review_mode"),
-            "primary_researcher_individual_reviews": len(individually_reviewed_ids),
-            "delegated_ai_includes": len(delegated_include_ids),
-            "delegated_excludes": len(delegated_exclude_ids),
-            "unresolved": len(unresolved_review_ids),
+            "mode": _string(human_source_review_round, "review_mode"),
+            "primary_researcher_full_source_reviews": len(human_reviewed_ids),
+            "human_includes": len(human_include_ids),
+            "human_excludes": len(human_exclude_ids),
+            "human_unsure": len(human_unsure_ids),
+            "historical_delegated_ai_includes": len(delegated_include_ids),
+            "review_material": human_review_material,
         },
         "split_policy": {
             "evaluation_use": _string(pilot, "evaluation_use"),

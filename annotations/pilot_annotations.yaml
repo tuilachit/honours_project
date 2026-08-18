@@ -5,9 +5,13 @@ target_included_questions: 30
 approved_included_questions: 30
 annotation_provenance:
   candidate_screening: AI-assisted pre-annotation against the pinned raw tables
-  primary_review: researcher approval of six five-question summaries
+  primary_review: >-
+    researcher approval of six five-question summaries followed by full review
+    of the generated 30-question source pack
   primary_review_blinded: false
-  full_source_inspection_by_primary_reviewer: false
+  full_source_inspection_by_primary_reviewer: true
+  human_source_review_completed: true
+  human_source_review_question_count: 30
   independent_review_completed: false
   delegated_source_review_completed: true
   delegated_source_review_question_count: 26
@@ -74,6 +78,79 @@ source_review_round:
     tat_dqa_page_provenance: >-
       TAT-DQA does not provide page numbers in the pinned metadata; inclusion is
       based on reproducible extracted-table provenance rather than PDF-page review.
+human_source_review_round:
+  review_mode: human_full_source_review
+  reviewer: primary_researcher
+  completed_at: "2026-08-18T06:35:15Z"
+  declaration: I reviewed all 30, include all
+  review_material:
+    path: results/pilot/human_source_review_pack.md
+    generator_git_commit: d32d227a395daac82f3eac566ef6686e46e65846
+    config_hash: 0f3f53b21287f4595d9b3ef19fc634f67eac1306377cd519ba3613d6a1cd7402
+  reviewed_question_ids:
+    - convfinqa_0
+    - convfinqa_1
+    - convfinqa_2
+    - convfinqa_5
+    - convfinqa_14
+    - convfinqa_23
+    - convfinqa_27
+    - convfinqa_39
+    - convfinqa_43
+    - convfinqa_62
+    - finqa_train_1753
+    - finqa_train_2444
+    - finqa_train_2448
+    - finqa_train_2690
+    - finqa_train_2796
+    - finqa_train_3442
+    - finqa_train_4853
+    - finqa_dev_287
+    - finqa_dev_650
+    - finqa_test_810
+    - tatqa_train_10
+    - tatqa_train_18
+    - tatqa_train_30
+    - tatqa_train_75
+    - tatqa_dev_10234
+    - tatqa_dev_10269
+    - tatqa_dev_10299
+    - tatqa_test_9109
+    - tatqa_test_9122
+    - tatqa_test_9132
+  include:
+    - convfinqa_0
+    - convfinqa_1
+    - convfinqa_2
+    - convfinqa_5
+    - convfinqa_14
+    - convfinqa_23
+    - convfinqa_27
+    - convfinqa_39
+    - convfinqa_43
+    - convfinqa_62
+    - finqa_train_1753
+    - finqa_train_2444
+    - finqa_train_2448
+    - finqa_train_2690
+    - finqa_train_2796
+    - finqa_train_3442
+    - finqa_train_4853
+    - finqa_dev_287
+    - finqa_dev_650
+    - finqa_test_810
+    - tatqa_train_10
+    - tatqa_train_18
+    - tatqa_train_30
+    - tatqa_train_75
+    - tatqa_dev_10234
+    - tatqa_dev_10269
+    - tatqa_dev_10299
+    - tatqa_test_9109
+    - tatqa_test_9122
+    - tatqa_test_9132
+  exclude: []
+  unsure: []
 dataset:
   name: G4KMU/t2-ragbench
   revision: adf7fe1541ac37351ce1142544d8e3b43010ed92

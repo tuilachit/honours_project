@@ -15,15 +15,16 @@ benchmark.
 - **Dataset:** `G4KMU/t2-ragbench`
 - **Pinned revision:** `adf7fe1541ac37351ce1142544d8e3b43010ed92`
 - **Annotation status:** `first_pass_review_complete`
-- **Review process:** AI-assisted candidate preparation; four source cases
-  individually reviewed by the researcher; 26 source cases retained through
-  delegated AI review under the researcher's standing inclusion rule
+- **Review process:** AI-assisted candidate preparation and an initial
+  delegated source review, followed by the primary researcher's full review of
+  the generated 30-question source pack
 - **Intended use:** project development only
 - **Generated result:** `results/pilot/pilot_validation.json` (gitignored)
 
-Delegated review is not described as personal full-source inspection, blind
-review or independent annotation. The annotation source records these limits
-explicitly.
+The earlier delegated review remains in the provenance history. The final
+source decision is now based on the primary researcher's inspection of all 30
+source sections. This is still not blind independent annotation because the
+pack displayed the proposed cells and alternatives.
 
 ## Validated content
 
@@ -38,8 +39,9 @@ explicitly.
 | Questions containing annotation notes | 23 |
 | Recorded exclusions in the final YAML | 0 |
 | Questions with measured active annotation time | 0 |
-| Individually full-source reviewed by the researcher | 4 |
-| Included through delegated AI source review | 26 |
+| Full-source reviewed by the primary researcher | 30 |
+| Included by the primary researcher | 30 |
+| Historical delegated AI source reviews | 26 |
 
 The 23 questions with notes must not be interpreted as 23 ambiguous labels.
 The notes mix malformed structure, resolved interpretation, duplicate values,
@@ -106,7 +108,7 @@ claim that wrong-period or wrong-concept errors are prevalent.
 |---|---|---|
 | Active annotation time | Not measured | Time fresh screening, annotation and adjudication prospectively. |
 | Complete screening trail | Not available | Log candidate order, decision and exclusion reason from the next batch onward. |
-| Full human source inspection | 4 of 30 completed | Have the primary researcher inspect the remaining full raw tables and surrounding context if this is required for the final benchmark. |
+| Full human source inspection | Complete: 30 of 30 | No remaining action for this first-pass source review. |
 | Independent agreement | Not performed | Blindly annotate a configured stratified sample before adjudication. |
 | `FinancialFact` round trip | Not implemented | Materialise target and negative facts without using oracle labels as retrieval inputs. |
 | B0 and B1 pilot runs | Not implemented | Run genuine chunk and cell rankings before judging method feasibility. |
