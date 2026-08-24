@@ -240,6 +240,20 @@ fact_roundtrip:
   expected_hard_negative_count: 1000
   required_hard_negative_count_per_question: 2
 
+retrieval_pilot:
+  enabled: false
+  scope: development_closed_corpus
+  input_questions_path: results/synthetic/synthetic_questions_500.json
+  input_facts_path: results/facts/synthetic_financial_fact_roundtrip.json
+  required_question_status: first_pass_human_review_complete
+  required_fact_status: financial_fact_roundtrip_passed
+  expected_question_count: 500
+  expected_table_count: 500
+  expected_fact_count: 8082
+  output_path: null
+  table_evidence_policy: one_complete_source_table
+  confirmatory_claims_allowed: false
+
 table_parsing:
   source_format: markdown
   markdown_min_pipe_count: 2
@@ -324,11 +338,11 @@ query_context:
 
 models:
   dense_encoder:
-    name: null
-    revision: null
+    name: sentence-transformers/all-MiniLM-L6-v2
+    revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
   generic_reranker:
-    name: null
-    revision: null
+    name: cross-encoder/ms-marco-MiniLM-L6-v2
+    revision: 233902d25c440f23af6f7d6e94d2946bac0bee0a
   context_aware_reranker:
     name: null
     revision: null
@@ -340,7 +354,7 @@ indexes:
   dense_path: data/indexes/dense
   sparse_path: data/indexes/sparse
   structured_path: data/indexes/structured
-  overwrite: false
+  overwrite: true
   batch_size: 64
 
 retrieval:
@@ -353,11 +367,15 @@ retrieval:
     similarity: cosine
     top_k: 50
     batch_size: 64
+    normalize_embeddings: true
   sparse:
     algorithm: bm25
     top_k: 50
     k1: 1.2
     b: 0.75
+    minimum_score_exclusive: 0.0
+    token_pattern: "[A-Za-z0-9]+"
+    lowercase: true
   structured:
     top_k: 100
     ranking_strategy: concept_then_context_compatibility
@@ -497,7 +515,7 @@ outputs:
   hash_algorithm: sha256
 
 runtime:
-  device: auto
+  device: cpu
   workers: 1
   deterministic_algorithms: true
   offline_primary_experiment: true

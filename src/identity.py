@@ -2,14 +2,9 @@
 
 from __future__ import annotations
 
-import hashlib
-import json
 from collections.abc import Mapping
 
-
-def _sha256_mapping(payload: Mapping[str, object]) -> str:
-    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+from src.hashing import sha256_mapping
 
 
 def stable_cell_id(
@@ -26,7 +21,7 @@ def stable_cell_id(
 
     if min(table_index, row_index, column_index) < 0:
         raise ValueError("Cell-address indices cannot be negative")
-    return _sha256_mapping(
+    return sha256_mapping(
         {
             "column_index": column_index,
             "context_id": context_id,
@@ -44,4 +39,4 @@ def stable_fact_id(*, schema_version: str, payload: Mapping[str, object]) -> str
 
     if not schema_version:
         raise ValueError("Fact schema version cannot be empty")
-    return _sha256_mapping({"schema_version": schema_version, "fact": dict(payload)})
+    return sha256_mapping({"schema_version": schema_version, "fact": dict(payload)})

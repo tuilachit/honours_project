@@ -1,11 +1,19 @@
 condition:
   id: b0
-  description: flattened chunks with dense and sparse hybrid retrieval
+  description: complete flattened tables with dense and sparse hybrid retrieval
   evidence_unit: flattened_chunk
   produces_exact_cell_ranking: false
 
+retrieval_pilot:
+  enabled: true
+  output_path: results/runs/b0_development_pilot.json
+
 representation:
   unit: flattened_chunk
+  flattened_chunk:
+    target_characters: null
+    overlap_characters: 0
+    preserve_table_boundaries: true
 
 query_context:
   enabled: false
@@ -37,4 +45,4 @@ generation:
 evaluation:
   chunk_metrics_enabled: true
   exact_cell_metrics_enabled: false
-  downstream_answer_metrics_enabled: true
+  downstream_answer_metrics_enabled: false

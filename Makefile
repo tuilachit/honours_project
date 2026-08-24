@@ -43,12 +43,12 @@ fact-roundtrip: synthetic-500
 		--base-config $(BASE_CONFIG) \
 		--condition-config $(WORKFLOW_DIR)/fact_roundtrip.yaml
 
-run-b0:
+run-b0: fact-roundtrip
 	$(PYTHON) -m scripts.run_condition \
 		--base-config $(BASE_CONFIG) \
 		--condition-config configs/b0_flattened_hybrid.yaml
 
-run-b1:
+run-b1: fact-roundtrip
 	$(PYTHON) -m scripts.run_condition \
 		--base-config $(BASE_CONFIG) \
 		--condition-config configs/b1_fact_hybrid.yaml
@@ -82,7 +82,7 @@ figures:
 
 test:
 	$(UV) run pytest -q
-	$(UV) run mypy src scripts
+	$(UV) run mypy src scripts tests
 	$(UV) run ruff check .
 
 clean:

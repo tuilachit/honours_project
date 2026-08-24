@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 import subprocess
 from collections.abc import Mapping
@@ -14,17 +13,8 @@ from pathlib import Path
 from typing import Any
 
 from src.config import Config, hash_config
+from src.hashing import sha256_file
 from src.types import RunMetadata
-
-
-def _sha256_file(path: Path) -> str:
-    """Hash a manifest without loading it into memory."""
-
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def _dataset_manifest_hashes(
@@ -50,7 +40,7 @@ def _dataset_manifest_hashes(
             manifest_path = repository / manifest_path
         if not manifest_path.is_file():
             raise FileNotFoundError(f"Dataset manifest does not exist: {manifest_path}")
-        hashes[dataset_name] = _sha256_file(manifest_path)
+        hashes[dataset_name] = sha256_file(manifest_path)
     return hashes
 
 

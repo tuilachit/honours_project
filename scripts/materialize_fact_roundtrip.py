@@ -25,6 +25,7 @@ from src.facts import (
     deserialize_financial_fact,
     serialize_financial_fact,
 )
+from src.hashing import sha256_file
 from src.results import write_result_json
 from src.tables import normalize_table, parse_source_table
 from src.types import FinancialFact, SourceTable
@@ -38,14 +39,6 @@ def _page_number(value: object) -> int | None:
     if isinstance(value, str) and value.isdigit():
         return int(value)
     raise ValueError(f"Unsupported page number: {value!r}")
-
-
-def _sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def _table_id(source: dict[str, Any]) -> str:
@@ -261,8 +254,8 @@ def materialize_fact_roundtrip(config: Config, repository: Path) -> dict[str, An
     return {
         "status": "financial_fact_roundtrip_passed",
         "source_dataset_revision": dataset_revision,
-        "input_artifact_sha256": _sha256_file(input_path),
-        "review_log_sha256": _sha256_file(review_path),
+        "input_artifact_sha256": sha256_file(input_path),
+        "review_log_sha256": sha256_file(review_path),
         "human_review_status": _string(review_root, "status"),
         "question_count": len(questions),
         "source_table_count": len(source_tables),

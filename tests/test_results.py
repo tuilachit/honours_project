@@ -3,14 +3,14 @@ import json
 from decimal import Decimal
 from pathlib import Path
 
-from src.config import hash_config
+from src.config import Config, hash_config
 from src.results import write_result_json
 from src.types import MeasurementUnit
 
 
 def test_result_writer_includes_required_provenance(tmp_path: Path) -> None:
     output = tmp_path / "nested" / "result.json"
-    config = {"condition": {"id": "m3"}}
+    config: Config = {"condition": {"id": "m3"}}
 
     metadata = write_result_json(
         output,
@@ -32,7 +32,7 @@ def test_result_writer_hashes_manifests_and_serializes_domain_values(tmp_path: P
     manifest = tmp_path / "dataset.yaml"
     manifest.write_text("dataset:\n  revision: pinned\n", encoding="utf-8")
     output = tmp_path / "result.json"
-    config = {
+    config: Config = {
         "condition": {"id": "b1"},
         "datasets": {"primary": {"manifest_path": str(manifest)}},
     }
