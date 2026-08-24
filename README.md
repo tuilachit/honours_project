@@ -40,7 +40,7 @@ The primary corpus is the cleaned T²-RAGBench release, pinned in [`configs/data
 
 ## Repository status
 
-This repository is currently an **experiment scaffold with implemented data-audit, pilot-validation and prospective-screening workflows**. The reproducibility contracts, condition configurations and typed interfaces define the intended study, but retrieval, reranking, training, evaluation and figure-generation algorithms intentionally raise `NotImplementedError` until future implementation tasks.
+This repository is currently an **experiment scaffold with implemented data-audit, pilot-validation, prospective-screening and synthetic-candidate construction workflows**. The 500 generated candidates still require human review before they can be described as a gold set. The reproducibility contracts, condition configurations and typed interfaces define the intended study, but retrieval, reranking, training, evaluation and figure-generation algorithms intentionally raise `NotImplementedError` until future implementation tasks.
 
 The T²-RAGBench feasibility audit validates the pinned metadata files. The exact-cell pilot validator then checks the first-pass annotation file against those raw records, verifies every table hash and source-cell value, derives stable cell IDs, and writes a provenance-stamped result. The current pilot is development material with open feasibility gates; see [`docs/pilot_feasibility_report.md`](docs/pilot_feasibility_report.md).
 
@@ -75,6 +75,7 @@ make audit-data
 make pilot
 make review-pack
 make screening-batch
+make synthetic-500
 ```
 
 The run and evaluation targets are present as explicit workflow contracts. They will become executable end to end only after the intentionally stubbed algorithms are implemented; the scaffold does not generate placeholder scientific results. Raw data and generated result envelopes remain gitignored, while the pinned manifests, first-pass annotations, fixed prospective screening log and methods report are version controlled.

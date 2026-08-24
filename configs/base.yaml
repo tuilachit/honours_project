@@ -112,6 +112,119 @@ screening:
     - duplicate_or_leaked_item
     - other
 
+synthetic_generation:
+  enabled: false
+  dataset_id: synthetic_exact_cell_500_v1
+  sample_size: 500
+  output_path: results/synthetic/synthetic_questions_500.json
+  review_pack_output_path: results/synthetic/synthetic_questions_500_review.md
+  decision_log_path: annotations/synthetic_questions_500_review.yaml
+  subset_targets:
+    ConvFinQA: 176
+    FinQA: 0
+    TAT-DQA: 324
+  excluded_annotation_paths:
+    - annotations/pilot_annotations.yaml
+    - annotations/prospective_screening_batch_01.yaml
+  selection_method: seeded_sha256_rank_after_quality_filters
+  maximum_examples_per_company: 6
+  minimum_table_rows: 3
+  maximum_table_rows: 30
+  minimum_table_columns: 3
+  maximum_table_columns: 10
+  minimum_concept_characters: 3
+  maximum_concept_characters: 140
+  minimum_concept_word_count: 2
+  minimum_concept_overlap_token_characters: 4
+  minimum_concept_token_overlap_ratio: 1.0
+  allow_digits_in_concept: false
+  allowed_single_token_concepts:
+    - assets
+    - backlog
+    - cash
+    - debt
+    - expenses
+    - income
+    - liabilities
+    - loss
+    - profit
+    - revenue
+    - sales
+  disallowed_exact_concepts:
+    - domestic
+    - foreign
+    - international
+    - other
+    - real
+    - total
+    - u.s
+  source_question_exclusion_phrases:
+    - what was the percentage
+    - what is the percentage
+    - by what percentage
+    - what was the change
+    - what is the change
+    - how much did
+    - what was the difference
+    - what is the difference
+    - what was the ratio
+    - what is the ratio
+    - what is the mathematical range
+    - how many years
+    - did the
+    - what was the maximum
+    - what is the maximum
+    - what was the minimum
+    - what is the minimum
+    - what was the highest
+    - what is the highest
+    - what was the lowest
+    - what is the lowest
+    - what was the largest
+    - what is the largest
+    - what was the greatest
+    - what is the greatest
+    - percent change
+  source_modifier_evidence:
+    average:
+      - average
+    percentage:
+      - "%"
+      - percentage
+      - percent
+    percent:
+      - "%"
+      - percentage
+      - percent
+    maximum:
+      - maximum
+    minimum:
+      - minimum
+    increase:
+      - increase
+    decrease:
+      - decrease
+  require_explicit_year_header: true
+  require_source_answer_match: true
+  require_source_question_year_match: true
+  require_source_question_years_within_target_or_report_year: true
+  require_source_question_concept_overlap: true
+  require_unique_target_value_within_table: true
+  require_wrong_period_negative: true
+  require_wrong_concept_negative: true
+  question_templates:
+    - "{source_question}"
+    - "Using the financial table, {source_question_lower}"
+    - "According to the reported table, {source_question_lower}"
+  human_decisions:
+    - approve
+    - edit
+    - reject
+    - unsure
+  assistant_suggestion: approve
+  table_hash_algorithm: sha256
+  cell_id_hash_algorithm: sha256
+
 representation:
   unit: financial_fact
   flattened_chunk:

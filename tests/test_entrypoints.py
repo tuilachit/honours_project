@@ -12,6 +12,7 @@ from scripts.build_pilot_goldset import (
 )
 from scripts.download_data import build_parser as build_data_parser
 from scripts.download_data import download_data
+from scripts.generate_synthetic_questions import build_parser as build_synthetic_parser
 from scripts.make_figures import build_parser as build_figures_parser
 from scripts.make_figures import make_figures
 from scripts.make_screening_batch import build_parser as build_screening_parser
@@ -22,6 +23,7 @@ from src.config import Config
 
 PARSERS: tuple[Callable[[], argparse.ArgumentParser], ...] = (
     build_data_parser,
+    build_synthetic_parser,
     build_pilot_parser,
     build_review_pack_parser,
     build_screening_parser,

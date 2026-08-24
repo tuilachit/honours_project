@@ -108,6 +108,7 @@ claim that wrong-period or wrong-concept errors are prevalent.
 |---|---|---|
 | Active annotation time | Batch 1 prepared; not yet measured | Review the fixed 15-candidate batch with a stopwatch and record total active minutes. |
 | Complete screening trail | Fixed batch and 15 advisory Codex pre-labels recorded; human decisions pending | Critique all 15 suggestions and record every final decision and exclusion reason. |
+| Synthetic construction | 500 deterministic candidates generated from real tables; human decisions pending | Review, edit or reject every proposed question, target and hard-negative package. |
 | Full human source inspection | Complete: 30 of 30 | No remaining action for this first-pass source review. |
 | Independent agreement | Not performed | Blindly annotate a configured stratified sample before adjudication. |
 | `FinancialFact` round trip | Not implemented | Materialise target and negative facts without using oracle labels as retrieval inputs. |
@@ -122,6 +123,7 @@ After acquiring the pinned structured metadata, run:
 make pilot
 make review-pack
 make screening-batch
+make synthetic-500
 ```
 
 The source annotations are in
@@ -138,3 +140,7 @@ The third command reproduces the fixed prospective batch and writes its
 gitignored review pack to `results/pilot/prospective_screening_batch_01.md`.
 Its version-controlled decision log is
 [`../annotations/prospective_screening_batch_01.yaml`](../annotations/prospective_screening_batch_01.yaml).
+
+The fourth command generates the 500-question human-review candidate set. Its
+method and use restrictions are defined in
+[`synthetic_dataset_protocol.md`](synthetic_dataset_protocol.md).

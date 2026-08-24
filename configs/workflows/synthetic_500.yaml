@@ -1,0 +1,6 @@
+workflow:
+  id: synthetic-500
+  description: generate 500 deterministic direct-cell questions for human verification
+
+synthetic_generation:
+  enabled: true

@@ -3,7 +3,7 @@ PYTHON := $(UV) run python
 BASE_CONFIG := configs/base.yaml
 WORKFLOW_DIR := configs/workflows
 
-.PHONY: setup data audit-data pilot review-pack screening-batch run-b0 run-b1 run-b2 run-m1 run-m2 run-m3 eval figures test clean
+.PHONY: setup data audit-data pilot review-pack screening-batch synthetic-500 run-b0 run-b1 run-b2 run-m1 run-m2 run-m3 eval figures test clean
 
 setup:
 	$(UV) sync --frozen
@@ -32,6 +32,11 @@ screening-batch:
 	$(PYTHON) -m scripts.make_screening_batch \
 		--base-config $(BASE_CONFIG) \
 		--condition-config $(WORKFLOW_DIR)/screening.yaml
+
+synthetic-500:
+	$(PYTHON) -m scripts.generate_synthetic_questions \
+		--base-config $(BASE_CONFIG) \
+		--condition-config $(WORKFLOW_DIR)/synthetic_500.yaml
 
 run-b0:
 	$(PYTHON) -m scripts.run_condition \
