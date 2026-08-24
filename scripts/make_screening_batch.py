@@ -218,6 +218,28 @@ def _answer_match_lines(record: dict[str, Any], table_text: str, min_pipe_count:
     return matches or ["- No automatic matching cell could be reconstructed."]
 
 
+def _markdown_table_cell(value: object) -> str:
+    return str(value).replace("|", "\\|").replace("\n", " ")
+
+
+def _assistant_suggestions(decision_log_path: Path) -> dict[str, tuple[str, str]]:
+    root = _load_yaml_mapping(decision_log_path)
+    suggestions: dict[str, tuple[str, str]] = {}
+    for item in _list(root.get("decisions"), "screening decisions"):
+        decision = _mapping(item, "screening decision")
+        question_id = _string(decision, "question_id")
+        suggestion = decision.get("assistant_suggestion")
+        reason = decision.get("assistant_reason")
+        if suggestion is None and reason is None:
+            continue
+        if not isinstance(suggestion, str) or suggestion not in {"include", "exclude", "unsure"}:
+            raise ValueError(f"Invalid assistant suggestion for {question_id}")
+        if not isinstance(reason, str) or not reason:
+            raise ValueError(f"Missing assistant reason for {question_id}")
+        suggestions[question_id] = (suggestion, reason)
+    return suggestions
+
+
 def _render_pack(
     *,
     config: Config,
@@ -235,6 +257,7 @@ def _render_pack(
     min_pipe_count = _integer(audit, "markdown_min_pipe_count")
     metadata = create_run_metadata(config, repository)
     audit_metadata = _mapping(audit_root.get("run_metadata"), "audit run metadata")
+    suggestions = _assistant_suggestions(decision_log_path)
     lines = [
         f"# Prospective exact-cell screening — {_string(screening, 'batch_id')}",
         "",
@@ -260,9 +283,39 @@ def _render_pack(
         "The automatic match is only a clue. It may be wrong—for example, a row number can "
         "accidentally equal the dataset answer.",
         "",
-        "---",
+        "My suggestions are advisory pre-labels, not gold labels. Please challenge them. "
+        "Every disagreement will be retained in the decision log.",
         "",
+        "## Compact critique table",
+        "",
+        "| # | Question ID | Question | Proposed answer | Codex suggestion | Why | Your decision |",
+        "|---:|---|---|---:|---|---|---|",
     ]
+    for ordinal, candidate in enumerate(selected, start=1):
+        question_id = _string(candidate, "id")
+        suggestion, reason = suggestions.get(question_id, ("not provided", "not provided"))
+        lines.append(
+            "| "
+            + " | ".join(
+                (
+                    str(ordinal),
+                    f"`{_markdown_table_cell(question_id)}`",
+                    _markdown_table_cell(_string(candidate, "question")),
+                    _markdown_table_cell(candidate.get("original_answer")),
+                    suggestion.upper(),
+                    _markdown_table_cell(reason),
+                    "",
+                )
+            )
+            + " |"
+        )
+    lines.extend(
+        [
+            "",
+            "---",
+            "",
+        ]
+    )
     context_field = _string(fields, "context")
     for ordinal, candidate in enumerate(selected, start=1):
         subset = _string(candidate, "subset")
@@ -276,6 +329,9 @@ def _render_pack(
             raise ValueError(f"Missing source text for {question_id}")
         page = record.get(_string(fields, "page_number"))
         page_text = "unavailable" if page is None else str(page)
+        suggestion, suggestion_reason = suggestions.get(
+            question_id, ("not provided", "No advisory suggestion was recorded.")
+        )
         lines.extend(
             [
                 f"## {ordinal}. `{question_id}`",
@@ -283,6 +339,10 @@ def _render_pack(
                 "**Decision:** ☐ INCLUDE &nbsp;&nbsp; ☐ EXCLUDE &nbsp;&nbsp; ☐ UNSURE",
                 "",
                 "**Reason/notes:**",
+                "",
+                f"**Codex suggestion (advisory):** {suggestion.upper()}",
+                "",
+                f"**Codex reason:** {suggestion_reason}",
                 "",
                 f"**Dataset:** {subset} · split `{split}`",
                 "",

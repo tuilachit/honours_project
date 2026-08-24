@@ -1,8 +1,10 @@
+from pathlib import Path
 from typing import Any
 
 import pytest
+import yaml
 
-from scripts.make_screening_batch import select_candidates
+from scripts.make_screening_batch import _assistant_suggestions, select_candidates
 
 
 def _candidate(subset: str, question_id: str) -> dict[str, Any]:
@@ -51,3 +53,48 @@ def test_selection_rejects_duplicate_candidate_ids() -> None:
             subset_targets={"A": 1},
             seed=42,
         )
+
+
+def test_assistant_suggestions_are_loaded_without_becoming_human_decisions(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "decisions.yaml"
+    path.write_text(
+        yaml.safe_dump(
+            {
+                "decisions": [
+                    {
+                        "question_id": "q1",
+                        "assistant_suggestion": "exclude",
+                        "assistant_reason": "Requires arithmetic.",
+                        "decision": None,
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert _assistant_suggestions(path) == {
+        "q1": ("exclude", "Requires arithmetic.")
+    }
+
+
+def test_assistant_suggestion_requires_a_reason(tmp_path: Path) -> None:
+    path = tmp_path / "decisions.yaml"
+    path.write_text(
+        yaml.safe_dump(
+            {
+                "decisions": [
+                    {
+                        "question_id": "q1",
+                        "assistant_suggestion": "include",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="Missing assistant reason"):
+        _assistant_suggestions(path)

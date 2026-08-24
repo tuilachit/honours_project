@@ -107,7 +107,7 @@ claim that wrong-period or wrong-concept errors are prevalent.
 | Gate | Current status | Required action |
 |---|---|---|
 | Active annotation time | Batch 1 prepared; not yet measured | Review the fixed 15-candidate batch with a stopwatch and record total active minutes. |
-| Complete screening trail | Fixed batch and blank log created; decisions pending | Review all 15 candidates in order and record every decision and exclusion reason. |
+| Complete screening trail | Fixed batch and 15 advisory Codex pre-labels recorded; human decisions pending | Critique all 15 suggestions and record every final decision and exclusion reason. |
 | Full human source inspection | Complete: 30 of 30 | No remaining action for this first-pass source review. |
 | Independent agreement | Not performed | Blindly annotate a configured stratified sample before adjudication. |
 | `FinancialFact` round trip | Not implemented | Materialise target and negative facts without using oracle labels as retrieval inputs. |

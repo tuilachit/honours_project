@@ -136,3 +136,11 @@ candidates from each source subset. It writes the human-readable pack to
 timer before the first item, review every item in the fixed order, record all
 exclusions and reasons, and report total active minutes. Automatic cell matches
 are deliberately not pre-filtered by a human or model.
+
+The screening pack may include an AI-assisted suggestion and written reason for
+every candidate. These are advisory pre-labels intended to make the researcher's
+critique easier. The researcher must still inspect the source and record the
+final decision. Agreement and disagreement are both retained in the decision
+log; an AI suggestion is never converted silently into a human decision. Because
+the suggestions are visible to the researcher, this round is not blind and does
+not satisfy the independent-review gate.
