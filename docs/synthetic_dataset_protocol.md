@@ -87,6 +87,15 @@ Codex's `approve` suggestion was advisory. The primary researcher inspected the
 complete pack and recorded 500 `approve` decisions. This first-pass review was
 not blind and does not replace the later independent-review sample.
 
+## Representation round trip
+
+`make fact-roundtrip` parses every complete source table before consulting the
+approved target or hard-negative labels. It then creates and serializes the
+table-wide `FinancialFact` collection and verifies the labelled cells by stable
+cell ID. The current run materialises 8,082 facts and recovers 500/500 targets
+and 1,000/1,000 hard negatives. Full details and limitations are recorded in
+[`fact_roundtrip_report.md`](fact_roundtrip_report.md).
+
 ## Use restrictions
 
 - Do not report the 500 candidates as a gold benchmark before review.

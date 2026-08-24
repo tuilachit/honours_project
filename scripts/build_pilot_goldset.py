@@ -18,6 +18,7 @@ from scripts.audit_t2_ragbench import (
     sha256_file,
 )
 from src.config import Config, load_config
+from src.identity import stable_cell_id as stable_cell_id
 from src.results import write_result_json
 
 TableRows = tuple[tuple[str, ...], ...]
@@ -96,33 +97,6 @@ def parse_table_blocks(
             rows.append(cells)
         parsed_blocks.append(tuple(rows))
     return tuple(parsed_blocks)
-
-
-def stable_cell_id(
-    *,
-    dataset_revision: str,
-    subset: str,
-    manifest_split: str,
-    context_id: str,
-    table_index: int,
-    row_index: int,
-    column_index: int,
-) -> str:
-    """Return a stable SHA-256 identity for one semantic source-cell address."""
-
-    if min(table_index, row_index, column_index) < 0:
-        raise ValueError("Cell-address indices cannot be negative")
-    address = {
-        "column_index": column_index,
-        "context_id": context_id,
-        "dataset_revision": dataset_revision,
-        "manifest_split": manifest_split,
-        "row_index": row_index,
-        "subset": subset,
-        "table_index": table_index,
-    }
-    canonical = json.dumps(address, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def _cell_value(

@@ -11,6 +11,7 @@ TARGETS = (
     "review-pack",
     "screening-batch",
     "synthetic-500",
+    "fact-roundtrip",
     "run-b0",
     "run-b1",
     "run-b2",

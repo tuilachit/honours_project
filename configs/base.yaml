@@ -225,6 +225,26 @@ synthetic_generation:
   table_hash_algorithm: sha256
   cell_id_hash_algorithm: sha256
 
+fact_roundtrip:
+  enabled: false
+  input_path: results/synthetic/synthetic_questions_500.json
+  review_log_path: annotations/synthetic_questions_500_review.yaml
+  output_path: results/facts/synthetic_financial_fact_roundtrip.json
+  required_input_status: first_pass_human_review_complete
+  required_review_status: first_pass_review_complete
+  required_human_decision: approve
+  expected_question_count: 500
+  expected_source_table_count: 500
+  expected_materialized_fact_count: 8082
+  expected_target_count: 500
+  expected_hard_negative_count: 1000
+  required_hard_negative_count_per_question: 2
+
+table_parsing:
+  source_format: markdown
+  markdown_min_pipe_count: 2
+  numeric_cells_only: true
+
 representation:
   unit: financial_fact
   flattened_chunk:
@@ -232,6 +252,18 @@ representation:
     overlap_characters: 200
     preserve_table_boundaries: true
   financial_fact:
+    schema_version: financial_fact_v1
+    dimension_name_prefix: column_header
+    currency_markers:
+      "$": "$"
+      "£": "£"
+      "€": "€"
+    percentage_markers:
+      - "%"
+    scale_markers:
+      million: "1000000"
+      thousand: "1000"
+      billion: "1000000000"
     core_field_mapping:
       entity: entity
       concept: concept

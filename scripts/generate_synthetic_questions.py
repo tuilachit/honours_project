@@ -30,15 +30,14 @@ from scripts.build_pilot_goldset import (
     _mapping,
     _repository_path,
     _string,
-    stable_cell_id,
 )
 from src.config import Config, load_config
+from src.identity import stable_cell_id
 from src.results import write_result_json
+from src.tables.parse import clean_table_header
 from src.types import RunMetadata
 
 SPACE_PATTERN = re.compile(r"\s+")
-TRAILING_FOOTNOTE_PATTERN = re.compile(r"\s+\([a-z]\)\s*$", re.IGNORECASE)
-MARKDOWN_PATTERN = re.compile(r"[*_`]+")
 
 
 @dataclass(frozen=True, slots=True)
@@ -49,9 +48,7 @@ class ParsedBlock:
 
 
 def _clean_text(value: str) -> str:
-    cleaned = MARKDOWN_PATTERN.sub("", value)
-    cleaned = TRAILING_FOOTNOTE_PATTERN.sub("", cleaned)
-    return SPACE_PATTERN.sub(" ", cleaned).strip(" :;|")
+    return clean_table_header(value)
 
 
 def _display_entity(value: str) -> str:

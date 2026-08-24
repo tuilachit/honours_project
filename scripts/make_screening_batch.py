@@ -15,7 +15,6 @@ import yaml
 
 from scripts.audit_t2_ragbench import (
     extract_markdown_tables,
-    numeric_values,
     scalar_numeric,
 )
 from scripts.build_pilot_goldset import (
@@ -32,6 +31,7 @@ from scripts.build_pilot_goldset import (
 )
 from src.config import Config, load_config
 from src.results import create_run_metadata
+from src.tables.normalize import numeric_values
 from src.types import RunMetadata
 
 

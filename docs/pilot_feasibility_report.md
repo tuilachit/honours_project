@@ -111,7 +111,7 @@ claim that wrong-period or wrong-concept errors are prevalent.
 | Synthetic construction | First-pass review complete: primary researcher approved 500/500 deterministic candidates | Conduct the configured blind independent-review sample before confirmatory use. |
 | Full human source inspection | Complete: 30 of 30 | No remaining action for this first-pass source review. |
 | Independent agreement | Not performed | Blindly annotate a configured stratified sample before adjudication. |
-| `FinancialFact` round trip | Not implemented | Materialise target and negative facts without using oracle labels as retrieval inputs. |
+| `FinancialFact` round trip | Passed on the approved 500-question set: 8,082 table-wide facts materialised; 500/500 targets and 1,000/1,000 hard negatives recovered exactly | Preserve this gate while implementing B0 and B1. |
 | B0 and B1 pilot runs | Not implemented | Run genuine chunk and cell rankings before judging method feasibility. |
 | Scale decision | Not ready | Use prospective timing, ambiguity and agreement evidence to estimate 300–500-label effort. |
 
@@ -124,6 +124,7 @@ make pilot
 make review-pack
 make screening-batch
 make synthetic-500
+make fact-roundtrip
 ```
 
 The source annotations are in
@@ -144,3 +145,7 @@ Its version-controlled decision log is
 The fourth command generates the 500-question human-review candidate set. Its
 method and use restrictions are defined in
 [`synthetic_dataset_protocol.md`](synthetic_dataset_protocol.md).
+
+The fifth command rebuilds 8,082 numeric facts from the complete 500 source
+tables before consulting the approved labels, then checks exact recovery and
+serialization. See [`fact_roundtrip_report.md`](fact_roundtrip_report.md).

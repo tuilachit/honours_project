@@ -8,18 +8,15 @@ import json
 import re
 from collections import Counter
 from dataclasses import dataclass, field
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 from pathlib import Path
 from typing import Any, cast
 
 from src.config import Config, load_config
 from src.results import write_result_json
+from src.tables.normalize import numeric_values, parse_numeric_value
 
 YEAR_PATTERN = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
-NUMBER_PATTERN = re.compile(
-    r"(?<![\w.])(?P<open>\()?\s*(?:[$£€])?\s*"
-    r"(?P<number>[+-]?\d[\d,]*(?:\.\d+)?)\s*%?\s*(?P<close>\))?"
-)
 SEPARATOR_CELL_PATTERN = re.compile(r"^:?-{2,}:?$")
 
 
@@ -91,33 +88,10 @@ def table_cells(blocks: list[list[str]]) -> list[str]:
     return cells
 
 
-def numeric_values(value: object) -> list[Decimal]:
-    """Extract displayed numeric values while preserving accounting negatives."""
-
-    if value is None:
-        return []
-    text = str(value).replace("−", "-").replace("–", "-")
-    parsed: list[Decimal] = []
-    for match in NUMBER_PATTERN.finditer(text):
-        number_text = match.group("number").replace(",", "")
-        try:
-            number = Decimal(number_text)
-        except InvalidOperation:
-            continue
-        if match.group("open") and match.group("close") and number > 0:
-            number = -number
-        parsed.append(number)
-    return parsed
-
-
 def scalar_numeric(value: object) -> Decimal | None:
     """Return one unambiguous numeric answer, otherwise None."""
 
-    values = numeric_values(value)
-    unique = list(dict.fromkeys(values))
-    if len(unique) != 1:
-        return None
-    return unique[0]
+    return parse_numeric_value(value)
 
 
 @dataclass

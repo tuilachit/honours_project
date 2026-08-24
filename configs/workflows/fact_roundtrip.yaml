@@ -1,0 +1,6 @@
+workflow:
+  id: fact-roundtrip
+  description: materialise and validate FinancialFact records for the approved synthetic set
+
+fact_roundtrip:
+  enabled: true
