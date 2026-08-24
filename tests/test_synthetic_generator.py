@@ -3,6 +3,7 @@ from typing import Any
 import pytest
 
 from scripts.generate_synthetic_questions import (
+    _apply_review_decisions,
     _candidate_review_hash,
     _display_entity,
     _header_path_parts,
@@ -114,3 +115,35 @@ def test_review_hash_changes_when_question_text_changes() -> None:
     question["question"] = "According to the table, what was revenue in 2024?"
 
     assert _candidate_review_hash(question) != first_hash
+
+
+def test_saved_human_approval_is_reflected_in_question_and_summary() -> None:
+    questions: list[dict[str, Any]] = [
+        {"question_id": "q1", "quality_checks": {"human_verified": False}}
+    ]
+    review_root: dict[str, Any] = {
+        "reviews": [
+            {
+                "question_id": "q1",
+                "human_decision": "approve",
+                "human_edited_question": None,
+                "human_notes": None,
+            }
+        ]
+    }
+
+    summary = _apply_review_decisions(
+        questions,
+        review_root=review_root,
+        allowed_decisions={"approve", "edit", "reject", "unsure"},
+    )
+
+    assert summary == {
+        "approved": 1,
+        "edited": 0,
+        "rejected": 0,
+        "unsure": 0,
+        "pending": 0,
+    }
+    assert questions[0]["human_review"]["decision"] == "approve"
+    assert questions[0]["quality_checks"]["human_verified"] is True

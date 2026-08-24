@@ -1,6 +1,6 @@
 schema_version: 1
 dataset_id: synthetic_exact_cell_500_v1
-status: awaiting_human_verification
+status: first_pass_review_complete
 generation:
   timestamp: '2026-08-24T02:07:35.357586+00:00'
   git_commit: d55d65b241f49354bd1f90194c1e0bc4ef33a44c
@@ -14,13 +14,24 @@ review_protocol:
   - edit
   - reject
   - unsure
+review_completion:
+  reviewer: primary_researcher
+  review_mode: full_review_pack
+  completed_on: '2026-08-24'
+  reviewed_question_count: 500
+  approved_question_count: 500
+  edited_question_count: 0
+  rejected_question_count: 0
+  unsure_question_count: 0
+  independent_review_completed: false
+  researcher_statement: reviewed all 500 questions and approved them as correct
 reviews:
 - question_id: syn_770189e3b41bfc757c65
   candidate_sha256: 810b49606911cde7e0252e4bd826f07eaaba5142dd74fedcd889cee28341cb2d
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_21b0cbfb35584eccc687
@@ -28,7 +39,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_779aff62e301a08551d0
@@ -36,7 +47,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9d43043a545192fa6a6d
@@ -44,7 +55,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_692d1634833f23b221f5
@@ -52,7 +63,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4512ab4324da72d14dcf
@@ -60,7 +71,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e2422233ead1a699a6ef
@@ -68,7 +79,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_79f2684544f6a0cc5738
@@ -76,7 +87,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6917f7858997e3d5a20e
@@ -84,7 +95,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_df1a116720730edab177
@@ -92,7 +103,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9d2a7d0fda1cbf949ffe
@@ -100,7 +111,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_889d350788704097a4fc
@@ -108,7 +119,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2a2e0e40dd67def09455
@@ -116,7 +127,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f72a35539351e1c5b790
@@ -124,7 +135,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_72af8d6d129c9213993a
@@ -132,7 +143,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_554eb192d56e8a854b99
@@ -140,7 +151,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3989f6ea7a701760f075
@@ -148,7 +159,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8856fa6a0851b8fb6094
@@ -156,7 +167,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e911317ccf3ba1d06729
@@ -164,7 +175,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8e76bb8f8266eb298761
@@ -172,7 +183,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0843271d2e1f66038006
@@ -180,7 +191,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fd0f36d0e75f12731180
@@ -188,7 +199,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5e682ff40a2cf3b4a7d2
@@ -196,7 +207,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4a89fdbbd1ea658331c4
@@ -204,7 +215,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e8c51599a6620f369245
@@ -212,7 +223,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4b182d250ba4f8017f02
@@ -220,7 +231,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_522bb9451be93766054c
@@ -228,7 +239,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ad26f3964dd7b7e1806d
@@ -236,7 +247,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_85adb2ae8d299daea331
@@ -244,7 +255,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b8420605939ec952ceb5
@@ -252,7 +263,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_aad548d5b81982d6315d
@@ -260,7 +271,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dfc56b00c0aa6af8b61e
@@ -268,7 +279,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a8609ec92612fb0bf250
@@ -276,7 +287,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ebf9b8f80b3e28a1f19c
@@ -284,7 +295,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7f7dc235d9e6435bc52b
@@ -292,7 +303,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_95425eafc4219011a0cf
@@ -300,7 +311,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dbd00a47429546cd9296
@@ -308,7 +319,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9c9811b6a4fc8ee9953f
@@ -316,7 +327,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2d6e3d4a60ba53c8adf0
@@ -324,7 +335,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9643c6417c1bb5901a9f
@@ -332,7 +343,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7c534ef674c12e16bf4b
@@ -340,7 +351,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bca951fa8c1515580ac1
@@ -348,7 +359,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_86311fcac4c8aa15c846
@@ -356,7 +367,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c2a390bfb4ab141dacc2
@@ -364,7 +375,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_028d77cdb20bb136d2e8
@@ -372,7 +383,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_838b736af0d211ca817e
@@ -380,7 +391,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4d1222c525c5583cd49e
@@ -388,7 +399,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_240634c70e6b2963fcae
@@ -396,7 +407,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_33dbc01abf1987396cf0
@@ -404,7 +415,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_58ad80377eda195f6372
@@ -412,7 +423,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_549e8030b3e6546ce198
@@ -420,7 +431,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6052848641ef2c239875
@@ -428,7 +439,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3f7ddc672932668ae0fc
@@ -436,7 +447,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e19333667265e4192cac
@@ -444,7 +455,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7d1b1246e3386f9d587a
@@ -452,7 +463,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_36c232e0c070fbe4c34c
@@ -460,7 +471,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fc7449f47a52737f1c9a
@@ -468,7 +479,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3c97abbd08e68d2f5d4d
@@ -476,7 +487,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_43df9b4921cab35831d7
@@ -484,7 +495,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_69dfeed5affaab69d111
@@ -492,7 +503,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cc94dfe99e2308242480
@@ -500,7 +511,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3b4239d0bbb5e46bcf80
@@ -508,7 +519,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d47595f06bc469ba4342
@@ -516,7 +527,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_61e60a83c1f9a6200621
@@ -524,7 +535,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_399ca933346b5bf1b7e0
@@ -532,7 +543,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_80cc1cca0a6896713821
@@ -540,7 +551,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_63f68df69e2e3a079205
@@ -548,7 +559,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dbc8704c9893be6553fc
@@ -556,7 +567,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7c5a94d17e694bc8991b
@@ -564,7 +575,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5cface5bd48f6371c55d
@@ -572,7 +583,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e91c5d88d5f245865e1b
@@ -580,7 +591,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f564824205059a17f465
@@ -588,7 +599,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0df57bf44e1bc4cbe8b5
@@ -596,7 +607,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_835d978a4e8bdeceb091
@@ -604,7 +615,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_56eabc3d10f025561e79
@@ -612,7 +623,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_765cc1671140be8efed0
@@ -620,7 +631,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d08a598e3e9fcdd8e9e2
@@ -628,7 +639,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ce69b062c57dd1eb9810
@@ -636,7 +647,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dd4e4b2cb6fda109c35f
@@ -644,7 +655,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fa66ef7b45c706f46680
@@ -652,7 +663,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9983b04c560d1330bc08
@@ -660,7 +671,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2b15a17e4f2f6dff8884
@@ -668,7 +679,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a977fa9ad071d4ba807b
@@ -676,7 +687,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5fd6b5e49d08d32b57bb
@@ -684,7 +695,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b703768adce2ebbde283
@@ -692,7 +703,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6e7e562f392355f008d5
@@ -700,7 +711,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_832b7b51ecab112ecd40
@@ -708,7 +719,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_37b3126f95ae415ce601
@@ -716,7 +727,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_938e57e6f8356a2e6900
@@ -724,7 +735,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ae287815a28ef32422b0
@@ -732,7 +743,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_393dfe7cd2da7908367d
@@ -740,7 +751,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5b8103df0b09b1d08be0
@@ -748,7 +759,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dbd7cde1b2fb719282b5
@@ -756,7 +767,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8c209698e833cfa053be
@@ -764,7 +775,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e2c3a22d1d1c68415d79
@@ -772,7 +783,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f09eff4880b8f34aaa49
@@ -780,7 +791,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_32e48c3211b412acf375
@@ -788,7 +799,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7f1fd89f9c6e4e81933c
@@ -796,7 +807,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dfdf15945a479571a754
@@ -804,7 +815,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e058349ff3cf73df6a38
@@ -812,7 +823,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e0cf6157e2c6be4e7a0b
@@ -820,7 +831,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_04ec22a12e485a8820ac
@@ -828,7 +839,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_10669a19d5b3f443437d
@@ -836,7 +847,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a834be9440a0dbc541ad
@@ -844,7 +855,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_84bd7d06e76c47cb42b7
@@ -852,7 +863,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bbddbae3979deee99102
@@ -860,7 +871,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a2707fdf16addddb2149
@@ -868,7 +879,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_52b4790c955479790757
@@ -876,7 +887,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_da21e43ee584bb2f69f0
@@ -884,7 +895,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3dd455fcbba7f1ad5ebd
@@ -892,7 +903,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ef61b1b00dd7a30711ca
@@ -900,7 +911,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7f9a071cce8824f4da02
@@ -908,7 +919,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_821d19099d740a778133
@@ -916,7 +927,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b540dc07eab504fccd63
@@ -924,7 +935,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1c8b019105474f01a283
@@ -932,7 +943,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b8abeacb1f8320f0855e
@@ -940,7 +951,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a2bf91be20485dd2d269
@@ -948,7 +959,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1c47eda07510f3b2ce60
@@ -956,7 +967,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2b56d25292bf59bae6e8
@@ -964,7 +975,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_757a1874b0a56fea3b22
@@ -972,7 +983,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_32da9a69b7acb6c40c87
@@ -980,7 +991,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1e85e15c49267029f283
@@ -988,7 +999,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e1094e1b432e13d3d0dd
@@ -996,7 +1007,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b49c3ded3cc4adbf3bf6
@@ -1004,7 +1015,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4117b11c5b40bac94e67
@@ -1012,7 +1023,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bf3ec75bd64468727ce6
@@ -1020,7 +1031,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c900ecae97176b16babe
@@ -1028,7 +1039,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_73b09facd3d241a7c5cf
@@ -1036,7 +1047,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_11647059091e6082c504
@@ -1044,7 +1055,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6330edc1ebad3014b7fd
@@ -1052,7 +1063,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_502214f397d4fab253a8
@@ -1060,7 +1071,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_78b126c8614d7200b13a
@@ -1068,7 +1079,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6cd32647f0fdd6d2f7bf
@@ -1076,7 +1087,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3468124cc11dd8610194
@@ -1084,7 +1095,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c41f28b351be00af3c6b
@@ -1092,7 +1103,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bf6419194369677c469e
@@ -1100,7 +1111,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4f76ad4f1b58129d20ed
@@ -1108,7 +1119,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_534373c87a67bb979ea0
@@ -1116,7 +1127,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6892dc18b127c69ccd91
@@ -1124,7 +1135,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_620cf3abe39144581045
@@ -1132,7 +1143,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b65f8a927ebb23128bfb
@@ -1140,7 +1151,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_70db86d5db2a0b270f29
@@ -1148,7 +1159,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1e22e04694c95ef00ca9
@@ -1156,7 +1167,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7d68ddfd97c45187f2b1
@@ -1164,7 +1175,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4e15959ab2c3e072b450
@@ -1172,7 +1183,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f52db6812f1c64e26ad3
@@ -1180,7 +1191,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4b442002aba08d91db94
@@ -1188,7 +1199,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_61c873e7659a03dd0a55
@@ -1196,7 +1207,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_077caf5b6bee1ccb22a1
@@ -1204,7 +1215,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_05fb73114ab1c58e1272
@@ -1212,7 +1223,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5b9b1a9c186a429e7f99
@@ -1220,7 +1231,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_79dab1836ff9229d72cd
@@ -1228,7 +1239,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_24ad8f5ac7afa5dd3437
@@ -1236,7 +1247,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_56c3256336ab89ee976e
@@ -1244,7 +1255,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e64c762bf66b1fd97f87
@@ -1252,7 +1263,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7749aa95e139c00efb45
@@ -1260,7 +1271,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d4bc6631bcd8989a1a15
@@ -1268,7 +1279,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_406224b0ccbc438c0364
@@ -1276,7 +1287,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_05a83a26d906b4ba9da9
@@ -1284,7 +1295,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b37df11c463d5cc7cebe
@@ -1292,7 +1303,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d1af62d1733ab2221585
@@ -1300,7 +1311,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ddcfc6218420dfc5e8c2
@@ -1308,7 +1319,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a5cba7e3a5d3ba37a416
@@ -1316,7 +1327,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1802298e6d8c570ba5ec
@@ -1324,7 +1335,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_957dea6bf433006d6e0b
@@ -1332,7 +1343,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8fdc2330397e5d2e9b62
@@ -1340,7 +1351,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_467a674bcd4c1f0b0b9b
@@ -1348,7 +1359,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fb2331864a0921dc0520
@@ -1356,7 +1367,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_65d480271afd35da346a
@@ -1364,7 +1375,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1e2f35bb8381fc73719d
@@ -1372,7 +1383,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5b7a14ab874bb91a7f41
@@ -1380,7 +1391,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dc79642433c0a657945a
@@ -1388,7 +1399,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cc9ec443e98c53fceb9c
@@ -1396,7 +1407,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6049f5ca3295cb590d7e
@@ -1404,7 +1415,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8cbe36f164eabd091f0f
@@ -1412,7 +1423,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_edf830ab97f4658e15fc
@@ -1420,7 +1431,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3598564ac38e44f14aa4
@@ -1428,7 +1439,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a5a75e4c6dba522f50b5
@@ -1436,7 +1447,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f1c3da333764718a5bf6
@@ -1444,7 +1455,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c01aa5778f3c905d6746
@@ -1452,7 +1463,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_55fc14ed5cf26f2a6d89
@@ -1460,7 +1471,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_38da8d2f3336087dbaf3
@@ -1468,7 +1479,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_647f37037b4fd913735a
@@ -1476,7 +1487,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_95bd31b260138628d421
@@ -1484,7 +1495,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a99ebff6068dab41af9b
@@ -1492,7 +1503,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9919e7ca645178d8ff10
@@ -1500,7 +1511,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ae7c5fd230d0e182cb66
@@ -1508,7 +1519,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_24d83e375f24f100f111
@@ -1516,7 +1527,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_25ad2cda7019f119e6c5
@@ -1524,7 +1535,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_aa59b05d7c6b5d937b6a
@@ -1532,7 +1543,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_11e77ce3f93568ea4896
@@ -1540,7 +1551,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4d3161fb26883d70d4ca
@@ -1548,7 +1559,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_af7ab783e69bce6460fc
@@ -1556,7 +1567,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ca17318ec7108889b915
@@ -1564,7 +1575,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3b267a166e51641c873a
@@ -1572,7 +1583,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9d6ce9ff13d5f5474e29
@@ -1580,7 +1591,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_653696f089e39569b723
@@ -1588,7 +1599,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8467be878719a64c050e
@@ -1596,7 +1607,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_70233ba32664ed380cec
@@ -1604,7 +1615,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ccc1616bee5c82b6b388
@@ -1612,7 +1623,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3bcdd1999b227e82dc98
@@ -1620,7 +1631,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e0d91c7ac414355b2459
@@ -1628,7 +1639,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a7d130caba1f5b91774a
@@ -1636,7 +1647,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c1bdf5a7a6bbb3376d91
@@ -1644,7 +1655,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_164a89cfa98e43ae06c5
@@ -1652,7 +1663,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b38a0ccc767344b0a0be
@@ -1660,7 +1671,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bb6492541a2151b5abe2
@@ -1668,7 +1679,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0d0f2d1d5e0b3ab0975e
@@ -1676,7 +1687,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2ea9116a866c457a1825
@@ -1684,7 +1695,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a3bec9469c7b1d96e6ee
@@ -1692,7 +1703,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7ab45270c8a39f10e5b2
@@ -1700,7 +1711,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_45644612451c2d782a13
@@ -1708,7 +1719,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d23ed82476eca73288a6
@@ -1716,7 +1727,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c1275989276be57312df
@@ -1724,7 +1735,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d01933504fde5209cc31
@@ -1732,7 +1743,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_43a3ecbab790fa1e3c17
@@ -1740,7 +1751,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b5f86570ff821ede3a03
@@ -1748,7 +1759,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_709d00c03d7a0fac6a0a
@@ -1756,7 +1767,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_db55a1b309294f56c41d
@@ -1764,7 +1775,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3d4db13b9c5e4455f91f
@@ -1772,7 +1783,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e94009ad6f61395cdc10
@@ -1780,7 +1791,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3653dae6e29daf406426
@@ -1788,7 +1799,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4898c19baa5626d214cb
@@ -1796,7 +1807,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4c7c3a2d1300d623fe4f
@@ -1804,7 +1815,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_27518a9f45cc6efc427a
@@ -1812,7 +1823,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2616f9c43f60adaf40ba
@@ -1820,7 +1831,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7f1718d709a939c60efd
@@ -1828,7 +1839,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_08b4bac1a3a8cae01c1f
@@ -1836,7 +1847,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_25a6dc925cd75773d351
@@ -1844,7 +1855,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e3758d632c5150aa0b9c
@@ -1852,7 +1863,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e09c6c799f0d9a67b070
@@ -1860,7 +1871,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_16c49598cf482887f72c
@@ -1868,7 +1879,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e658d38404a3e5ac1c75
@@ -1876,7 +1887,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ee10aa68db5d5aef271e
@@ -1884,7 +1895,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f1a1f719aeae7d53376e
@@ -1892,7 +1903,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_42dbb2fe1eecdf60c401
@@ -1900,7 +1911,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d9649bcfc50be23dbd98
@@ -1908,7 +1919,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c446ceb6f921841fcf07
@@ -1916,7 +1927,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bb37e4f914f16593fa74
@@ -1924,7 +1935,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f2cd2fd5826ac2071273
@@ -1932,7 +1943,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_759f1e446d26b089584e
@@ -1940,7 +1951,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_64e5cf0b2d3ab27ded59
@@ -1948,7 +1959,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b6263343d4911606d617
@@ -1956,7 +1967,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3667bf3f6c23bd10eeda
@@ -1964,7 +1975,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4765162b5dc628dfb626
@@ -1972,7 +1983,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_951f3b96d4dcf1144f95
@@ -1980,7 +1991,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7c68366bd935662ffb78
@@ -1988,7 +1999,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9dbe675539bca73845d6
@@ -1996,7 +2007,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cfa2c0c13bb5018cd1fe
@@ -2004,7 +2015,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ad68f722e6b31fd845b8
@@ -2012,7 +2023,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cbfcb3dc36bfd2775d43
@@ -2020,7 +2031,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_956bf8ac0a0a62726a56
@@ -2028,7 +2039,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_020da72835203ae96606
@@ -2036,7 +2047,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7f90192a62931bc48a76
@@ -2044,7 +2055,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9ad319f4069545f77d5e
@@ -2052,7 +2063,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1b4e7bf40e9e142c5848
@@ -2060,7 +2071,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c37bdb06ab5c6e0dc6ee
@@ -2068,7 +2079,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_40cd6a9c8a94c8727d1a
@@ -2076,7 +2087,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_96092908f1dad3ef405c
@@ -2084,7 +2095,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9f1989d8cb7da9a102d3
@@ -2092,7 +2103,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_55bd91853d90a343caaf
@@ -2100,7 +2111,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f6f6d463325628be1203
@@ -2108,7 +2119,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d25826555594d09b0d7e
@@ -2116,7 +2127,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c9f880a0631a5b23ba8d
@@ -2124,7 +2135,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a3f55264582a3302cea4
@@ -2132,7 +2143,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_64c94f07e81bdc492ebb
@@ -2140,7 +2151,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_61a74acdef0e47744ed0
@@ -2148,7 +2159,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_36624dff282b099f980e
@@ -2156,7 +2167,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2a3f3724d969efa28f13
@@ -2164,7 +2175,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ccdb07dc08c1508b3899
@@ -2172,7 +2183,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9d4ee90c672966e44972
@@ -2180,7 +2191,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cff4f9de359de19240ca
@@ -2188,7 +2199,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d7766160581798e21116
@@ -2196,7 +2207,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_60ba4217a31d37ed7404
@@ -2204,7 +2215,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4f97540d3290c179c422
@@ -2212,7 +2223,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d2a3d134f0a02bb9b17e
@@ -2220,7 +2231,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f843961eebdb98864129
@@ -2228,7 +2239,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c0e35f89ed470d1355df
@@ -2236,7 +2247,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_be45a1c257953c8e4c76
@@ -2244,7 +2255,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cc788996fb3b573633c6
@@ -2252,7 +2263,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_11593aff7ebbe291bcc0
@@ -2260,7 +2271,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5dfe0fabc1faa1c1625a
@@ -2268,7 +2279,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_04e84d9bdb406bdefdca
@@ -2276,7 +2287,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d1b31040dceef2924d0d
@@ -2284,7 +2295,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_da8368797761a2f0d21f
@@ -2292,7 +2303,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fb66ae93edaed41bf396
@@ -2300,7 +2311,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_50b9d3f3c511cb77468b
@@ -2308,7 +2319,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0f5265efeb29cce8efb1
@@ -2316,7 +2327,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ca0393228f4d9ae0f609
@@ -2324,7 +2335,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c81ea8df86b194aa583b
@@ -2332,7 +2343,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2f9d0ba4bc4907b4692a
@@ -2340,7 +2351,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_222556f0bd1a5d6a688d
@@ -2348,7 +2359,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_70a5de46be4347bb20fa
@@ -2356,7 +2367,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8f25ef043559393b8df3
@@ -2364,7 +2375,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b913fefad1a673885dd3
@@ -2372,7 +2383,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2efa6f9b250a57b659bd
@@ -2380,7 +2391,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_30a303c747e6f289aef7
@@ -2388,7 +2399,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_04a7335944f8accaa063
@@ -2396,7 +2407,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8848de72a9e7b13c6ec9
@@ -2404,7 +2415,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4c0bde717d294c8a2a88
@@ -2412,7 +2423,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0c6c3d0026329b69ed7b
@@ -2420,7 +2431,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c6098d8f2975f7dfb4e6
@@ -2428,7 +2439,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0fe268f096e860525f0e
@@ -2436,7 +2447,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7b220c1ba4fde1d8570f
@@ -2444,7 +2455,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bf84ffebfc610081d93c
@@ -2452,7 +2463,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4ed6e1ed9b990fbb102b
@@ -2460,7 +2471,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_82eb8c5d3a4225ade54c
@@ -2468,7 +2479,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_13bfd2702e40a07ede71
@@ -2476,7 +2487,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ba484d2ac83d57685fea
@@ -2484,7 +2495,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2c596ab4fb23991f65b6
@@ -2492,7 +2503,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_557789c551a08c17b97e
@@ -2500,7 +2511,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_af016d1e1d010566a12e
@@ -2508,7 +2519,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_590ce91df4ea5a74292f
@@ -2516,7 +2527,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5ebccdce085db958d75d
@@ -2524,7 +2535,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8199d9be8b3f04a1d490
@@ -2532,7 +2543,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8dd67117de5b4d77b9fd
@@ -2540,7 +2551,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bb6e7825dc7e8ef0b1ca
@@ -2548,7 +2559,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4b1e1597363c02dfd73e
@@ -2556,7 +2567,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_edd7f05df2816b8f667e
@@ -2564,7 +2575,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ec7888a92ff877fae96c
@@ -2572,7 +2583,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a894fcacde0bf31b784a
@@ -2580,7 +2591,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9777a134e0f26d5df080
@@ -2588,7 +2599,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_51dd670554c30e97ad2c
@@ -2596,7 +2607,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4a28fb3cb131fe8f6d01
@@ -2604,7 +2615,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2e4e4024e04a8f6d84c9
@@ -2612,7 +2623,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2a908d75e52876bc1626
@@ -2620,7 +2631,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9ee77c5ee24761e4d54e
@@ -2628,7 +2639,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7b83b8c5b96c127d7f94
@@ -2636,7 +2647,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b794b81314b9c88a8876
@@ -2644,7 +2655,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5dc555679b6b5f1d5980
@@ -2652,7 +2663,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ce3e914385f1563ae276
@@ -2660,7 +2671,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a986fe605bc13b83fa7f
@@ -2668,7 +2679,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e24d76aa4f945c5ca134
@@ -2676,7 +2687,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ec95eead7549296ed4a3
@@ -2684,7 +2695,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c96578a227307f759132
@@ -2692,7 +2703,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_764a6c1a72f07d8b878f
@@ -2700,7 +2711,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b046820fcbebaec0959f
@@ -2708,7 +2719,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_40122f15b1b64e2153ca
@@ -2716,7 +2727,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3b15a1e87c4f22be6a2d
@@ -2724,7 +2735,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_078105cefa67b7ef5925
@@ -2732,7 +2743,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_40d507fdcdad67754919
@@ -2740,7 +2751,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_728a17c6fb3b5f800c4d
@@ -2748,7 +2759,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d24002b75ded418e80e3
@@ -2756,7 +2767,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1f1bdd9bd49268ef8d43
@@ -2764,7 +2775,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_076417d6bcca437fca67
@@ -2772,7 +2783,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c34a9b122f13980e0223
@@ -2780,7 +2791,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2ea5bb7ec03fee4caf45
@@ -2788,7 +2799,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_044949120aea8fcb21e6
@@ -2796,7 +2807,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cff3b078fe52e9ee0c28
@@ -2804,7 +2815,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_12d045aec49f20817741
@@ -2812,7 +2823,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9c4d17e6ccf16dbf6451
@@ -2820,7 +2831,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_700f52552c97100f0e39
@@ -2828,7 +2839,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f4811cc2f0fa568d9456
@@ -2836,7 +2847,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7a94bbc2aabb1c3cb517
@@ -2844,7 +2855,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ef62c15c1af736b9a7ea
@@ -2852,7 +2863,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8cc62f38658bb919e9b6
@@ -2860,7 +2871,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a780e8ae747dd27de1f2
@@ -2868,7 +2879,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3d6dfb9fcc11f3d104fb
@@ -2876,7 +2887,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7435daf47a74184f38af
@@ -2884,7 +2895,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6fe3bcc3f1194d1816cd
@@ -2892,7 +2903,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7e41761859154944dbf1
@@ -2900,7 +2911,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_dbba4ea58b2949e2ff45
@@ -2908,7 +2919,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4c27ab96ca9ac5ec12fd
@@ -2916,7 +2927,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_aee96f14a93fefce465e
@@ -2924,7 +2935,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_82394d875702da28dd44
@@ -2932,7 +2943,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_607594dd301b719d5418
@@ -2940,7 +2951,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_45e57df1493b6684af6c
@@ -2948,7 +2959,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3bfc358c7cae0d93430b
@@ -2956,7 +2967,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2e5e03f98f1d33f8adc0
@@ -2964,7 +2975,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_918c0dfd802c72232eb2
@@ -2972,7 +2983,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3214be4df0f34705fcf4
@@ -2980,7 +2991,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fcd50781461b78146c2b
@@ -2988,7 +2999,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3468dab6692a49cb6c1c
@@ -2996,7 +3007,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_154c7ae0531751db1501
@@ -3004,7 +3015,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_43f52234bb362ac591aa
@@ -3012,7 +3023,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_047325d50e39612bf951
@@ -3020,7 +3031,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3f9843a6d780ce7030ad
@@ -3028,7 +3039,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_91fe2189c9e446db85df
@@ -3036,7 +3047,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d3bceb14407efa77b680
@@ -3044,7 +3055,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4d163f87604caee7adc8
@@ -3052,7 +3063,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_68c3c9aa935a9daaec43
@@ -3060,7 +3071,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c3c3d492eee6afd22592
@@ -3068,7 +3079,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fc38195eaa591d2db9a3
@@ -3076,7 +3087,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ab96e513c68ed87a16e8
@@ -3084,7 +3095,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_228939d0bb1788c6edc3
@@ -3092,7 +3103,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_11ca5af066575cc54c8f
@@ -3100,7 +3111,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_92a829dc2f3ccf50ff4d
@@ -3108,7 +3119,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4dcf2afb0c938405af06
@@ -3116,7 +3127,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ebc206443942847567f0
@@ -3124,7 +3135,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_da8f0ad1a4cb880525f8
@@ -3132,7 +3143,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_33da1cd25eb4c035150b
@@ -3140,7 +3151,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_924d881d3d153e1d67ca
@@ -3148,7 +3159,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a889abed8f9a1706f531
@@ -3156,7 +3167,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3b92ce5e7a5ff30f01ff
@@ -3164,7 +3175,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_075c633f9df3c98d627a
@@ -3172,7 +3183,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7a912dc607c8a674f6b7
@@ -3180,7 +3191,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_32884a0ae981f374a9f1
@@ -3188,7 +3199,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0f0c09a94b821a7e954d
@@ -3196,7 +3207,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f38dfa1fed12553317a9
@@ -3204,7 +3215,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_13cce7d02774c2529031
@@ -3212,7 +3223,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4b29eff3c8a39c58c593
@@ -3220,7 +3231,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_25cace508a46de6b957e
@@ -3228,7 +3239,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bb1a2bec3b1238cd0475
@@ -3236,7 +3247,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3f3244aff7aeaeda0d90
@@ -3244,7 +3255,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4d284449335f1911c993
@@ -3252,7 +3263,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_10aa6fcfb33788394330
@@ -3260,7 +3271,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_261462e42525429ad355
@@ -3268,7 +3279,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cd951ffa86dc8607e7c5
@@ -3276,7 +3287,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b03b4b333856c3b740de
@@ -3284,7 +3295,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_46472658a39a9789dafb
@@ -3292,7 +3303,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e9b9d7cbbced90bdabae
@@ -3300,7 +3311,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_71a8de608357bc41530d
@@ -3308,7 +3319,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_efbbe64b9d001ebc782f
@@ -3316,7 +3327,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0170daf82546e1118a8e
@@ -3324,7 +3335,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_57dccd4d371d480bd88d
@@ -3332,7 +3343,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_92857c262d5e0ddd9233
@@ -3340,7 +3351,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d4d862de1292d1ded1d4
@@ -3348,7 +3359,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_bc2905a5dfb2d0790261
@@ -3356,7 +3367,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b352e960e86033bea6b1
@@ -3364,7 +3375,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fde2b1f0a09f972af4ce
@@ -3372,7 +3383,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5b882e2af10eb36d4124
@@ -3380,7 +3391,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_39292182aa33e1a33d55
@@ -3388,7 +3399,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_94509537457e77ec6e4f
@@ -3396,7 +3407,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9b67dc9e19f1208417dc
@@ -3404,7 +3415,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_316dce37cdc928cb1896
@@ -3412,7 +3423,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_f31d8419ca6d3dbb72ab
@@ -3420,7 +3431,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_891cfed2c6d800d41c0f
@@ -3428,7 +3439,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cdeb2d80f9eecfee3183
@@ -3436,7 +3447,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_43d47c1f783138f5ebc2
@@ -3444,7 +3455,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5d9b6fade73a1e72be28
@@ -3452,7 +3463,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0caa24ea0bcc96e94bd5
@@ -3460,7 +3471,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4400f03c4ccdf42d9693
@@ -3468,7 +3479,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3eea20be69256787e2da
@@ -3476,7 +3487,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b183366ee73c41c972ce
@@ -3484,7 +3495,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c1d0814e9beee48630b5
@@ -3492,7 +3503,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4a50f82a2a00f0ebaf23
@@ -3500,7 +3511,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e7b860fc1f882f31b788
@@ -3508,7 +3519,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_aa831fe64db0c12e5bff
@@ -3516,7 +3527,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4271239e5b7a6b4d3837
@@ -3524,7 +3535,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_57466d3b3ca9ab6b050f
@@ -3532,7 +3543,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_85c4fa0d9122749d9b80
@@ -3540,7 +3551,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3a5625db944dc03b0058
@@ -3548,7 +3559,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_db6374600cc1b8afd139
@@ -3556,7 +3567,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_a061752ce1c8771821d6
@@ -3564,7 +3575,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d19ab57d8a869904a836
@@ -3572,7 +3583,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ff31a6604e26cfb0115c
@@ -3580,7 +3591,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_034efb7dcc761ced116c
@@ -3588,7 +3599,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_37d356d1fe8a88c7f4ac
@@ -3596,7 +3607,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e4d3918a0d59d525be16
@@ -3604,7 +3615,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_277effb1395a6d3a5e4a
@@ -3612,7 +3623,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1d11acbb90c74d8f4b40
@@ -3620,7 +3631,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cb2ea7d0c7a5a90af7c2
@@ -3628,7 +3639,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0cd003ad5156c5d6d30a
@@ -3636,7 +3647,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_49d8499db4e0ca9ed92e
@@ -3644,7 +3655,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7fcc4806af93cf62a8b9
@@ -3652,7 +3663,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3e66eb8eb7b13ac13f62
@@ -3660,7 +3671,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_eb47a412a7b3341cc018
@@ -3668,7 +3679,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_7168788e45bc241ed9c8
@@ -3676,7 +3687,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b6931b116f90018cf621
@@ -3684,7 +3695,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_644100f81fcd10cba829
@@ -3692,7 +3703,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b0d9d31f604be4a71881
@@ -3700,7 +3711,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b0460ff79f502be2d494
@@ -3708,7 +3719,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1b79a8a5c549f6887417
@@ -3716,7 +3727,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ded67249fb83c9bc7fca
@@ -3724,7 +3735,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_cbf3f40dfb2d9bf00246
@@ -3732,7 +3743,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4e0666d982a1c0ff3c0c
@@ -3740,7 +3751,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_baa5d97a16f7041ffd13
@@ -3748,7 +3759,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1c02b9d3f545f0b3fecc
@@ -3756,7 +3767,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_eb3a4d4eb09df6b5eadd
@@ -3764,7 +3775,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_fcadb5342f864e50ce48
@@ -3772,7 +3783,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_c108ac736efafb565a99
@@ -3780,7 +3791,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_3f89b61ebb33eda77d74
@@ -3788,7 +3799,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5dc6ba27e5c94671e584
@@ -3796,7 +3807,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e8754dc6badb1e4101b5
@@ -3804,7 +3815,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_27380f1c5959e9aed9cc
@@ -3812,7 +3823,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_0162d8b5c9669ffde556
@@ -3820,7 +3831,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b695d34807af180095f2
@@ -3828,7 +3839,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_db3b38619aa048252cd7
@@ -3836,7 +3847,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_efe63a9fbc3196c2f7e5
@@ -3844,7 +3855,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ef2d99e02ca9a1350aeb
@@ -3852,7 +3863,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_62395e73b91745b8daf1
@@ -3860,7 +3871,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_69455c519720ac9a6a98
@@ -3868,7 +3879,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_b03c22e844364902bae0
@@ -3876,7 +3887,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_8a629e7742b3f480be79
@@ -3884,7 +3895,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9505635868b7b19027a6
@@ -3892,7 +3903,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_e0e56922f16a0a0e53e8
@@ -3900,7 +3911,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_460af9e3ed1948242cdd
@@ -3908,7 +3919,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_1a34acb3df738bc12d8b
@@ -3916,7 +3927,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_61ada21e6a95ba57d9be
@@ -3924,7 +3935,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d52ed125779d8691bb46
@@ -3932,7 +3943,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_761ef80a6a5116373d67
@@ -3940,7 +3951,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_92c229c1345cc43c6756
@@ -3948,7 +3959,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_d50cf168a0e0a2924306
@@ -3956,7 +3967,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_9418b6641ef157d69de2
@@ -3964,7 +3975,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_6db8b1215d29fa43e98c
@@ -3972,7 +3983,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_70603ef304e0be49f04f
@@ -3980,7 +3991,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_5b9e45858211a4424544
@@ -3988,7 +3999,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_4a63ebd02ac272fd7431
@@ -3996,7 +4007,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_2f61dcdbc9dc94f5d685
@@ -4004,7 +4015,7 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null
 - question_id: syn_ef1e073ad2f31c121f14
@@ -4012,6 +4023,6 @@ reviews:
   assistant_suggestion: approve
   assistant_reason: 'Approve: real source table, explicit single-year header, meaningful row label, unique target value, and
     both wrong-period and wrong-concept natural negatives.'
-  human_decision: null
+  human_decision: approve
   human_edited_question: null
   human_notes: null

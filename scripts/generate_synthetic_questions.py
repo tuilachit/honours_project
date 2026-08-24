@@ -713,6 +713,64 @@ def select_synthetic_questions(
     return selected
 
 
+def _load_validated_review_log(
+    path: Path,
+    *,
+    questions: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    root = _load_yaml_mapping(path)
+    reviews = [_mapping(item, "synthetic review") for item in _list(root.get("reviews"), "reviews")]
+    expected_ids = [_string(question, "question_id") for question in questions]
+    if [_string(review, "question_id") for review in reviews] != expected_ids:
+        raise ValueError("Existing synthetic review log has a different deterministic selection")
+    expected_hashes = [_candidate_review_hash(question) for question in questions]
+    actual_hashes = [review.get("candidate_sha256") for review in reviews]
+    if actual_hashes != expected_hashes:
+        raise ValueError("Existing synthetic review log was created for different question content")
+    return root
+
+
+def _apply_review_decisions(
+    questions: list[dict[str, Any]],
+    *,
+    review_root: dict[str, Any] | None,
+    allowed_decisions: set[str],
+) -> dict[str, int]:
+    counts: Counter[str] = Counter()
+    if review_root is None:
+        return {"approved": 0, "edited": 0, "rejected": 0, "unsure": 0, "pending": len(questions)}
+
+    reviews = [
+        _mapping(item, "synthetic review") for item in _list(review_root.get("reviews"), "reviews")
+    ]
+    for question, review in zip(questions, reviews, strict=True):
+        raw_decision = review.get("human_decision")
+        if raw_decision is None:
+            decision: str | None = None
+            counts["pending"] += 1
+        elif not isinstance(raw_decision, str) or raw_decision not in allowed_decisions:
+            raise ValueError(f"Invalid synthetic human decision: {raw_decision!r}")
+        else:
+            decision = raw_decision
+            counts[decision] += 1
+        question["human_review"] = {
+            "decision": decision,
+            "edited_question": review.get("human_edited_question"),
+            "notes": review.get("human_notes"),
+        }
+        quality_checks = _mapping(question.get("quality_checks"), "question quality checks")
+        quality_checks["human_verified"] = decision == "approve"
+    return {
+        "approved": counts["approve"],
+        "edited": counts["edit"],
+        "rejected": counts["reject"],
+        "unsure": counts["unsure"],
+        "pending": counts["pending"],
+    }
+
+
 def _write_or_validate_review_log(
     path: Path,
     *,
@@ -720,22 +778,7 @@ def _write_or_validate_review_log(
     questions: list[dict[str, Any]],
     metadata: RunMetadata,
 ) -> None:
-    expected_ids = [_string(question, "question_id") for question in questions]
-    expected_hashes = [_candidate_review_hash(question) for question in questions]
-    if path.exists():
-        root = _load_yaml_mapping(path)
-        reviews = [
-            _mapping(item, "synthetic review") for item in _list(root.get("reviews"), "reviews")
-        ]
-        if [_string(review, "question_id") for review in reviews] != expected_ids:
-            raise ValueError(
-                "Existing synthetic review log has a different deterministic selection"
-            )
-        actual_hashes = [review.get("candidate_sha256") for review in reviews]
-        if actual_hashes != expected_hashes:
-            raise ValueError(
-                "Existing synthetic review log was created for different question content"
-            )
+    if _load_validated_review_log(path, questions=questions) is not None:
         return
     suggestion = _string(generation, "assistant_suggestion")
     root = {
@@ -784,6 +827,11 @@ def _write_review_pack(
     review_log_path: Path,
     repository: Path,
 ) -> None:
+    human_decisions_recorded = sum(
+        "human_review" in question
+        and _mapping(question.get("human_review"), "human review").get("decision") is not None
+        for question in questions
+    )
     lines = [
         f"# Human review pack — {len(questions)} deterministic synthetic questions",
         "",
@@ -792,6 +840,7 @@ def _write_review_pack(
         f"- Git commit: `{metadata.git_commit}`",
         f"- Config hash: `{metadata.config_hash}`",
         f"- Questions: {len(questions)}",
+        f"- Human decisions recorded: {human_decisions_recorded} / {len(questions)}",
         f"- Decision log: `{review_log_path.relative_to(repository)}`",
         "",
         (
@@ -815,6 +864,12 @@ def _write_review_pack(
             _mapping(item, "hard negative")
             for item in _list(question.get("natural_hard_negatives"), "hard negatives")
         ]
+        human_review = question.get("human_review")
+        human_decision = (
+            _mapping(human_review, "human review").get("decision")
+            if isinstance(human_review, dict)
+            else None
+        )
         lines.append(
             "| "
             + " | ".join(
@@ -827,7 +882,7 @@ def _write_review_pack(
                     _markdown_cell(negatives[0].get("raw_value")),
                     _markdown_cell(negatives[1].get("raw_value")),
                     _string(question, "assistant_suggestion").upper(),
-                    "",
+                    str(human_decision).upper() if human_decision is not None else "",
                 )
             )
             + " |"
@@ -840,6 +895,12 @@ def _write_review_pack(
             _mapping(item, "negative")
             for item in _list(question.get("natural_hard_negatives"), "negatives")
         ]
+        human_review = question.get("human_review")
+        human_decision = (
+            _mapping(human_review, "human review").get("decision")
+            if isinstance(human_review, dict)
+            else None
+        )
         target_row = (
             f"| Target | {_markdown_cell(target.get('raw_row_header_path'))} | "
             f"{_markdown_cell(target.get('raw_column_header_path'))} | "
@@ -882,7 +943,11 @@ def _write_review_pack(
                 "",
                 source_line,
                 "",
-                "**Your decision:** ☐ APPROVE &nbsp; ☐ EDIT &nbsp; ☐ REJECT &nbsp; ☐ UNSURE",
+                "**Your decision:** "
+                + " &nbsp; ".join(
+                    f"{'☒' if human_decision == decision else '☐'} {decision.upper()}"
+                    for decision in ("approve", "edit", "reject", "unsure")
+                ),
                 "",
                 "**Your criticism/edited question:**",
                 "",
@@ -933,9 +998,24 @@ def generate_synthetic_questions(config: Config) -> tuple[Path, Path, Path]:
     )
     for question in questions:
         question.pop("selection_rank", None)
+    review_log_path = _repository_path(repository, _string(generation, "decision_log_path"))
+    review_root = _load_validated_review_log(review_log_path, questions=questions)
+    allowed_decisions = {
+        str(value) for value in _list(generation.get("human_decisions"), "human decisions")
+    }
+    review_summary = _apply_review_decisions(
+        questions,
+        review_root=review_root,
+        allowed_decisions=allowed_decisions,
+    )
+    review_complete = review_summary["pending"] == 0
     result = {
         "dataset_id": _string(generation, "dataset_id"),
-        "status": "synthetic_candidates_awaiting_human_verification",
+        "status": (
+            "first_pass_human_review_complete"
+            if review_complete
+            else "synthetic_candidates_awaiting_human_verification"
+        ),
         "generation_method": _string(generation, "selection_method"),
         "source_dataset_revision": _string(primary, "revision"),
         "excluded_prior_context_count": len(excluded_contexts),
@@ -944,10 +1024,12 @@ def generate_synthetic_questions(config: Config) -> tuple[Path, Path, Path]:
         "subset_counts": dict(
             Counter(_mapping(q.get("source"), "source")["subset"] for q in questions)
         ),
+        "human_review_summary": review_summary,
         "quality_contract": {
             "real_tables_and_values_only": True,
             "questions_are_synthetic": True,
             "human_verification_required": True,
+            "first_pass_human_review_complete": review_complete,
             "assistant_suggestions_are_not_gold": True,
         },
         "source_integrity": integrity,
@@ -961,7 +1043,6 @@ def generate_synthetic_questions(config: Config) -> tuple[Path, Path, Path]:
         repository=repository,
         dataset_manifest_paths={"primary": manifest_path},
     )
-    review_log_path = _repository_path(repository, _string(generation, "decision_log_path"))
     _write_or_validate_review_log(
         review_log_path,
         generation=generation,

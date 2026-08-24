@@ -7,7 +7,10 @@ constructs 500 review candidates from real T²-RAGBench financial tables. The
 financial values and tables are never invented. Only the question wrapper,
 exact-cell mapping and controlled hard-negative package are generated.
 
-The generated set is **not gold data until human verification is complete**.
+The generated set requires human verification before use as labelled data. The
+primary researcher completed the first-pass review on 24 August 2026 and
+approved all 500 items. A blind independent-review sample remains required
+before confirmatory evaluation.
 
 ## Deterministic construction
 
@@ -80,9 +83,9 @@ For every item, the researcher records:
 - `reject` when the target or negative mapping is semantically wrong; or
 - `unsure` when adjudication is required.
 
-Codex's `approve` suggestion is advisory. Human decisions remain blank until
-the researcher inspects the source. This assisted review is not blind and does
-not replace the later independent-review sample.
+Codex's `approve` suggestion was advisory. The primary researcher inspected the
+complete pack and recorded 500 `approve` decisions. This first-pass review was
+not blind and does not replace the later independent-review sample.
 
 ## Use restrictions
 

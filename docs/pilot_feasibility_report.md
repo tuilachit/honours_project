@@ -108,7 +108,7 @@ claim that wrong-period or wrong-concept errors are prevalent.
 |---|---|---|
 | Active annotation time | Batch 1 prepared; not yet measured | Review the fixed 15-candidate batch with a stopwatch and record total active minutes. |
 | Complete screening trail | Fixed batch and 15 advisory Codex pre-labels recorded; human decisions pending | Critique all 15 suggestions and record every final decision and exclusion reason. |
-| Synthetic construction | 500 deterministic candidates generated from real tables; human decisions pending | Review, edit or reject every proposed question, target and hard-negative package. |
+| Synthetic construction | First-pass review complete: primary researcher approved 500/500 deterministic candidates | Conduct the configured blind independent-review sample before confirmatory use. |
 | Full human source inspection | Complete: 30 of 30 | No remaining action for this first-pass source review. |
 | Independent agreement | Not performed | Blindly annotate a configured stratified sample before adjudication. |
 | `FinancialFact` round trip | Not implemented | Materialise target and negative facts without using oracle labels as retrieval inputs. |
