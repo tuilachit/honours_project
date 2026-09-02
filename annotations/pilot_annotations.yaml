@@ -1,0 +1,2494 @@
+schema_version: 1
+pilot_id: t2_exact_cell_feasibility_v1
+status: first_pass_review_complete
+target_included_questions: 30
+approved_included_questions: 30
+annotation_provenance:
+  candidate_screening: AI-assisted pre-annotation against the pinned raw tables
+  primary_review: >-
+    researcher approval of six five-question summaries followed by full review
+    of the generated 30-question source pack
+  primary_review_blinded: false
+  full_source_inspection_by_primary_reviewer: true
+  human_source_review_completed: true
+  human_source_review_question_count: 30
+  independent_review_completed: false
+  delegated_source_review_completed: true
+  delegated_source_review_question_count: 26
+  intended_use: project-development feasibility sample only
+selection_provenance:
+  method: purposive selection of high-confidence direct-value examples
+  prevalence_estimation_allowed: false
+  unbiased_accuracy_estimation_allowed: false
+  complete_screening_log_available: false
+  note: >-
+    Candidate exclusions and active annotation time were not recorded consistently
+    during this first pass. They must be collected prospectively before scaling.
+source_review_round:
+  review_mode: delegated_ai_source_review
+  reviewer: Codex
+  authorized_by: primary_researcher
+  standing_approval_at: "2026-08-17T12:30:03Z"
+  decision_rule: >-
+    Include only when the requested answer is printed in a reproducible table
+    cell, requires no calculation, and the necessary metric, period, unit and
+    other dimensions can be resolved from the full extracted table and nearby
+    context; otherwise flag or exclude it.
+  individually_reviewed_by_primary_researcher:
+    - convfinqa_0
+    - convfinqa_1
+    - convfinqa_2
+    - convfinqa_5
+  delegated_include:
+    - convfinqa_14
+    - convfinqa_23
+    - convfinqa_27
+    - convfinqa_39
+    - convfinqa_43
+    - convfinqa_62
+    - finqa_train_1753
+    - finqa_train_2444
+    - finqa_train_2448
+    - finqa_train_2690
+    - finqa_train_2796
+    - finqa_train_3442
+    - finqa_train_4853
+    - finqa_dev_287
+    - finqa_dev_650
+    - finqa_test_810
+    - tatqa_train_10
+    - tatqa_train_18
+    - tatqa_train_30
+    - tatqa_train_75
+    - tatqa_dev_10234
+    - tatqa_dev_10269
+    - tatqa_dev_10299
+    - tatqa_test_9109
+    - tatqa_test_9122
+    - tatqa_test_9132
+  delegated_exclude: []
+  unresolved: []
+  resolved_caveats:
+    finqa_train_2444: >-
+      The dataset original_answer is corrupt, but the program answer and source
+      cell both identify the requested 2010 accounts-receivable value.
+    finqa_dev_650: >-
+      The operating margin can be derived, but it is also explicitly printed in
+      the table, so the question remains a direct lookup.
+    tat_dqa_page_provenance: >-
+      TAT-DQA does not provide page numbers in the pinned metadata; inclusion is
+      based on reproducible extracted-table provenance rather than PDF-page review.
+human_source_review_round:
+  review_mode: human_full_source_review
+  reviewer: primary_researcher
+  completed_at: "2026-08-18T06:35:15Z"
+  declaration: I reviewed all 30, include all
+  review_material:
+    path: results/pilot/human_source_review_pack.md
+    generator_git_commit: d32d227a395daac82f3eac566ef6686e46e65846
+    config_hash: 0f3f53b21287f4595d9b3ef19fc634f67eac1306377cd519ba3613d6a1cd7402
+  reviewed_question_ids:
+    - convfinqa_0
+    - convfinqa_1
+    - convfinqa_2
+    - convfinqa_5
+    - convfinqa_14
+    - convfinqa_23
+    - convfinqa_27
+    - convfinqa_39
+    - convfinqa_43
+    - convfinqa_62
+    - finqa_train_1753
+    - finqa_train_2444
+    - finqa_train_2448
+    - finqa_train_2690
+    - finqa_train_2796
+    - finqa_train_3442
+    - finqa_train_4853
+    - finqa_dev_287
+    - finqa_dev_650
+    - finqa_test_810
+    - tatqa_train_10
+    - tatqa_train_18
+    - tatqa_train_30
+    - tatqa_train_75
+    - tatqa_dev_10234
+    - tatqa_dev_10269
+    - tatqa_dev_10299
+    - tatqa_test_9109
+    - tatqa_test_9122
+    - tatqa_test_9132
+  include:
+    - convfinqa_0
+    - convfinqa_1
+    - convfinqa_2
+    - convfinqa_5
+    - convfinqa_14
+    - convfinqa_23
+    - convfinqa_27
+    - convfinqa_39
+    - convfinqa_43
+    - convfinqa_62
+    - finqa_train_1753
+    - finqa_train_2444
+    - finqa_train_2448
+    - finqa_train_2690
+    - finqa_train_2796
+    - finqa_train_3442
+    - finqa_train_4853
+    - finqa_dev_287
+    - finqa_dev_650
+    - finqa_test_810
+    - tatqa_train_10
+    - tatqa_train_18
+    - tatqa_train_30
+    - tatqa_train_75
+    - tatqa_dev_10234
+    - tatqa_dev_10269
+    - tatqa_dev_10299
+    - tatqa_test_9109
+    - tatqa_test_9122
+    - tatqa_test_9132
+  exclude: []
+  unsure: []
+dataset:
+  name: G4KMU/t2-ragbench
+  revision: adf7fe1541ac37351ce1142544d8e3b43010ed92
+  manifest_sha256: 01932e2dbb52c462588e85e4860560ff15bdb75577990a5076a794dc755342fa
+coordinate_convention:
+  header_row_index: 0
+  markdown_separator_counted: false
+  stub_column_index: 0
+  table_index_base: 0
+  non_separator_rows_counted_in_source_order: true
+  synthetic_display_index_column_removed: true
+  preserve_raw_markdown_coordinates_when_transformed: true
+  tat_dqa_table_hash_canonicalization: stripped Markdown rows joined by LF
+annotations:
+  - question_id: convfinqa_0
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the net cash from operating activities for Jack Henry & Associates
+      in the fiscal year ended June 30, 2009, as reported in their 2009 annual
+      report?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_99
+      file_name: pdf/JKHY/2009/page_28.pdf
+      page_number: 28
+      table_index: 0
+      table_sha256: b028e61f761b2a6305e5090bb451138eb5c2d779371c4afbf6a22d07a5142494
+    dataset_answer:
+      program_raw: "206588.0"
+      original_raw: "206588.0"
+    query:
+      entity: Jack Henry & Associates
+      concept: net cash from operating activities
+      period: fiscal year ended June 30, 2009
+      unit:
+        currency: USD
+        scale: null
+        raw_text: dollar sign present; scale absent from extracted table
+      dimensions: []
+    valid_cells:
+      - row_index: 6
+        column_index: 1
+        raw_value: "$ 206588"
+        normalized_value: "206588"
+        raw_row_header_path:
+          - net cash from operating activities
+        raw_column_header_path:
+          - year ended june 30 2009 2008
+        interpreted_column_header_path:
+          - fiscal year ended June 30, 2009
+    natural_near_misses:
+      - row_index: 6
+        column_index: 2
+        raw_value: "$ 181001"
+        interpreted_row: net cash from operating activities
+        interpreted_column: fiscal year ended June 30, 2008
+        mismatch_fields:
+          - period
+      - row_index: 6
+        column_index: 3
+        raw_value: "$ 174247"
+        interpreted_row: net cash from operating activities
+        interpreted_column: fiscal year ended June 30, 2007
+        mismatch_fields:
+          - period
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 103102"
+        interpreted_row: net income
+        interpreted_column: fiscal year ended June 30, 2009
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - >-
+        The raw header is malformed and repeated. The preceding source text is
+        needed to resolve the value columns as 2009, 2008 and 2007.
+    review:
+      batch: 1
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:16:02Z"
+      annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:24:28Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
+
+  - question_id: convfinqa_1
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What were the revenues for Republic Services in 2008, as reflected in the
+      unaudited pro forma financial information?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_1449
+      file_name: pdf/RSG/2008/page_114.pdf
+      page_number: 114
+      table_index: 0
+      table_sha256: 381ed6d63aad826ac145f0870562abef4dca11dfae50bbfbaa5578ff75c20a21
+    dataset_answer:
+      program_raw: "9362.2"
+      original_raw: "9362.2"
+    query:
+      entity: Republic Services
+      concept: revenue
+      period: year ended December 31, 2008
+      unit:
+        currency: USD
+        scale: million
+        raw_text: in millions, except share and per-share amounts
+      dimensions:
+        - name: statement_basis
+          value: unaudited pro forma
+    valid_cells:
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 9362.2"
+        normalized_value: "9362.2"
+        raw_row_header_path:
+          - revenue
+        raw_column_header_path:
+          - year ended december 31 2008 ( unaudited )
+        interpreted_column_header_path:
+          - year ended December 31, 2008
+          - unaudited
+    natural_near_misses:
+      - row_index: 1
+        column_index: 2
+        raw_value: "$ 9244.9"
+        interpreted_row: revenue
+        interpreted_column: year ended December 31, 2007
+        mismatch_fields:
+          - period
+      - row_index: 2
+        column_index: 1
+        raw_value: "285.7"
+        interpreted_row: income from continuing operations available to common stockholders
+        interpreted_column: year ended December 31, 2008
+        mismatch_fields:
+          - concept
+      - row_index: 3
+        column_index: 1
+        raw_value: ".76"
+        interpreted_row: basic earnings per share
+        interpreted_column: year ended December 31, 2008
+        mismatch_fields:
+          - concept
+          - unit
+    ambiguity_notes: []
+    review:
+      batch: 1
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:16:02Z"
+      annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:25:29Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
+
+  - question_id: convfinqa_2
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the total of net sales for Apple Inc. in 2001, as reported in the
+      2002 financial year?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_713
+      file_name: pdf/AAPL/2002/page_23.pdf
+      page_number: 23
+      table_index: 0
+      table_sha256: 2a8e830ef101cc657da87d2b9cd37a145b4931f60b0b75b77992d95b48d00369
+    dataset_answer:
+      program_raw: "5363.0"
+      original_raw: "5363.0"
+    query:
+      entity: Apple Inc.
+      concept: net sales
+      period: financial year 2001
+      unit:
+        currency: USD
+        scale: null
+        raw_text: dollar sign present; scale absent from extracted table
+      dimensions: []
+    valid_cells:
+      - row_index: 1
+        column_index: 2
+        raw_value: "$ 5363"
+        normalized_value: "5363"
+        raw_row_header_path:
+          - net sales
+        raw_column_header_path:
+          - "2001"
+        interpreted_column_header_path:
+          - financial year 2001
+    natural_near_misses:
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 5742"
+        interpreted_row: net sales
+        interpreted_column: financial year 2002
+        mismatch_fields:
+          - period
+      - row_index: 1
+        column_index: 3
+        raw_value: "$ 7983"
+        interpreted_row: net sales
+        interpreted_column: financial year 2000
+        mismatch_fields:
+          - period
+      - row_index: 2
+        column_index: 2
+        raw_value: "4128"
+        interpreted_row: cost of sales
+        interpreted_column: financial year 2001
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - >-
+        The wording "total of net sales" does not require addition because the
+        table reports net sales directly in one cell.
+    review:
+      batch: 1
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:16:02Z"
+      annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:26:17Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
+
+  - question_id: convfinqa_5
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      As of December 31, 2010, how many shares of series A common stock were
+      subject to outstanding awards under the 2009 Global Incentive Plan at
+      Celanese?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_1536
+      file_name: pdf/CE/2010/page_134.pdf
+      page_number: 134
+      table_index: 0
+      table_sha256: 163763f9e3b6a4754a7f5ae8a4a44516ac037af9122b4aeb1df66aeed891fcbb
+    dataset_answer:
+      program_raw: "2530454.0"
+      original_raw: "2530454.0"
+    query:
+      entity: Celanese
+      concept: series A common stock shares
+      period: as of December 31, 2010
+      unit:
+        currency: null
+        scale: one
+        raw_text: shares
+      dimensions:
+        - name: incentive_plan
+          value: 2009 Global Incentive Plan
+        - name: award_status
+          value: subject to outstanding awards
+    valid_cells:
+      - row_index: 1
+        column_index: 2
+        raw_value: "2530454"
+        normalized_value: "2530454"
+        raw_row_header_path:
+          - 2009 global incentive plan
+        raw_column_header_path:
+          - shares subject to outstanding awards
+        interpreted_column_header_path:
+          - shares subject to outstanding awards
+    natural_near_misses:
+      - row_index: 2
+        column_index: 2
+        raw_value: "5923147"
+        interpreted_row: 2004 Stock Incentive Plan
+        interpreted_column: shares subject to outstanding awards
+        mismatch_fields:
+          - incentive_plan
+      - row_index: 1
+        column_index: 1
+        raw_value: "2322450"
+        interpreted_row: 2009 Global Incentive Plan
+        interpreted_column: shares available for awards
+        mismatch_fields:
+          - award_status
+    ambiguity_notes:
+      - The as-of date appears in the surrounding text rather than a table header.
+    review:
+      batch: 1
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:16:02Z"
+      annotation_seconds: null
+      full_source_review:
+        status: approved
+        decision: include
+        reviewed_at: "2026-08-17T12:28:55Z"
+        material_reviewed:
+          - complete_extracted_table
+          - nearby_extracted_context
+        active_review_seconds: null
+
+  - question_id: convfinqa_14
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the cumulative total return value of the KBW Bank Index at the
+      end of 2016, as compared to the $100 initial investment in JPMorgan Chase &
+      Co.'s 2016 Annual Report?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_849
+      file_name: pdf/JPM/2016/page_73.pdf
+      page_number: 73
+      table_index: 0
+      table_sha256: 6baa3e8301648bad2ce5dc9606e4828844893025f243496c9a5c871efd628ccf
+    dataset_answer:
+      program_raw: "258.82"
+      original_raw: "258.82"
+    query:
+      entity: JPMorgan Chase
+      concept: cumulative total return value
+      period: December 31, 2016
+      unit:
+        currency: USD
+        scale: one
+        raw_text: dollars
+      dimensions:
+        - name: benchmark
+          value: KBW Bank Index
+        - name: investment_basis
+          value: initial investment of $100 on December 31, 2011
+    valid_cells:
+      - row_index: 2
+        column_index: 6
+        raw_value: "258.82"
+        normalized_value: "258.82"
+        raw_row_header_path:
+          - kbw bank index
+        raw_column_header_path:
+          - "2016"
+        interpreted_column_header_path:
+          - December 31, 2016
+    natural_near_misses:
+      - row_index: 2
+        column_index: 5
+        raw_value: "201.40"
+        interpreted_row: KBW Bank Index
+        interpreted_column: December 31, 2015
+        mismatch_fields:
+          - period
+      - row_index: 1
+        column_index: 6
+        raw_value: "$ 298.31"
+        interpreted_row: JPMorgan Chase
+        interpreted_column: December 31, 2016
+        mismatch_fields:
+          - benchmark
+      - row_index: 3
+        column_index: 6
+        raw_value: "242.94"
+        interpreted_row: S&P Financial Index
+        interpreted_column: December 31, 2016
+        mismatch_fields:
+          - benchmark
+    ambiguity_notes: []
+    review:
+      batch: 1
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:16:02Z"
+      annotation_seconds: null
+
+  - question_id: convfinqa_23
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the total of annual payments scheduled for 2024 and thereafter,
+      as outlined in Global Payments' maturity requirements on long-term debt as
+      of December 31, 2018?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_994
+      file_name: pdf/GPN/2018/page_85.pdf
+      page_number: 85
+      table_index: 0
+      table_sha256: f17bbe8f8d39a669269e65977b27aa0fcaaed25c63043e63359b841f02c44317
+    dataset_answer:
+      program_raw: "475000.0"
+      original_raw: "475000.0"
+    query:
+      entity: Global Payments
+      concept: scheduled long-term debt maturity payment
+      period: maturity schedule as of December 31, 2018
+      unit:
+        currency: USD
+        scale: thousand
+        raw_text: in thousands
+      dimensions:
+        - name: maturity_bucket
+          value: 2024 and thereafter
+    valid_cells:
+      - row_index: 5
+        column_index: 1
+        raw_value: "475000"
+        normalized_value: "475000"
+        raw_row_header_path:
+          - 2024 and thereafter
+        raw_column_header_path:
+          - "$ 124176"
+        interpreted_column_header_path:
+          - scheduled payment amount
+          - in thousands
+    natural_near_misses:
+      - row_index: 4
+        column_index: 1
+        raw_value: "3945053"
+        interpreted_row: "2023"
+        interpreted_column: scheduled payment amount
+        mismatch_fields:
+          - maturity_bucket
+      - row_index: 6
+        column_index: 1
+        raw_value: "$ 5167643"
+        interpreted_row: total
+        interpreted_column: scheduled payment amount
+        mismatch_fields:
+          - maturity_bucket
+          - scope
+      - row_index: 3
+        column_index: 1
+        raw_value: "267587"
+        interpreted_row: "2022"
+        interpreted_column: scheduled payment amount
+        mismatch_fields:
+          - maturity_bucket
+    ambiguity_notes:
+      - >-
+        The extractor promoted the 2019 data row to the Markdown header, so the
+        raw value-column header is itself a 2019 value. Surrounding text supplies
+        the column meaning and unit.
+      - >-
+        The phrase "2024 and thereafter" is one published maturity bucket; no
+        addition is required.
+    review:
+      batch: 2
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:18:23Z"
+      annotation_seconds: null
+
+  - question_id: convfinqa_27
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the total debt of Zimmer Holdings, Inc. and its subsidiaries as
+      of December 31, 2002, according to the consolidated financial statements?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_1793
+      file_name: pdf/ZBH/2002/page_46.pdf
+      page_number: 46
+      table_index: 0
+      table_sha256: 431385038e11aa2d45553a67f30581a0728c57415aa37eef1bda46d06d2d25c7
+    dataset_answer:
+      program_raw: "156.7"
+      original_raw: "156.7"
+    query:
+      entity: Zimmer Holdings, Inc. and subsidiaries
+      concept: total debt
+      period: as of December 31, 2002
+      unit:
+        currency: USD
+        scale: million
+        raw_text: in millions
+      dimensions: []
+    valid_cells:
+      - row_index: 3
+        column_index: 1
+        raw_value: "$ 156.7"
+        normalized_value: "156.7"
+        raw_row_header_path:
+          - total debt
+        raw_column_header_path:
+          - "2002"
+        interpreted_column_header_path:
+          - as of December 31, 2002
+    natural_near_misses:
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 156.2"
+        interpreted_row: credit facility
+        interpreted_column: as of December 31, 2002
+        mismatch_fields:
+          - concept
+          - scope
+      - row_index: 3
+        column_index: 2
+        raw_value: "$ 363.9"
+        interpreted_row: total debt
+        interpreted_column: as of December 31, 2001
+        mismatch_fields:
+          - period
+      - row_index: 2
+        column_index: 1
+        raw_value: "0.5"
+        interpreted_row: uncommitted credit facilities
+        interpreted_column: as of December 31, 2002
+        mismatch_fields:
+          - concept
+          - scope
+    ambiguity_notes:
+      - >-
+        The component value 156.2 is numerically close to the published total
+        156.7, making this a useful subtotal-versus-total case.
+    review:
+      batch: 2
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:18:23Z"
+      annotation_seconds: null
+
+  - question_id: convfinqa_39
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the average price paid per share for the 504,300 shares purchased
+      by Lockheed Martin between October 27, 2014, and November 30, 2014, as part
+      of its common stock repurchase program?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_1315
+      file_name: pdf/LMT/2014/page_31.pdf
+      page_number: 31
+      table_index: 0
+      table_sha256: fb0e73edb06f770b765bc457ffd34cd9cd7bd3df8533d13501e3920ba51a64ee
+    dataset_answer:
+      program_raw: "187.74"
+      original_raw: "187.74"
+    query:
+      entity: Lockheed Martin
+      concept: average price paid per share
+      period: October 27, 2014 to November 30, 2014
+      unit:
+        currency: USD
+        scale: one
+        raw_text: dollars per share
+      dimensions:
+        - name: transaction
+          value: common-stock repurchase
+        - name: shares_purchased
+          value: "504300"
+    valid_cells:
+      - row_index: 2
+        column_index: 2
+        raw_value: "$ 187.74"
+        normalized_value: "187.74"
+        raw_row_header_path:
+          - october 27 2014 2013 november 30 2014
+        raw_column_header_path:
+          - average price paid per share
+        interpreted_column_header_path:
+          - average price paid per share
+    natural_near_misses:
+      - row_index: 2
+        column_index: 1
+        raw_value: "504300"
+        interpreted_row: October 27, 2014 to November 30, 2014
+        interpreted_column: total number of shares purchased
+        mismatch_fields:
+          - concept
+          - unit
+      - row_index: 4
+        column_index: 2
+        raw_value: "$ 185.23"
+        interpreted_row: total quarter
+        interpreted_column: average price paid per share
+        mismatch_fields:
+          - period
+          - scope
+      - row_index: 1
+        column_index: 2
+        raw_value: "$ 176.96"
+        interpreted_row: September 29, 2014 to October 26, 2014
+        interpreted_column: average price paid per share
+        mismatch_fields:
+          - period
+    ambiguity_notes:
+      - >-
+        Raw period labels contain a stray "2013" token where punctuation was
+        likely corrupted. The surrounding text and question resolve the period.
+      - >-
+        "Average" names a value already reported by the company; the answerer
+        does not calculate it.
+    review:
+      batch: 2
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:18:23Z"
+      annotation_seconds: null
+
+  - question_id: convfinqa_43
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the balance of cash and cash equivalents at the end of the fiscal
+      year 2010 for Skyworks Solutions, as reported in their 2010 annual report?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_109
+      file_name: pdf/SWKS/2010/page_105.pdf
+      page_number: 105
+      table_index: 0
+      table_sha256: 39df2d7af7f948c667dcebdff0cf3ba24b06f0be4fad518ed09e9cc8d516a0b6
+    dataset_answer:
+      program_raw: "453257.0"
+      original_raw: "453257.0"
+    query:
+      entity: Skyworks Solutions
+      concept: cash and cash equivalents at end of period
+      period: fiscal year ended October 1, 2010
+      unit:
+        currency: USD
+        scale: thousand
+        raw_text: dollars in thousands
+      dimensions:
+        - name: balance_position
+          value: end of period
+    valid_cells:
+      - row_index: 5
+        column_index: 1
+        raw_value: "$ 453257"
+        normalized_value: "453257"
+        raw_row_header_path:
+          - cash and cash equivalents at end of period ( 1 )
+        raw_column_header_path:
+          - fiscal years ended october 1 2010
+        interpreted_column_header_path:
+          - fiscal year ended October 1, 2010
+    natural_near_misses:
+      - row_index: 5
+        column_index: 2
+        raw_value: "$ 364221"
+        interpreted_row: cash and cash equivalents at end of period
+        interpreted_column: fiscal year ended October 2, 2009
+        mismatch_fields:
+          - period
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 364221"
+        interpreted_row: cash and cash equivalents at beginning of period
+        interpreted_column: fiscal year ended October 1, 2010
+        mismatch_fields:
+          - balance_position
+          - concept
+      - row_index: 2
+        column_index: 1
+        raw_value: "222962"
+        interpreted_row: net cash provided by operating activities
+        interpreted_column: fiscal year ended October 1, 2010
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - >-
+        The raw value 364221 occurs at two different addresses with different
+        meanings, showing why value equality cannot replace cell identity.
+    review:
+      batch: 2
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:18:23Z"
+      annotation_seconds: null
+
+  - question_id: convfinqa_62
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the gas transmission throughput in billion cubic feet for
+      Dominion Energy in 2002?
+    source:
+      subset: ConvFinQA
+      manifest_split: turn_0
+      record_split: all
+      context_id: convfinqa_ctx_1184
+      file_name: pdf/D/2002/page_39.pdf
+      page_number: 39
+      table_index: 0
+      table_sha256: e13b3cba16d1450d28b778fa9bb5f63f4f69845971b95a5c790fc2e8bee72ab6
+    dataset_answer:
+      program_raw: "597.0"
+      original_raw: "597.0"
+    query:
+      entity: Dominion Energy
+      concept: gas transmission throughput
+      period: "2002"
+      unit:
+        currency: null
+        scale: billion
+        raw_text: BCF (billion cubic feet)
+      dimensions: []
+    valid_cells:
+      - row_index: 6
+        column_index: 1
+        raw_value: "597"
+        normalized_value: "597"
+        raw_row_header_path:
+          - gas transmission throughput ( bcf )
+        raw_column_header_path:
+          - "2002"
+        interpreted_column_header_path:
+          - "2002"
+    natural_near_misses:
+      - row_index: 6
+        column_index: 2
+        raw_value: "553"
+        interpreted_row: gas transmission throughput (BCF)
+        interpreted_column: "2001"
+        mismatch_fields:
+          - period
+      - row_index: 6
+        column_index: 3
+        raw_value: "567"
+        interpreted_row: gas transmission throughput (BCF)
+        interpreted_column: "2000"
+        mismatch_fields:
+          - period
+      - row_index: 5
+        column_index: 1
+        raw_value: "101"
+        interpreted_row: electricity supplied (million MWh)
+        interpreted_column: "2002"
+        mismatch_fields:
+          - concept
+          - unit
+    ambiguity_notes:
+      - >-
+        The table-wide heading says millions except per-share amounts, but the
+        row-specific BCF label controls the unit for this cell.
+    review:
+      batch: 2
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:18:23Z"
+      annotation_seconds: null
+
+  - question_id: finqa_train_1753
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the amount of unrecognized tax benefit reported by American
+      Airlines Group in its consolidated financial statements as of December
+      31, 2013?
+    source:
+      subset: FinQA
+      manifest_split: train
+      record_split: train
+      context_id: finqa_train_ctx_1735
+      file_name: pdf/AAL/2014/page_219.pdf
+      page_number: 219
+      table_index: 0
+      table_sha256: a89b396bb29be2f970cd7b457c8e2cb9006652691bb93a350374adc072cd0e16
+    dataset_answer:
+      program_raw: "5.0"
+      original_raw: "$ 5"
+    query:
+      entity: American Airlines Group
+      concept: unrecognized tax benefit at December 31
+      period: as of December 31, 2013
+      unit:
+        currency: USD
+        scale: million
+        raw_text: in millions
+      dimensions:
+        - name: balance_position
+          value: end of year
+    valid_cells:
+      - row_index: 3
+        column_index: 2
+        raw_markdown_column_index: 3
+        raw_value: "$ 5"
+        normalized_value: "5"
+        raw_row_header_path:
+          - unrecognized tax benefit at december 31
+        raw_column_header_path:
+          - "2013"
+        interpreted_column_header_path:
+          - as of December 31, 2013
+    natural_near_misses:
+      - row_index: 3
+        column_index: 1
+        raw_value: "$ 5"
+        interpreted_row: unrecognized tax benefit at December 31
+        interpreted_column: "2014"
+        mismatch_fields:
+          - period
+      - row_index: 1
+        column_index: 2
+        raw_value: "$ 5"
+        interpreted_row: unrecognized tax benefit at January 1
+        interpreted_column: "2013"
+        mismatch_fields:
+          - balance_position
+          - period
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 5"
+        interpreted_row: unrecognized tax benefit at January 1
+        interpreted_column: "2014"
+        mismatch_fields:
+          - balance_position
+          - period
+    ambiguity_notes:
+      - >-
+        Four source cells display the same value. Only the row and year together
+        identify the requested source cell.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 3
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:23:53Z"
+      annotation_seconds: null
+
+  - question_id: finqa_train_2444
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      In the financial year 2010, what was the value of accounts receivable net
+      for Apple Inc.?
+    source:
+      subset: FinQA
+      manifest_split: train
+      record_split: train
+      context_id: finqa_train_ctx_134
+      file_name: pdf/AAPL/2011/page_38.pdf
+      page_number: 38
+      table_index: 0
+      table_sha256: 3fa06b1508780b5742281a7b7a6541b5f211d7fd2b4f270c46d0d08298d048a2
+    dataset_answer:
+      program_raw: "5510.0"
+      original_raw: "2010"
+    query:
+      entity: Apple Inc.
+      concept: accounts receivable, net
+      period: financial year 2010
+      unit:
+        currency: USD
+        scale: million
+        raw_text: in millions
+      dimensions: []
+    valid_cells:
+      - row_index: 2
+        column_index: 2
+        raw_markdown_column_index: 3
+        raw_value: "$ 5510"
+        normalized_value: "5510"
+        raw_row_header_path:
+          - accounts receivable net
+        raw_column_header_path:
+          - "2010"
+        interpreted_column_header_path:
+          - financial year 2010
+    natural_near_misses:
+      - row_index: 2
+        column_index: 1
+        raw_value: "$ 5369"
+        interpreted_row: accounts receivable, net
+        interpreted_column: "2011"
+        mismatch_fields:
+          - period
+      - row_index: 2
+        column_index: 3
+        raw_value: "$ 3361"
+        interpreted_row: accounts receivable, net
+        interpreted_column: "2009"
+        mismatch_fields:
+          - period
+      - row_index: 3
+        column_index: 2
+        raw_value: "$ 1051"
+        interpreted_row: inventories
+        interpreted_column: "2010"
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - >-
+        The dataset's original_answer field is corrupted as "2010". The source
+        table and program answer identify $5510; the corruption is retained and
+        is not used as the gold label.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 3
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:23:53Z"
+      annotation_seconds: null
+
+  - question_id: finqa_train_2448
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the loss from discontinued operations before income taxes for
+      American Water Works in 2014, as reflected in the table summarizing the
+      operating results of discontinued operations?
+    source:
+      subset: FinQA
+      manifest_split: train
+      record_split: train
+      context_id: finqa_train_ctx_571
+      file_name: pdf/AWK/2015/page_109.pdf
+      page_number: 109
+      table_index: 0
+      table_sha256: b226bf79f6e360079f811ff390cd0026f36bfae4bcd57dc5ca5814f1cba3669e
+    dataset_answer:
+      program_raw: "-6.0"
+      original_raw: "-6"
+    query:
+      entity: American Water Works
+      concept: loss from discontinued operations before income taxes
+      period: year ended December 31, 2014
+      unit:
+        currency: USD
+        scale: null
+        raw_text: scale absent from extracted table
+      dimensions:
+        - name: tax_basis
+          value: before income taxes
+    valid_cells:
+      - row_index: 3
+        column_index: 1
+        raw_markdown_column_index: 2
+        raw_value: "-6 ( 6 )"
+        normalized_value: "-6"
+        raw_row_header_path:
+          - loss from discontinued operations before income taxes
+        raw_column_header_path:
+          - "2014"
+        interpreted_column_header_path:
+          - year ended December 31, 2014
+    natural_near_misses:
+      - row_index: 3
+        column_index: 2
+        raw_value: "-3 ( 3 )"
+        interpreted_row: loss from discontinued operations before income taxes
+        interpreted_column: "2013"
+        mismatch_fields:
+          - period
+      - row_index: 5
+        column_index: 1
+        raw_value: "$ -7 ( 7 )"
+        interpreted_row: loss from discontinued operations net of tax
+        interpreted_column: "2014"
+        mismatch_fields:
+          - tax_basis
+          - concept
+      - row_index: 4
+        column_index: 1
+        raw_value: "1"
+        interpreted_row: provision for income taxes
+        interpreted_column: "2014"
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - Accounting-negative formatting must preserve the minus sign.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 3
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:23:53Z"
+      annotation_seconds: null
+
+  - question_id: finqa_train_2690
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What is the total number of shares available for future issuance under the
+      2014 Incentive Plan, the 2009 Incentive Plan, and the 2006 Employee Stock
+      Purchase Plan, as reported in the equity compensation plan information
+      table for Interpublic Group of Companies in the 2014 report?
+    source:
+      subset: FinQA
+      manifest_split: train
+      record_split: train
+      context_id: finqa_train_ctx_1471
+      file_name: pdf/IPG/2014/page_95.pdf
+      page_number: 95
+      table_index: 0
+      table_sha256: c29e9babe1ebb4f9c3cd329bdc1d2abf71e387de1f90669e5671dee2c7387e6a
+    dataset_answer:
+      program_raw: "41661517.0"
+      original_raw: "41661517"
+    query:
+      entity: Interpublic Group of Companies
+      concept: securities remaining available for future issuance
+      period: 2014 report
+      unit:
+        currency: null
+        scale: one
+        raw_text: shares
+      dimensions:
+        - name: plan_approval_status
+          value: approved by security holders
+        - name: included_plans
+          value: 2014 Incentive Plan; 2009 Incentive Plan; 2006 ESPP
+    valid_cells:
+      - row_index: 1
+        column_index: 3
+        raw_markdown_column_index: 4
+        raw_value: "41661517"
+        normalized_value: "41661517"
+        raw_row_header_path:
+          - equity compensation plans approved by security holders
+        raw_column_header_path:
+          - >-
+            number of securities remaining available for future issuance under
+            equity compensation plans ( excluding securities reflected in column
+            ( a ) ) ( c ) 4
+        interpreted_column_header_path:
+          - securities remaining available for future issuance
+    natural_near_misses:
+      - row_index: 1
+        column_index: 1
+        raw_value: "15563666"
+        interpreted_row: equity compensation plans approved by security holders
+        interpreted_column: shares issuable upon exercise of outstanding awards
+        mismatch_fields:
+          - concept
+          - award_status
+      - row_index: 1
+        column_index: 2
+        raw_value: "9.70"
+        interpreted_row: equity compensation plans approved by security holders
+        interpreted_column: weighted-average exercise price
+        mismatch_fields:
+          - concept
+          - unit
+    ambiguity_notes:
+      - >-
+        Footnote markers are concatenated into raw headers. Surrounding text
+        confirms that the published aggregate covers the three named plans.
+      - >-
+        The requested total is an explicit cell; the answerer does not add the
+        plan balances.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 3
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:23:53Z"
+      annotation_seconds: null
+
+  - question_id: finqa_train_2796
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the balance of lending commitments held for investment by Goldman
+      Sachs as of December 2018, as presented in the table detailing the firm's
+      lending commitments?
+    source:
+      subset: FinQA
+      manifest_split: train
+      record_split: train
+      context_id: finqa_train_ctx_1912
+      file_name: pdf/GS/2018/page_175.pdf
+      page_number: 175
+      table_index: 0
+      table_sha256: 6aa7b725d512272c044cb53c1843fe4f3cdba05a3c53ad26b99d58ae868a78b9
+    dataset_answer:
+      program_raw: "120997.0"
+      original_raw: "120997"
+    query:
+      entity: Goldman Sachs
+      concept: lending commitments
+      period: as of December 2018
+      unit:
+        currency: USD
+        scale: million
+        raw_text: dollars in millions
+      dimensions:
+        - name: accounting_classification
+          value: held for investment
+    valid_cells:
+      - row_index: 1
+        column_index: 1
+        raw_markdown_column_index: 2
+        raw_value: "$ 120997"
+        normalized_value: "120997"
+        raw_row_header_path:
+          - held for investment
+        raw_column_header_path:
+          - as of december 2018
+        interpreted_column_header_path:
+          - as of December 2018
+    natural_near_misses:
+      - row_index: 1
+        column_index: 2
+        raw_value: "$ 124504"
+        interpreted_row: held for investment
+        interpreted_column: as of December 2017
+        mismatch_fields:
+          - period
+      - row_index: 2
+        column_index: 1
+        raw_value: "8602"
+        interpreted_row: held for sale
+        interpreted_column: as of December 2018
+        mismatch_fields:
+          - accounting_classification
+      - row_index: 4
+        column_index: 1
+        raw_value: "$ 137582"
+        interpreted_row: total lending commitments
+        interpreted_column: as of December 2018
+        mismatch_fields:
+          - accounting_classification
+          - scope
+    ambiguity_notes:
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 3
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:23:53Z"
+      annotation_seconds: null
+
+  - question_id: finqa_train_3442
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      Excluding the gain on sale of discontinued operations, what was the income
+      from discontinued operations for HollyFrontier Corporation in the year
+      ended December 31, 2009, as reported in the 2011 financial report?
+    source:
+      subset: FinQA
+      manifest_split: train
+      record_split: train
+      context_id: finqa_train_ctx_3
+      file_name: pdf/HFC/2011/page_88.pdf
+      page_number: 88
+      table_index: 0
+      table_sha256: 61f3c00787685c876c2256008aef6b81042871a8eec31b6a58c17eb4b971eb29
+    dataset_answer:
+      program_raw: "4425.0"
+      original_raw: "4425"
+    query:
+      entity: HollyFrontier Corporation
+      concept: income from discontinued operations, net
+      period: year ended December 31, 2009
+      unit:
+        currency: USD
+        scale: thousand
+        raw_text: in thousands
+      dimensions:
+        - name: transaction_scope
+          value: excluding gain on sale of discontinued operations
+    valid_cells:
+      - row_index: 3
+        column_index: 1
+        raw_markdown_column_index: 2
+        raw_value: "4425"
+        normalized_value: "4425"
+        raw_row_header_path:
+          - income from discontinued operations net
+        raw_column_header_path:
+          - year ended december 31 2009 ( in thousands )
+        interpreted_column_header_path:
+          - year ended December 31, 2009
+          - in thousands
+    natural_near_misses:
+      - row_index: 6
+        column_index: 1
+        raw_value: "12501"
+        interpreted_row: gain on sale of discontinued operations, net
+        interpreted_column: year ended December 31, 2009
+        mismatch_fields:
+          - transaction_scope
+          - concept
+      - row_index: 7
+        column_index: 1
+        raw_value: "$ 16926"
+        interpreted_row: combined income from discontinued operations, net
+        interpreted_column: year ended December 31, 2009
+        mismatch_fields:
+          - transaction_scope
+          - scope
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 5367"
+        interpreted_row: income from discontinued operations before income taxes
+        interpreted_column: year ended December 31, 2009
+        mismatch_fields:
+          - tax_basis
+          - concept
+    ambiguity_notes:
+      - >-
+        The row label "income from discontinued operations net" occurs twice.
+        The question's exclusion phrase selects the first occurrence.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 4
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:32:43Z"
+      annotation_seconds: null
+
+  - question_id: finqa_train_4853
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the total value of identifiable net assets acquired by Global
+      Payments in the Sicom Systems acquisition as of December 31, 2018?
+    source:
+      subset: FinQA
+      manifest_split: train
+      record_split: train
+      context_id: finqa_train_ctx_343
+      file_name: pdf/GPN/2018/page_74.pdf
+      page_number: 74
+      table_index: 0
+      table_sha256: eea6b428d210b31cb016e08ce8b0529788042fba623ba4a148aa691c32239215
+    dataset_answer:
+      program_raw: "144357.0"
+      original_raw: "$ 144357 thousand"
+    query:
+      entity: Global Payments
+      concept: total identifiable net assets acquired
+      period: as of December 31, 2018
+      unit:
+        currency: USD
+        scale: thousand
+        raw_text: in thousands
+      dimensions:
+        - name: acquisition
+          value: Sicom Systems
+    valid_cells:
+      - row_index: 6
+        column_index: 1
+        raw_markdown_column_index: 2
+        raw_value: "144357"
+        normalized_value: "144357"
+        raw_row_header_path:
+          - total identifiable net assets
+        raw_column_header_path:
+          - "$ 7540"
+        interpreted_column_header_path:
+          - acquisition-date fair value
+          - in thousands
+    natural_near_misses:
+      - row_index: 2
+        column_index: 1
+        raw_value: "188294"
+        interpreted_row: identified intangible assets
+        interpreted_column: acquisition-date fair value
+        mismatch_fields:
+          - concept
+          - scope
+      - row_index: 7
+        column_index: 1
+        raw_value: "264844"
+        interpreted_row: goodwill
+        interpreted_column: acquisition-date fair value
+        mismatch_fields:
+          - concept
+      - row_index: 8
+        column_index: 1
+        raw_value: "$ 409201"
+        interpreted_row: total purchase consideration
+        interpreted_column: acquisition-date fair value
+        mismatch_fields:
+          - concept
+          - scope
+    ambiguity_notes:
+      - >-
+        The exporter promoted the cash-and-cash-equivalents data row to the
+        Markdown header. Surrounding text supplies the amount-column meaning and
+        unit.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 4
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:32:43Z"
+      annotation_seconds: null
+
+  - question_id: finqa_dev_287
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the gross carrying amount, in millions, of Citigroup's purchased
+      distressed loan portfolio as of December 31, 2010, as reflected in the
+      table detailing changes in accretable yield, related allowance, and
+      carrying amount net of accretable yield for 2010?
+    source:
+      subset: FinQA
+      manifest_split: dev
+      record_split: dev
+      context_id: finqa_dev_ctx_112
+      file_name: pdf/C/2010/page_223.pdf
+      page_number: 223
+      table_index: 0
+      table_sha256: dded433fd794d87f5e916e53709424099f38b90c9ce0099dac686a5c6de1cf7f
+    dataset_answer:
+      program_raw: "469.0"
+      original_raw: "469"
+    query:
+      entity: Citigroup
+      concept: gross carrying amount of purchased distressed loan portfolio
+      period: as of December 31, 2010
+      unit:
+        currency: USD
+        scale: million
+        raw_text: millions of dollars
+      dimensions:
+        - name: amount_basis
+          value: gross before allowance
+    valid_cells:
+      - row_index: 8
+        column_index: 2
+        raw_markdown_column_index: 3
+        raw_value: "$ 469"
+        normalized_value: "469"
+        raw_row_header_path:
+          - balance at december 31 2010 ( 2 )
+        raw_column_header_path:
+          - carrying amount of loan receivable
+        interpreted_column_header_path:
+          - carrying amount of loan receivable
+    natural_near_misses:
+      - row_index: 8
+        column_index: 3
+        raw_value: "$ 77"
+        interpreted_row: balance at December 31, 2010
+        interpreted_column: allowance
+        mismatch_fields:
+          - concept
+          - amount_basis
+      - row_index: 8
+        column_index: 1
+        raw_value: "$ 116"
+        interpreted_row: balance at December 31, 2010
+        interpreted_column: accretable yield
+        mismatch_fields:
+          - concept
+      - row_index: 1
+        column_index: 2
+        raw_value: "$ 920"
+        interpreted_row: beginning balance
+        interpreted_column: carrying amount of loan receivable
+        mismatch_fields:
+          - period
+          - balance_position
+    ambiguity_notes:
+      - >-
+        Nearby prose reports $392 million net of the $77 million allowance. The
+        question explicitly asks for the gross table amount of $469 million.
+      - Several blank cells were corrupted into the token "2014"; the target is intact.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 4
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:32:43Z"
+      annotation_seconds: null
+
+  - question_id: finqa_dev_650
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the operating margin for Lockheed Martin's Aeronautics business
+      segment in 2014, according to the 2016 report?
+    source:
+      subset: FinQA
+      manifest_split: dev
+      record_split: dev
+      context_id: finqa_dev_ctx_1
+      file_name: pdf/LMT/2016/page_48.pdf
+      page_number: 48
+      table_index: 0
+      table_sha256: 8b2e676015f4663a77570d25f7769dfbc8586905c8f986e90e92f6cb0a78e78d
+    dataset_answer:
+      program_raw: "0.11052278820375334"
+      original_raw: "11.1%"
+    query:
+      entity: Lockheed Martin
+      concept: operating margin
+      period: "2014"
+      unit:
+        currency: null
+        scale: percentage
+        raw_text: percent
+      dimensions:
+        - name: business_segment
+          value: Aeronautics
+    valid_cells:
+      - row_index: 3
+        column_index: 3
+        raw_markdown_column_index: 4
+        raw_value: "11.1% ( 11.1 % )"
+        normalized_value: "11.1"
+        raw_row_header_path:
+          - operating margin
+        raw_column_header_path:
+          - "2014"
+        interpreted_column_header_path:
+          - "2014"
+    natural_near_misses:
+      - row_index: 3
+        column_index: 2
+        raw_value: "10.8% ( 10.8 % )"
+        interpreted_row: operating margin
+        interpreted_column: "2015"
+        mismatch_fields:
+          - period
+      - row_index: 3
+        column_index: 1
+        raw_value: "10.6% ( 10.6 % )"
+        interpreted_row: operating margin
+        interpreted_column: "2016"
+        mismatch_fields:
+          - period
+      - row_index: 2
+        column_index: 3
+        raw_value: "1649"
+        interpreted_row: operating profit
+        interpreted_column: "2014"
+        mismatch_fields:
+          - concept
+          - unit
+    ambiguity_notes:
+      - >-
+        The dataset program recomputes an unrounded ratio, while the table and
+        original answer report 11.1%. This retrieval study uses the explicit
+        source cell rather than the derived program value.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 4
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:32:43Z"
+      annotation_seconds: null
+
+  - question_id: finqa_test_810
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What are the total purchase commitments of Packaging Corporation of
+      America over the next two years, as outlined in the company's 2005
+      consolidated financial statements?
+    source:
+      subset: FinQA
+      manifest_split: test
+      record_split: test
+      context_id: finqa_test_ctx_242
+      file_name: pdf/PKG/2005/page_74.pdf
+      page_number: 74
+      table_index: 0
+      table_sha256: 29d4579964936d4377b13d84fc981bcc716a5d67f37d116cb9dc298eead2a406
+    dataset_answer:
+      program_raw: "3772.0"
+      original_raw: "3772"
+    query:
+      entity: Packaging Corporation of America
+      concept: total purchase commitments
+      period: next two years after December 31, 2005
+      unit:
+        currency: USD
+        scale: thousand
+        raw_text: in thousands
+      dimensions:
+        - name: commitment_horizon
+          value: 2006 and 2007
+    valid_cells:
+      - row_index: 2
+        column_index: 1
+        raw_markdown_column_index: 2
+        raw_value: "$ 3772"
+        normalized_value: "3772"
+        raw_row_header_path:
+          - total
+        raw_column_header_path:
+          - "$ 2408"
+        interpreted_column_header_path:
+          - purchase commitments
+          - in thousands
+    natural_near_misses:
+      - row_index: 0
+        column_index: 1
+        raw_value: "$ 2408"
+        interpreted_row: "2006"
+        interpreted_column: purchase commitments
+        mismatch_fields:
+          - commitment_horizon
+          - scope
+      - row_index: 1
+        column_index: 1
+        raw_value: "1364"
+        interpreted_row: "2007"
+        interpreted_column: purchase commitments
+        mismatch_fields:
+          - commitment_horizon
+          - scope
+    ambiguity_notes:
+      - >-
+        The exporter promoted the 2006 data row to the Markdown header. The
+        surrounding text supplies the column meaning and unit.
+      - The requested two-year total is explicitly printed; no addition is required.
+      - The raw FinQA display-index column is excluded from semantic coordinates.
+    review:
+      batch: 4
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T02:32:43Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_train_10
+    decision: include
+    reasoning_type: direct_lookup
+    question: What was the total revenue for VMware in the year ended January 31, 2020?
+    source:
+      subset: TAT-DQA
+      manifest_split: train
+      record_split: train
+      context_id: d5e0c3fe87a83b05b860ace8d21fef97
+      file_name: raw/d5e0c3fe87a83b05b860ace8d21fef97.pdf
+      page_number: null
+      table_index: 0
+      table_sha256: dc96f6dd7e24313d06eb79e56bc37438a0e4c09e69feb4acf00aa5df11f3fe27
+    dataset_answer:
+      program_raw: "777.0"
+      original_raw: "['777']"
+    query:
+      entity: VMware
+      concept: total revenue
+      period: year ended January 31, 2020
+      unit:
+        currency: USD
+        scale: million
+        raw_text: amounts in millions, except per-share amounts
+      dimensions: []
+    valid_cells:
+      - row_index: 1
+        column_index: 1
+        raw_value: "$777"
+        normalized_value: "777"
+        raw_row_header_path:
+          - Total revenue
+        raw_column_header_path:
+          - January 31, 2020
+        interpreted_column_header_path:
+          - year ended January 31, 2020
+    natural_near_misses:
+      - table_index: 0
+        row_index: 1
+        column_index: 2
+        raw_value: "$639"
+        interpreted_row: Total revenue
+        interpreted_column: year ended February 1, 2019
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 1
+        column_index: 3
+        raw_value: "$474"
+        interpreted_row: Total revenue
+        interpreted_column: year ended February 2, 2018
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 2
+        column_index: 1
+        raw_value: "$(287)"
+        interpreted_row: Operating income
+        interpreted_column: year ended January 31, 2020
+        mismatch_fields:
+          - concept
+    ambiguity_notes: []
+    review:
+      batch: 5
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:21:52Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_train_18
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the total value of long-lived assets for Extreme Networks Inc. as
+      of June 30, 2019?
+    source:
+      subset: TAT-DQA
+      manifest_split: train
+      record_split: train
+      context_id: d607b0c732705de63af2dceed3970992
+      file_name: raw/d607b0c732705de63af2dceed3970992.pdf
+      page_number: null
+      table_index: 1
+      table_sha256: 9ac51f1f92804c682a05c83fd7aa080dbbe5b043629e5e7fb889e1154fbd912e
+    dataset_answer:
+      program_raw: "176308.0"
+      original_raw: "['176,308']"
+    query:
+      entity: Extreme Networks Inc.
+      concept: long-lived assets
+      period: as of June 30, 2019
+      unit:
+        currency: USD
+        scale: thousand
+        raw_text: in thousands
+      dimensions:
+        - name: geographic_scope
+          value: total
+    valid_cells:
+      - row_index: 4
+        column_index: 1
+        raw_value: "$176,308"
+        normalized_value: "176308"
+        raw_row_header_path:
+          - Total long-lived assets
+        raw_column_header_path:
+          - June 30, 2019
+        interpreted_column_header_path:
+          - as of June 30, 2019
+    natural_near_misses:
+      - table_index: 1
+        row_index: 4
+        column_index: 2
+        raw_value: "$203,253"
+        interpreted_row: Total long-lived assets
+        interpreted_column: as of June 30, 2018
+        mismatch_fields:
+          - period
+      - table_index: 1
+        row_index: 1
+        column_index: 1
+        raw_value: "$136,035"
+        interpreted_row: Americas long-lived assets
+        interpreted_column: as of June 30, 2019
+        mismatch_fields:
+          - geographic_scope
+          - scope
+      - table_index: 1
+        row_index: 2
+        column_index: 1
+        raw_value: "28,744"
+        interpreted_row: EMEA long-lived assets
+        interpreted_column: as of June 30, 2019
+        mismatch_fields:
+          - geographic_scope
+          - scope
+    ambiguity_notes: []
+    review:
+      batch: 5
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:21:52Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_train_30
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What were the net sales from Other non-U.S. countries for cts-corporation
+      in 2019, as reported in the Geographic Data section of the financial report?
+    source:
+      subset: TAT-DQA
+      manifest_split: train
+      record_split: train
+      context_id: d688a96aa30146faf21465cb61d30d7c
+      file_name: raw/d688a96aa30146faf21465cb61d30d7c.pdf
+      page_number: null
+      table_index: 0
+      table_sha256: 2d04f8f6c527fec3e264289cc63d76abdd60ef652f30a7701b0c0a3789012965
+    dataset_answer:
+      program_raw: "15772.0"
+      original_raw: "['15,772']"
+    query:
+      entity: CTS Corporation
+      concept: net sales
+      period: year ended December 31, 2019
+      unit:
+        currency: USD
+        scale: null
+        raw_text: dollar sign present; scale absent from extracted table
+      dimensions:
+        - name: geography
+          value: Other non-U.S.
+    valid_cells:
+      - row_index: 8
+        column_index: 1
+        raw_value: "$15,772"
+        normalized_value: "15772"
+        raw_row_header_path:
+          - Net Sales
+          - Other non-U.S.
+        raw_column_header_path:
+          - Years Ended December 31
+          - "2019"
+        interpreted_column_header_path:
+          - year ended December 31, 2019
+    natural_near_misses:
+      - table_index: 0
+        row_index: 8
+        column_index: 2
+        raw_value: "$13,560"
+        interpreted_row: Other non-U.S. net sales
+        interpreted_column: "2018"
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 4
+        column_index: 1
+        raw_value: "$32,957"
+        interpreted_row: Singapore net sales
+        interpreted_column: "2019"
+        mismatch_fields:
+          - geography
+      - table_index: 1
+        row_index: 7
+        column_index: 1
+        raw_value: "$2,981"
+        interpreted_row: Other non-U.S. long-lived assets
+        interpreted_column: "2019"
+        mismatch_fields:
+          - table
+          - concept
+    ambiguity_notes:
+      - >-
+        The same geography label appears in a second table for long-lived assets,
+        so table identity is necessary in addition to row and column identity.
+    review:
+      batch: 5
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:21:52Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_train_75
+    decision: include
+    reasoning_type: direct_lookup
+    question: What interest rate was used to estimate the grant date fair value of the TSRs in 2017?
+    source:
+      subset: TAT-DQA
+      manifest_split: train
+      record_split: train
+      context_id: d85b78c5c7a6b9113cc18664e2e6f48f
+      file_name: raw/d85b78c5c7a6b9113cc18664e2e6f48f.pdf
+      page_number: null
+      table_index: 2
+      table_sha256: a1a9dc139fd2640bcdc58a3ce271f44786684a047709a6502723e19563a8600a
+    dataset_answer:
+      program_raw: "1.5"
+      original_raw: "['1.5%']"
+    query:
+      entity: ACI Worldwide Inc.
+      concept: interest rate assumption
+      period: "2017"
+      unit:
+        currency: null
+        scale: percentage
+        raw_text: percent
+      dimensions:
+        - name: valuation_target
+          value: total shareholder return awards
+        - name: valuation_method
+          value: Monte Carlo simulation
+    valid_cells:
+      - row_index: 2
+        column_index: 3
+        raw_value: "1.5%"
+        normalized_value: "1.5"
+        raw_row_header_path:
+          - Interest rate
+        raw_column_header_path:
+          - "2017"
+        interpreted_column_header_path:
+          - "2017"
+    natural_near_misses:
+      - table_index: 2
+        row_index: 2
+        column_index: 1
+        raw_value: "2.5%"
+        interpreted_row: Interest rate
+        interpreted_column: "2019"
+        mismatch_fields:
+          - period
+      - table_index: 2
+        row_index: 2
+        column_index: 2
+        raw_value: "2.4%"
+        interpreted_row: Interest rate
+        interpreted_column: "2018"
+        mismatch_fields:
+          - period
+      - table_index: 2
+        row_index: 3
+        column_index: 3
+        raw_value: "26.5%"
+        interpreted_row: Volatility
+        interpreted_column: "2017"
+        mismatch_fields:
+          - concept
+      - table_index: 2
+        row_index: 1
+        column_index: 3
+        raw_value: "2.9"
+        interpreted_row: Expected life (years)
+        interpreted_column: "2017"
+        mismatch_fields:
+          - concept
+          - unit
+    ambiguity_notes: []
+    review:
+      batch: 5
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:21:52Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_dev_10234
+    decision: include
+    reasoning_type: direct_lookup
+    question: What was the servicing fee for Greensky, Inc. in 2018?
+    source:
+      subset: TAT-DQA
+      manifest_split: dev
+      record_split: dev
+      context_id: 01cbb28d73f2117a2bf155814a46806c
+      file_name: raw/01cbb28d73f2117a2bf155814a46806c.pdf
+      page_number: null
+      table_index: 1
+      table_sha256: 6e7abcdae9155629bb36bf019e44d58dfd684caab386fb17c6b50f59f5c87227
+    dataset_answer:
+      program_raw: "2321.0"
+      original_raw: "['2,321']"
+    query:
+      entity: Greensky, Inc.
+      concept: servicing fees
+      period: year ended December 31, 2018
+      unit:
+        currency: USD
+        scale: null
+        raw_text: dollar sign present; scale absent from extracted context
+      dimensions:
+        - name: activity
+          value: loan receivable sales and servicing
+    valid_cells:
+      - row_index: 4
+        column_index: 2
+        raw_value: "$ 2,321"
+        normalized_value: "2321"
+        raw_row_header_path:
+          - Cash Flows
+          - Servicing fees
+        raw_column_header_path:
+          - Year Ended December 31
+          - "2018"
+        interpreted_column_header_path:
+          - year ended December 31, 2018
+    natural_near_misses:
+      - table_index: 1
+        row_index: 4
+        column_index: 1
+        raw_value: "$ 3,901"
+        interpreted_row: Servicing fees
+        interpreted_column: "2019"
+        mismatch_fields:
+          - period
+      - table_index: 1
+        row_index: 4
+        column_index: 3
+        raw_value: "$ 2,821"
+        interpreted_row: Servicing fees
+        interpreted_column: "2017"
+        mismatch_fields:
+          - period
+      - table_index: 1
+        row_index: 3
+        column_index: 2
+        raw_value: "$ 139,026"
+        interpreted_row: Sales of loans
+        interpreted_column: "2018"
+        mismatch_fields:
+          - concept
+          - activity
+      - table_index: 1
+        row_index: 6
+        column_index: 2
+        raw_value: "23,385"
+        interpreted_row: Delinquent loans
+        interpreted_column: "2018"
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - Some lower table rows have missing trailing cells, but the target is aligned.
+    review:
+      batch: 5
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:21:52Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_dev_10269
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the goodwill of Autodesk at the end of its fiscal year 2018,
+      according to the table summarizing the changes in the carrying amount of
+      goodwill during the fiscal years ended January 31, 2019 and 2018?
+    source:
+      subset: TAT-DQA
+      manifest_split: dev
+      record_split: dev
+      context_id: 08d181cb5431f91d9495afa4989d0906
+      file_name: raw/08d181cb5431f91d9495afa4989d0906.pdf
+      page_number: null
+      table_index: 0
+      table_sha256: 63009c1bf5723232206d7af8c983e4cb56361c06958fc048e90a4f0782dbd314
+    dataset_answer:
+      program_raw: "1620.2"
+      original_raw: "['$1,620.2']"
+    query:
+      entity: Autodesk
+      concept: goodwill
+      period: fiscal year ended January 31, 2018
+      unit:
+        currency: USD
+        scale: null
+        raw_text: dollar sign present; scale absent from extracted context
+      dimensions:
+        - name: balance_position
+          value: end of year
+    valid_cells:
+      - row_index: 11
+        column_index: 2
+        raw_value: "$ 1,620.2"
+        normalized_value: "1620.2"
+        raw_row_header_path:
+          - Goodwill, end of the year
+        raw_column_header_path:
+          - January 31, 2018
+        interpreted_column_header_path:
+          - fiscal year ended January 31, 2018
+    natural_near_misses:
+      - table_index: 0
+        row_index: 11
+        column_index: 1
+        raw_value: "$ 2,450.8"
+        interpreted_row: Goodwill, end of the year
+        interpreted_column: fiscal year ended January 31, 2019
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 1
+        column_index: 2
+        raw_value: "$ 1,710.3"
+        interpreted_row: Goodwill, beginning of the year
+        interpreted_column: fiscal year ended January 31, 2018
+        mismatch_fields:
+          - balance_position
+          - concept
+      - table_index: 0
+        row_index: 3
+        column_index: 2
+        raw_value: "(149.2)"
+        interpreted_row: accumulated impairment losses, beginning of year
+        interpreted_column: fiscal year ended January 31, 2018
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - >-
+        Several row labels are split over multiple Markdown lines. All
+        non-separator source rows are retained when assigning the target row.
+    review:
+      batch: 6
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:29:29Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_dev_10299
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was Cisco Systems Inc's revenue for the quarter ended July 27, 2019,
+      as reported in their 2019 financial statements?
+    source:
+      subset: TAT-DQA
+      manifest_split: dev
+      record_split: dev
+      context_id: 157f7e96347013c41825141c4e9e75d9
+      file_name: raw/157f7e96347013c41825141c4e9e75d9.pdf
+      page_number: null
+      table_index: 0
+      table_sha256: 3bb3f420a4a42e3681e3e93490fa03942310f318efbc6a77218407a605b7f560
+    dataset_answer:
+      program_raw: "13428.0"
+      original_raw: "['13,428']"
+    query:
+      entity: Cisco Systems Inc.
+      concept: revenue
+      period: quarter ended July 27, 2019
+      unit:
+        currency: USD
+        scale: million
+        raw_text: in millions, except per-share amounts
+      dimensions:
+        - name: reporting_frequency
+          value: quarter
+    valid_cells:
+      - row_index: 1
+        column_index: 1
+        raw_value: "$ 13,428"
+        normalized_value: "13428"
+        raw_row_header_path:
+          - Revenue
+        raw_column_header_path:
+          - July 27, 2019
+        interpreted_column_header_path:
+          - quarter ended July 27, 2019
+    natural_near_misses:
+      - table_index: 0
+        row_index: 1
+        column_index: 2
+        raw_value: "$ 12,958"
+        interpreted_row: Revenue
+        interpreted_column: quarter ended April 27, 2019
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 1
+        column_index: 3
+        raw_value: "$ 12,446"
+        interpreted_row: Revenue
+        interpreted_column: quarter ended January 26, 2019
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 2
+        column_index: 1
+        raw_value: "$ 8,574"
+        interpreted_row: Gross margin
+        interpreted_column: quarter ended July 27, 2019
+        mismatch_fields:
+          - concept
+    ambiguity_notes: []
+    review:
+      batch: 6
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:29:29Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_test_9109
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      How many wearable devices did Fitbit sell in 2019, as indicated by the
+      'Devices sold' metric in the company's key business metrics for that year?
+    source:
+      subset: TAT-DQA
+      manifest_split: test
+      record_split: test
+      context_id: 09b859c31ad70ef8eaf63b92734256e1
+      file_name: raw/09b859c31ad70ef8eaf63b92734256e1.pdf
+      page_number: null
+      table_index: 1
+      table_sha256: 6ab74bd615f1adc4222461260308de9ae23a41b40e141c415df16df85336dc0b
+    dataset_answer:
+      program_raw: "15988.0"
+      original_raw: "['15,988']"
+    query:
+      entity: Fitbit
+      concept: devices sold
+      period: year ended December 31, 2019
+      unit:
+        currency: null
+        scale: thousand
+        raw_text: devices, in thousands
+      dimensions:
+        - name: device_type
+          value: wearable devices
+    valid_cells:
+      - row_index: 2
+        column_index: 1
+        raw_value: "15,988"
+        normalized_value: "15988"
+        raw_row_header_path:
+          - (in thousands)
+          - Devices sold
+        raw_column_header_path:
+          - For the Year Ended or As of December 31
+          - "2019"
+        interpreted_column_header_path:
+          - year ended December 31, 2019
+    natural_near_misses:
+      - table_index: 1
+        row_index: 2
+        column_index: 2
+        raw_value: "13,939"
+        interpreted_row: Devices sold, in thousands
+        interpreted_column: "2018"
+        mismatch_fields:
+          - period
+      - table_index: 1
+        row_index: 2
+        column_index: 3
+        raw_value: "15,343"
+        interpreted_row: Devices sold, in thousands
+        interpreted_column: "2017"
+        mismatch_fields:
+          - period
+      - table_index: 1
+        row_index: 3
+        column_index: 1
+        raw_value: "29,566"
+        interpreted_row: Active users, in thousands
+        interpreted_column: "2019"
+        mismatch_fields:
+          - concept
+    ambiguity_notes:
+      - The unit is supplied by a separate table row rather than repeated in the target cell.
+    review:
+      batch: 6
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:29:29Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_test_9122
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What was the net cash provided by investing activities for Jabil Circuit
+      Inc. in the fiscal year ended August 31, 2018?
+    source:
+      subset: TAT-DQA
+      manifest_split: test
+      record_split: test
+      context_id: 0b31ec7e0200c0354c067a2cf192f4af
+      file_name: raw/0b31ec7e0200c0354c067a2cf192f4af.pdf
+      page_number: null
+      table_index: 0
+      table_sha256: 7c1f505b1b13eb27340dfeff22a6c63d218bb5b0d92e30d63dd77bf895486fe5
+    dataset_answer:
+      program_raw: "1240914.0"
+      original_raw: "['1,240,914']"
+    query:
+      entity: Jabil Circuit Inc.
+      concept: net cash provided by investing activities
+      period: fiscal year ended August 31, 2018
+      unit:
+        currency: USD
+        scale: thousand
+        raw_text: in thousands
+      dimensions:
+        - name: cash_flow_activity
+          value: investing
+        - name: cash_flow_direction
+          value: provided by
+    valid_cells:
+      - row_index: 3
+        column_index: 2
+        raw_value: "1,240,914"
+        normalized_value: "1240914"
+        raw_row_header_path:
+          - Net cash (used in) provided by
+          - investing activities
+        raw_column_header_path:
+          - Fiscal Year Ended August 31
+          - "2018"
+        interpreted_column_header_path:
+          - fiscal year ended August 31, 2018
+    natural_near_misses:
+      - table_index: 0
+        row_index: 3
+        column_index: 1
+        raw_value: "(872,454)"
+        interpreted_row: Net cash used in investing activities
+        interpreted_column: "2019"
+        mismatch_fields:
+          - period
+          - cash_flow_direction
+      - table_index: 0
+        row_index: 3
+        column_index: 3
+        raw_value: "2,141,263"
+        interpreted_row: Net cash provided by investing activities
+        interpreted_column: "2017"
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 1
+        column_index: 2
+        raw_value: "$(1,105,448)"
+        interpreted_row: Net cash used in operating activities
+        interpreted_column: "2018"
+        mismatch_fields:
+          - cash_flow_activity
+          - cash_flow_direction
+      - table_index: 0
+        row_index: 5
+        column_index: 2
+        raw_value: "(47,044)"
+        interpreted_row: Net cash used in financing activities
+        interpreted_column: "2018"
+        mismatch_fields:
+          - cash_flow_activity
+          - cash_flow_direction
+    ambiguity_notes:
+      - >-
+        The row label is split across two Markdown rows. Both raw fragments are
+        retained in the header path.
+    review:
+      batch: 6
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:29:29Z"
+      annotation_seconds: null
+
+  - question_id: tatqa_test_9132
+    decision: include
+    reasoning_type: direct_lookup
+    question: >-
+      What percentage of United MicroElectronics Corp's wafer sales in 2019
+      were for the 90 nanometers process technology?
+    source:
+      subset: TAT-DQA
+      manifest_split: test
+      record_split: test
+      context_id: 0b96522d90d672fb9a9575684feab0a6
+      file_name: raw/0b96522d90d672fb9a9575684feab0a6.pdf
+      page_number: null
+      table_index: 0
+      table_sha256: 2fbfb9de92135c99cf13bd7380d8464ba1c78303a4634fb839cae1d99293c0ce
+    dataset_answer:
+      program_raw: "13.6"
+      original_raw: "13.6"
+    query:
+      entity: United Microelectronics Corp.
+      concept: share of wafer sales
+      period: year ended December 31, 2019
+      unit:
+        currency: null
+        scale: percentage
+        raw_text: percent
+      dimensions:
+        - name: process_technology
+          value: 90 nanometres
+    valid_cells:
+      - row_index: 6
+        column_index: 3
+        raw_value: "13.6"
+        normalized_value: "13.6"
+        raw_row_header_path:
+          - 90 nanometers
+        raw_column_header_path:
+          - Years Ended December 31, %
+          - "2019"
+        interpreted_column_header_path:
+          - year ended December 31, 2019
+          - percent
+    natural_near_misses:
+      - table_index: 0
+        row_index: 6
+        column_index: 2
+        raw_value: "8.3"
+        interpreted_row: 90 nanometres
+        interpreted_column: "2018"
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 6
+        column_index: 1
+        raw_value: "4.9"
+        interpreted_row: 90 nanometres
+        interpreted_column: "2017"
+        mismatch_fields:
+          - period
+      - table_index: 0
+        row_index: 5
+        column_index: 3
+        raw_value: "14.7"
+        interpreted_row: 65 nanometres
+        interpreted_column: "2019"
+        mismatch_fields:
+          - process_technology
+      - table_index: 0
+        row_index: 3
+        column_index: 3
+        raw_value: "11.3"
+        interpreted_row: 28 nanometres
+        interpreted_column: "2019"
+        mismatch_fields:
+          - process_technology
+    ambiguity_notes: []
+    review:
+      batch: 6
+      annotator_id: primary_researcher
+      status: user_approved
+      approved_at: "2026-08-17T03:29:29Z"
+      annotation_seconds: null
+
+exclusions: []

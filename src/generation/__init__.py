@@ -1,2 +1,1 @@
-"""Condition-specific answer generation interfaces."""
-
+"""Deterministic rendering and fixed-prompt secondary generation interfaces."""

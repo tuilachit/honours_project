@@ -1,0 +1,60 @@
+dataset:
+  name: G4KMU/t2-ragbench
+  revision: adf7fe1541ac37351ce1142544d8e3b43010ed92
+  release: cleaned-without-vqaonbd
+  license: cc-by-4.0
+  paper_url: https://aclanthology.org/2026.eacl-long.8/
+  repository_url: https://huggingface.co/datasets/G4KMU/t2-ragbench
+  expected_total_rows: 23088
+  expected_distinct_contexts: 7318
+  download_scope: structured-metadata-only
+  files:
+    - subset: ConvFinQA
+      split: turn_0
+      path: data/t2_ragbench/raw/ConvFinQA/turn_0.jsonl
+      table_text_field: table
+      expected_rows: 3458
+      expected_bytes: 30038650
+      sha256: 31dc9aa01a24eb27d082445c08c976580239311a305be6542b23059763cd9206
+    - subset: FinQA
+      split: train
+      path: data/t2_ragbench/raw/FinQA/train/metadata.jsonl
+      table_text_field: table
+      expected_rows: 6251
+      expected_bytes: 61875159
+      sha256: 5fcaf279e4e9cc93708e7f775d06f3f20d1bc142d2bb5b98545846eb84ede4e8
+    - subset: FinQA
+      split: dev
+      path: data/t2_ragbench/raw/FinQA/dev/metadata.jsonl
+      table_text_field: table
+      expected_rows: 883
+      expected_bytes: 8604079
+      sha256: 24048e3250d4178c7fb433aea21439dca23f62abbcbd00d415d9798902a544a5
+    - subset: FinQA
+      split: test
+      path: data/t2_ragbench/raw/FinQA/test/metadata.jsonl
+      table_text_field: table
+      expected_rows: 1147
+      expected_bytes: 11107037
+      sha256: c2a7e3e35369836b64d1c521520189317e63b4ccf63c2e176736aff28a7aa95f
+    - subset: TAT-DQA
+      split: train
+      path: data/t2_ragbench/raw/TAT-DQA/train/metadata.jsonl
+      table_text_field: context
+      expected_rows: 9063
+      expected_bytes: 42633243
+      sha256: 2ea02e3a7ae0961abe02fbeaad7344e611ac2ca312b1d4e9ff45a3e37814b167
+    - subset: TAT-DQA
+      split: dev
+      path: data/t2_ragbench/raw/TAT-DQA/dev/metadata.jsonl
+      table_text_field: context
+      expected_rows: 1142
+      expected_bytes: 5464915
+      sha256: ee53ad7b17a423be629394f23f60875c376c7343ed3660cd7ebf7483bdfb0f0b
+    - subset: TAT-DQA
+      split: test
+      path: data/t2_ragbench/raw/TAT-DQA/test/metadata.jsonl
+      table_text_field: context
+      expected_rows: 1144
+      expected_bytes: 5284734
+      sha256: eb5e253778c8505b61b0718b1b474fadbf06edb150f98771d75ab688278e115b

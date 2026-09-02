@@ -1,0 +1,44 @@
+condition:
+  id: b1
+  description: FinancialFact dense and sparse hybrid retrieval with a generic reranker
+  evidence_unit: financial_fact
+  produces_exact_cell_ranking: true
+
+retrieval_pilot:
+  enabled: true
+  output_path: results/runs/b1_development_pilot.json
+
+representation:
+  unit: financial_fact
+
+query_context:
+  enabled: false
+  mode: none
+
+retrieval:
+  routes:
+    dense: true
+    sparse: true
+    structured: false
+  candidate_union:
+    enabled: true
+    strategy: reciprocal_rank_fusion
+
+reranker:
+  enabled: true
+  kind: generic_cross_encoder
+  model_profile: generic_reranker
+
+training:
+  enabled: false
+  project_training: false
+  negative_strategy: none
+
+generation:
+  deterministic_renderer_enabled: true
+  llm_enabled: true
+
+evaluation:
+  chunk_metrics_enabled: false
+  exact_cell_metrics_enabled: true
+  downstream_answer_metrics_enabled: false

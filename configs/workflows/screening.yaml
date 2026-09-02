@@ -1,0 +1,6 @@
+workflow:
+  id: prospective-screening
+  description: create and review a timed prospective exact-cell screening batch
+
+screening:
+  enabled: true

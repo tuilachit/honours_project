@@ -1,0 +1,33 @@
+# Citation audit: hallucination-verification claims
+
+Audit date: 2026-08-05 (Australia/Sydney)
+
+Method: each finding below was checked against the stored PDF in `~/Zotero/storage/`. Page numbers are the page numbers printed in the papers (and match the PDF page indices for all passages cited here). All five files were present, opened successfully, and yielded readable text. Verdicts assess each claim exactly as stated, including its scope and qualifications.
+
+| Claim | Verdict | Exact quote | Page | File |
+|---|---|---|---:|---|
+| **1. FinGround:** detectors treating all claims uniformly miss ~43% of computational errors requiring arithmetic re-verification against structured tables. | **SUPPORTED.** This directly matches the abstract. Important qualification: Appendix Q characterizes the evidence as a **43-percentage-point recall gap** between FActScore's generic pipeline and FinGround's domain-specific pipeline, and says the comparison changes multiple factors (including decomposition, type-aware routing, arithmetic re-computation, and evidence alignment). It therefore supports the headline claim, but not an interpretation that uniform treatment alone was experimentally isolated as the cause. | “Existing hallucination detectors treat all claims uniformly, missing 43% of computational errors that require arithmetic re-verification against structured tables.” | 1 | `Guo et al. - 2026 - FinGround Detecting and Grounding Financial Hallucinations via Atomic Claim Verification.pdf` (`ADEE5WI3`) |
+| **2. FinanceBench:** GPT-4-Turbo used with a retrieval system incorrectly answered or refused to answer 81% of questions on the 150-question sample. | **SUPPORTED.** The paper explicitly ties the evaluation to a 150-case sample and reports the 81% result for GPT-4-Turbo with retrieval. “Cases” rather than “questions” is used when describing the sampled evaluation set; the reported outcome itself says “questions.” | “on a sample of 150 cases from FINANCEBENCH” … “GPT-4-Turbo used with a retrieval system incorrectly answered or refused to answer 81% of questions.” | 1 | `Islam et al. - 2023 - FinanceBench A New Benchmark for Financial Question Answering.pdf` (`5VP75V7J`) |
+| **3. Proof-Carrying Numbers:** retrieval, citations, and uncertainty estimation improve transparency but cannot guarantee fidelity; fabricated or misquoted values may still be displayed as if correct. | **SUPPORTED.** This is a direct match, with no material wording difference. | “Existing safeguards—retrieval-augmented generation, citations, and uncertainty estimation—improve transparency but cannot guarantee fidelity: fabricated or misquoted values may still be displayed as if correct.” | 1 | `Solatorio - 2025 - Proof-Carrying Numbers (PCN) A Protocol for Trustworthy Numeric Answers from LLMs via Claim Verific.pdf` (`X8XBAC6E`) |
+| **4. RT4CHART:** re-annotation uncovered 1.68× more hallucination cases than the original labels, suggesting commonly used benchmarks substantially understate hallucination prevalence. | **SUPPORTED.** The paper says “uncovers” rather than “uncovered”; this is tense only, not a substantive difference. Its following clause explicitly draws the benchmark-understatement inference. | “our re-annotation uncovers 1.68× more hallucination cases than the original labels” | 1 | `Yu et al. - 2026 - Retromorphic Testing with Hierarchical Verification for Hallucination Detection in RAG.pdf` (`NMRTKX9W`) |
+| **5. Conformal abstention:** the method reliably bounds the hallucination rate while maintaining a significantly less conservative abstention rate. | **PARTIALLY SUPPORTED.** The hallucination-rate statement is reported across several closed-book, open-domain generative-QA datasets. The significantly less conservative abstention rate is narrower than the claim suggests: it is reported for the long-response **Temporal Sequences** dataset relative to log-probability baselines. On the short-answer **TriviaQA** dataset, performance is described only as comparable. | “our resulting conformal abstention method reliably bounds the hallucination rate” … “maintaining a significantly less conservative abstention rate on a dataset with long responses (Temporal Sequences)” | 1 | `Yadkori et al. - 2024 - Mitigating LLM Hallucinations via Conformal Abstention.pdf` (`JHW286ZS`) |
+
+## RT4CHART numeric-handling finding
+
+**Finding:** RT4CHART uses a generic, three-way context-faithfulness judgment for every decomposed claim; the paper does **not** describe type classification, numeric routing, arithmetic re-computation, a calculator, or a deterministic numeric checker. In that broad sense its verification is entailment/consistency-based. Strictly speaking, it is not *entailment-only*: its ternary outcomes also distinguish contradiction and absence of support.
+
+The method defines its label semantics as follows:
+
+> “assigns each claim one of three labels—entailed, contradicted, or baseless” (p. 1; the formal `Ent`, `Con`, `Nic` label set appears on p. 4).
+
+The methods section treats retrieved context as the sole evidence source, decomposes the answer into self-contained claims, and applies local and full-context LLM-judge verification using this same label space. The default judge model is GPT-4o mini (p. 11). A full-text search of all 20 pages found no method occurrence describing `numeric`, `numerical`, `arithmetic`, `calculator`, `calculation`, or `re-computation` as a verification route. The words **numeric** and **arithmetic** appear only in the re-annotation error analysis on p. 16, where “Numeric/Logic Inconsistency” is one observed annotation pattern; this is an error category/example, not specialized verification logic.
+
+Accordingly, this paper is suitable evidence that hierarchical generic claim verification can still lack explicit numeric/arithmetic handling. The absence finding is based on the complete stored PDF, not on supplementary code or materials outside the PDF.
+
+## Verified source paths
+
+- `~/Zotero/storage/ADEE5WI3/Guo et al. - 2026 - FinGround Detecting and Grounding Financial Hallucinations via Atomic Claim Verification.pdf`
+- `~/Zotero/storage/5VP75V7J/Islam et al. - 2023 - FinanceBench A New Benchmark for Financial Question Answering.pdf`
+- `~/Zotero/storage/X8XBAC6E/Solatorio - 2025 - Proof-Carrying Numbers (PCN) A Protocol for Trustworthy Numeric Answers from LLMs via Claim Verific.pdf`
+- `~/Zotero/storage/NMRTKX9W/Yu et al. - 2026 - Retromorphic Testing with Hierarchical Verification for Hallucination Detection in RAG.pdf`
+- `~/Zotero/storage/JHW286ZS/Yadkori et al. - 2024 - Mitigating LLM Hallucinations via Conformal Abstention.pdf`

@@ -1,0 +1,44 @@
+condition:
+  id: b2
+  description: automatic query context with structured FinancialFact lookup
+  evidence_unit: financial_fact
+  produces_exact_cell_ranking: true
+
+retrieval_pilot:
+  enabled: true
+  output_path: results/runs/b2_development_pilot.json
+
+representation:
+  unit: financial_fact
+
+query_context:
+  enabled: true
+  mode: automatic
+
+retrieval:
+  routes:
+    dense: false
+    sparse: false
+    structured: true
+  candidate_union:
+    enabled: false
+    strategy: structured_lookup
+
+reranker:
+  enabled: true
+  kind: structured_metric_matcher
+  model_profile: null
+
+training:
+  enabled: false
+  project_training: false
+  negative_strategy: none
+
+generation:
+  deterministic_renderer_enabled: true
+  llm_enabled: true
+
+evaluation:
+  chunk_metrics_enabled: false
+  exact_cell_metrics_enabled: true
+  downstream_answer_metrics_enabled: false

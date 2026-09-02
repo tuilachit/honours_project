@@ -1,0 +1,175 @@
+schema_version: 1
+batch_id: prospective_screening_batch_01
+status: awaiting_human_screening
+generation:
+  timestamp: '2026-08-18T06:44:59.423977+00:00'
+  git_commit: 77bf06eaf05fd5b6fb3b5dfc73401eb2aaf7b47e
+  config_hash: 83766f54b7ad8ad6dddf6aae4398ad07858f7b6119f300604590c262e7499ad6
+selection:
+  method: seeded_sha256_rank_within_subset
+  seed: 20260815
+  excluded_prior_annotation_count: 30
+  human_prefiltering_before_selection: false
+  audit_git_commit: affed0fce0251a597f584864ddcda9a9c544b403
+  audit_config_hash: 6f7afee2fea3e1c8e611cbc7236695d50fdee8681ccc2db24ff0c395cff0f9b8
+assistant_review:
+  reviewer: Codex
+  completed_at: '2026-08-24T01:41:43Z'
+  reviewed_question_count: 15
+  advisory_only: true
+  method: full question, matched cell, complete table and extracted context review
+  note: Human decisions remain the gold labels; disagreements must be preserved.
+review:
+  reviewer: null
+  started_at: null
+  completed_at: null
+  active_minutes: null
+  instructions: Start a timer before item 1. Review every item in order and stop the
+    timer after the final decision. Do not replace difficult candidates.
+allowed_decisions:
+- include
+- exclude
+- unsure
+allowed_exclusion_reason_codes:
+- requires_calculation
+- answer_not_a_table_cell
+- ambiguous_cell_identity
+- insufficient_context
+- duplicate_or_leaked_item
+- other
+decisions:
+- question_id: convfinqa_24
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_103
+  assistant_suggestion: include
+  assistant_reason: The requested 2016 cumulative return is printed directly as $265.06 in the matching row and year column; no calculation is needed.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_7
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_981
+  assistant_suggestion: exclude
+  assistant_reason: The question asks for a change, which requires subtracting the 2011 ending balance of 102 from the 2012 ending balance of 118; the matched 16 belongs to a different row.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_48
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_961
+  assistant_suggestion: include
+  assistant_reason: The 2008 year-end asset retirement obligation is printed directly as $965 in the requested row and year column.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_73
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_925
+  assistant_suggestion: include
+  assistant_reason: Although the question contains the word average, “average total short-duration advances” is the table's metric name and its 2014 value of $3,867 is printed directly.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: convfinqa_64
+  subset: ConvFinQA
+  manifest_split: turn_0
+  context_id: convfinqa_ctx_714
+  assistant_suggestion: include
+  assistant_reason: Revenue for the year ended January 1, 2006 is printed directly as $73,501 in the table.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_test_65
+  subset: FinQA
+  manifest_split: test
+  context_id: finqa_test_ctx_38
+  assistant_suggestion: exclude
+  assistant_reason: Answering yes requires comparing the 2004 and 2005 amounts stated in prose; the automatic match is a synthetic row index rather than the requested answer cell.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_dev_393
+  subset: FinQA
+  manifest_split: dev
+  context_id: finqa_dev_ctx_157
+  assistant_suggestion: exclude
+  assistant_reason: The answer requires interpreting and counting a tax-year span in prose; the automatic match of 9 is a synthetic row index in an unrelated table.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_test_236
+  subset: FinQA
+  manifest_split: test
+  context_id: finqa_test_ctx_175
+  assistant_suggestion: exclude
+  assistant_reason: The percentage change must be calculated from the 2009 and 2010 exposure values; the automatic match of 6 is a synthetic row index.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_train_475
+  subset: FinQA
+  manifest_split: train
+  context_id: finqa_train_ctx_1226
+  assistant_suggestion: exclude
+  assistant_reason: The requested decrease requires subtracting the 2018 balance from the 2017 balance; the matched 3 is not a directly printed answer cell.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: finqa_test_216
+  subset: FinQA
+  manifest_split: test
+  context_id: finqa_test_ctx_209
+  assistant_suggestion: exclude
+  assistant_reason: A mathematical range requires finding the maximum and minimum and subtracting them, so the answer is derived rather than a direct cell lookup.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_train_62
+  subset: TAT-DQA
+  manifest_split: train
+  context_id: d741ff8340e4ae8dc66f491a5add7e0d
+  assistant_suggestion: include
+  assistant_reason: Total revenue for 2017 is printed directly as $1,497,708 in the total-revenue row and 2017 column.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_test_9134
+  subset: TAT-DQA
+  manifest_split: test
+  context_id: 0dfb4455ae2e1b2066e99d9a3a05baf0
+  assistant_suggestion: exclude
+  assistant_reason: The prose supports a $300,000 facility in 2019, but the extracted table places 300,000 under the 2018 header and leaves 2019 blank, making the exact-cell period identity ambiguous.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_test_9082
+  subset: TAT-DQA
+  manifest_split: test
+  context_id: 0551beccb943904e051f6f2a1519bd3a
+  assistant_suggestion: include
+  assistant_reason: The 2019 net operating loss carryforwards amount is printed directly as $23,030 in the requested row and year column.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_train_49
+  subset: TAT-DQA
+  manifest_split: train
+  context_id: d6e57b997cc342f4ca28f00fcc0dcc0c
+  assistant_suggestion: include
+  assistant_reason: Net cash provided by operating activities for 2019 is printed directly as $46,254 in the matching row and year column.
+  decision: null
+  reason_codes: []
+  notes: null
+- question_id: tatqa_train_1
+  subset: TAT-DQA
+  manifest_split: train
+  context_id: d58da8b044c0221e4ad5fb3c60a50486
+  assistant_suggestion: include
+  assistant_reason: The table directly prints $140.3 for domestic income before income taxes in 2018, although its row label is split across two Markdown rows and should be checked carefully.
+  decision: null
+  reason_codes: []
+  notes: null

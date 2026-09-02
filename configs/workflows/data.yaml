@@ -1,0 +1,3 @@
+workflow:
+  id: data
+  description: acquire and verify the configured pinned datasets

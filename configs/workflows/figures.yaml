@@ -1,0 +1,6 @@
+workflow:
+  id: figures
+  description: render configured figures from stamped condition results
+
+figures:
+  enabled: true
