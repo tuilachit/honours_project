@@ -4,6 +4,10 @@ condition:
   evidence_unit: financial_fact
   produces_exact_cell_ranking: true
 
+retrieval_pilot:
+  enabled: true
+  output_path: results/runs/b2_development_pilot.json
+
 representation:
   unit: financial_fact
 
@@ -37,4 +41,4 @@ generation:
 evaluation:
   chunk_metrics_enabled: false
   exact_cell_metrics_enabled: true
-  downstream_answer_metrics_enabled: true
+  downstream_answer_metrics_enabled: false

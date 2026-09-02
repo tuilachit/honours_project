@@ -38,3 +38,39 @@ def test_make_target_resolves_without_execution(target: str) -> None:
     )
 
     assert completed.returncode == 0, completed.stderr
+
+
+def test_run_b2_rebuilds_the_reviewed_fact_corpus_first() -> None:
+    repository = Path(__file__).resolve().parents[1]
+
+    completed = subprocess.run(
+        ["make", "--dry-run", "run-b2"],
+        cwd=repository,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert completed.returncode == 0, completed.stderr
+    assert "scripts.materialize_fact_roundtrip" in completed.stdout
+    assert completed.stdout.index("scripts.materialize_fact_roundtrip") < completed.stdout.index(
+        "configs/b2_structured_lookup.yaml"
+    )
+
+
+def test_run_m1_rebuilds_the_reviewed_fact_corpus_first() -> None:
+    repository = Path(__file__).resolve().parents[1]
+
+    completed = subprocess.run(
+        ["make", "--dry-run", "run-m1"],
+        cwd=repository,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert completed.returncode == 0, completed.stderr
+    assert "scripts.materialize_fact_roundtrip" in completed.stdout
+    assert completed.stdout.index("scripts.materialize_fact_roundtrip") < completed.stdout.index(
+        "configs/m1_candidate_union.yaml"
+    )

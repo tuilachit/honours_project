@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 from collections.abc import Mapping
@@ -58,18 +59,43 @@ def _json_default(value: object) -> object:
     raise TypeError(f"Object of type {type(value).__name__} is not JSON serializable")
 
 
-def create_run_metadata(config: Config, repository: Path) -> RunMetadata:
-    """Create provenance for a run from its config and repository state."""
-
-    commit = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
+def _git_output(repository: Path, *args: str) -> bytes:
+    return subprocess.run(
+        ["git", *args],
         cwd=repository,
         check=True,
         capture_output=True,
-        text=True,
-    ).stdout.strip()
+    ).stdout
+
+
+def _git_worktree_fingerprint(repository: Path, status: bytes) -> str:
+    digest = hashlib.sha256()
+    digest.update(b"status\0")
+    digest.update(status)
+    digest.update(b"diff\0")
+    digest.update(_git_output(repository, "diff", "--binary", "HEAD", "--"))
+    untracked = _git_output(repository, "ls-files", "--others", "--exclude-standard", "-z")
+    for raw_path in sorted(path for path in untracked.split(b"\0") if path):
+        path = repository / raw_path.decode("utf-8", errors="surrogateescape")
+        digest.update(b"untracked\0")
+        digest.update(raw_path)
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+    return digest.hexdigest()
+
+
+def create_run_metadata(config: Config, repository: Path) -> RunMetadata:
+    """Create provenance for a run from its config and repository state."""
+
+    commit = _git_output(repository, "rev-parse", "HEAD").decode("ascii").strip()
+    status = _git_output(repository, "status", "--porcelain=v1", "-z")
+    dirty = bool(status)
     return RunMetadata(
         git_commit=commit,
+        git_dirty=dirty,
+        git_worktree_sha256=(
+            _git_worktree_fingerprint(repository, status) if dirty else None
+        ),
         config_hash=hash_config(config),
         timestamp=datetime.now(UTC).isoformat(),
     )

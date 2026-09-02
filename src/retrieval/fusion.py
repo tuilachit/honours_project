@@ -95,28 +95,37 @@ def fuse_fact_candidates(
     """Fuse already projected facts by stable source-cell identity."""
 
     rrf_k, top_k = _rrf_settings(config)
-    grouped: dict[str, list[FactCandidate]] = {}
-    for candidates in route_candidates.values():
+    grouped: dict[str, list[tuple[RetrievalRoute, FactCandidate]]] = {}
+    for route, candidates in route_candidates.items():
         for candidate in candidates:
-            grouped.setdefault(candidate.fact.source_address.cell_id, []).append(candidate)
+            grouped.setdefault(candidate.fact.source_address.cell_id, []).append(
+                (route, candidate)
+            )
     fused: list[tuple[float, FactCandidate]] = []
     for cell_id, contributions in grouped.items():
         scores: dict[RetrievalRoute, float] = {}
         ranks: dict[RetrievalRoute, int] = {}
-        for contribution in contributions:
+        route_metadata: dict[str, Mapping[str, object]] = {}
+        for route, contribution in contributions:
             scores.update(contribution.route_scores)
             ranks.update(contribution.route_ranks)
+            route_metadata[route.value] = dict(contribution.metadata)
         fusion_score = sum(1.0 / (rrf_k + rank) for rank in ranks.values())
+        first = contributions[0][1]
         fused.append(
             (
                 fusion_score,
                 FactCandidate(
-                    question_id=contributions[0].question_id,
-                    fact=contributions[0].fact,
-                    evidence_id=contributions[0].evidence_id,
+                    question_id=first.question_id,
+                    fact=first.fact,
+                    evidence_id=first.evidence_id,
                     route_scores=scores,
                     route_ranks=ranks,
-                    metadata={"fusion_score": fusion_score, "cell_id": cell_id},
+                    metadata={
+                        "fusion_score": fusion_score,
+                        "cell_id": cell_id,
+                        "route_metadata": route_metadata,
+                    },
                 ),
             )
         )

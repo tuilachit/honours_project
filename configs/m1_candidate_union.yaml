@@ -4,6 +4,10 @@ condition:
   evidence_unit: financial_fact
   produces_exact_cell_ranking: true
 
+retrieval_pilot:
+  enabled: true
+  output_path: results/runs/m1_development_pilot.json
+
 representation:
   unit: financial_fact
 
@@ -19,6 +23,7 @@ retrieval:
   candidate_union:
     enabled: true
     strategy: reciprocal_rank_fusion
+    deduplicate_by: stable_source_cell_id
 
 reranker:
   enabled: true
@@ -32,9 +37,9 @@ training:
 
 generation:
   deterministic_renderer_enabled: true
-  llm_enabled: true
+  llm_enabled: false
 
 evaluation:
   chunk_metrics_enabled: false
   exact_cell_metrics_enabled: true
-  downstream_answer_metrics_enabled: true
+  downstream_answer_metrics_enabled: false

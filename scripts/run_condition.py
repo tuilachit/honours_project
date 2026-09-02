@@ -6,11 +6,12 @@ import argparse
 import json
 import random
 from collections import defaultdict
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from statistics import fmean
 from time import perf_counter
-from typing import cast
+from typing import TypeVar, cast
 
 import numpy as np
 import torch
@@ -23,16 +24,28 @@ from src.eval.retrieval import (
 )
 from src.facts.evidence import build_fact_evidence, build_flattened_evidence
 from src.facts.serialize import deserialize_financial_fact
-from src.hashing import sha256_file
+from src.hashing import sha256_json
+from src.query.extract import extract_query_context
 from src.results import write_result_json
 from src.retrieval.dense import build_dense_index, retrieve_dense
-from src.retrieval.fusion import fuse_route_candidates, project_fact_candidates
-from src.retrieval.reranker import rerank_generic
+from src.retrieval.fusion import (
+    fuse_fact_candidates,
+    fuse_route_candidates,
+    project_fact_candidates,
+)
+from src.retrieval.reranker import rerank_generic_budgets
 from src.retrieval.sparse import build_sparse_index, retrieve_sparse
+from src.retrieval.structured import (
+    build_structured_index,
+    rank_structured_lookup,
+    retrieve_structured,
+)
 from src.types import (
+    FactCandidate,
     FinancialFact,
     GoldCellLabel,
     IndexArtifact,
+    QueryContext,
     Question,
     RankedFact,
     RetrievalCandidate,
@@ -41,6 +54,7 @@ from src.types import (
 )
 
 REPOSITORY = Path(__file__).resolve().parents[1]
+T = TypeVar("T")
 
 
 def _mapping(value: object, label: str) -> Mapping[str, object]:
@@ -173,8 +187,8 @@ def _load_inputs(
     if len(tables) != _integer(pilot, "expected_table_count"):
         raise ValueError("Source-table count differs from the configured pilot contract")
     return questions, tables, facts, labels, {
-        "questions": sha256_file(question_path),
-        "facts": sha256_file(fact_path),
+        "questions": sha256_json(raw_questions),
+        "facts": sha256_json(raw_facts),
     }
 
 
@@ -203,6 +217,54 @@ def _ranked_trace(ranked: RankedFact) -> Mapping[str, object]:
         "raw_value": ranked.fact.raw_value,
         "score": ranked.score,
         "component_scores": dict(ranked.component_scores),
+    }
+
+
+def _fact_candidate_trace(
+    candidate: FactCandidate,
+    rank: int | None = None,
+) -> Mapping[str, object]:
+    trace: dict[str, object] = {
+        "rank": (
+            rank
+            if rank is not None
+            else candidate.route_ranks.get(RetrievalRoute.STRUCTURED)
+        ),
+        "evidence_id": candidate.evidence_id,
+        "fact_id": candidate.fact.fact_id,
+        "cell_id": candidate.fact.source_address.cell_id,
+        "raw_value": candidate.fact.raw_value,
+        "route_scores": {route.value: score for route, score in candidate.route_scores.items()},
+        "route_ranks": {route.value: rank for route, rank in candidate.route_ranks.items()},
+    }
+    structured_components = candidate.metadata.get("structured_components")
+    route_metadata = candidate.metadata.get("route_metadata")
+    if structured_components is None and isinstance(route_metadata, Mapping):
+        structured_metadata = route_metadata.get(RetrievalRoute.STRUCTURED.value)
+        if isinstance(structured_metadata, Mapping):
+            structured_components = structured_metadata.get("structured_components")
+    if structured_components is not None:
+        trace["structured_components"] = structured_components
+    return trace
+
+
+def _query_context_trace(query_context: QueryContext) -> Mapping[str, object]:
+    return {
+        "question_id": query_context.question_id,
+        "constraints": [
+            {
+                "name": constraint.name,
+                "state": constraint.state.value,
+                "value": constraint.value,
+                "raw_name": constraint.raw_name,
+                "raw_value": constraint.raw_value,
+                "normalization_version": constraint.normalization_version,
+                "aliases": list(constraint.aliases),
+                "metadata": dict(constraint.metadata),
+            }
+            for constraint in query_context.constraints
+        ],
+        "metadata": dict(query_context.metadata),
     }
 
 
@@ -277,41 +339,410 @@ def _run_b1(
     dense_index = build_dense_index(evidence, config)
     sparse_index = build_sparse_index(evidence, config)
     index_seconds = perf_counter() - started
+    budgets = _sensitivity_budgets(config)
+    primary_budget = max(budgets)
     retrieval_seconds = 0.0
     reranking_seconds = 0.0
     traces: list[Mapping[str, object]] = []
-    metric_rows: list[Mapping[str, float]] = []
+    metrics_by_budget: dict[int, list[Mapping[str, float]]] = {
+        budget: [] for budget in budgets
+    }
     for question in questions:
         route_started = perf_counter()
         dense, sparse, fused = _route_rankings(question, dense_index, sparse_index, config)
         retrieval_seconds += perf_counter() - route_started
         projected = project_fact_candidates(fused, facts_by_id, config)
         rerank_started = perf_counter()
-        reranked = rerank_generic(question, projected, config)
+        rankings = rerank_generic_budgets(question, projected, budgets, config)
         reranking_seconds += perf_counter() - rerank_started
-        metrics = dict(compute_exact_cell_metrics(reranked, labels[question.question_id], config))
-        metrics.update(
-            compute_stage_miss_metrics(fused, reranked, labels[question.question_id], config)
-        )
-        metric_rows.append(metrics)
+        budget_metrics: dict[int, Mapping[str, float]] = {}
+        for budget in budgets:
+            metrics = dict(
+                compute_exact_cell_metrics(
+                    rankings[budget],
+                    labels[question.question_id],
+                    config,
+                )
+            )
+            metrics.update(
+                compute_stage_miss_metrics(
+                    projected[:budget],
+                    rankings[budget],
+                    labels[question.question_id],
+                    config,
+                )
+            )
+            metrics_by_budget[budget].append(metrics)
+            budget_metrics[budget] = metrics
         traces.append(
             {
                 "question_id": question.question_id,
-                "metrics": metrics,
+                "metrics": budget_metrics[primary_budget],
+                "budget_metrics": budget_metrics,
                 "dense": [_candidate_trace(item, rank) for rank, item in enumerate(dense, 1)],
                 "sparse": [_candidate_trace(item, rank) for rank, item in enumerate(sparse, 1)],
                 "fused": [_candidate_trace(item, rank) for rank, item in enumerate(fused, 1)],
-                "reranked": [_ranked_trace(item) for item in reranked],
+                "reranked": [_ranked_trace(item) for item in rankings[primary_budget]],
+                "budget_rankings": {
+                    budget: [_ranked_trace(item) for item in rankings[budget]]
+                    for budget in budgets
+                },
             }
         )
+    aggregate_by_budget = {
+        budget: _aggregate(metrics_by_budget[budget]) for budget in budgets
+    }
     return {
         "evidence_count": len(evidence),
-        "aggregate_metrics": _aggregate(metric_rows),
+        "aggregate_metrics": aggregate_by_budget[primary_budget],
+        "budget_metrics": aggregate_by_budget,
         "question_rankings": traces,
         "index_artifacts": {"dense": dense_index, "sparse": sparse_index},
         "timings_seconds": {
             "index_build": index_seconds,
             "candidate_retrieval": retrieval_seconds,
+            "reranking": reranking_seconds,
+            "total": perf_counter() - started,
+        },
+    }
+
+
+def _run_b2(
+    questions: Sequence[Question],
+    facts: Sequence[FinancialFact],
+    labels: Mapping[str, GoldCellLabel],
+    config: Config,
+) -> Mapping[str, object]:
+    started = perf_counter()
+    facts_by_id = {fact.fact_id: fact for fact in facts}
+    structured_index = build_structured_index(facts, config)
+    index_seconds = perf_counter() - started
+    extraction_seconds = 0.0
+    retrieval_seconds = 0.0
+    reranking_seconds = 0.0
+    traces: list[Mapping[str, object]] = []
+    metric_rows: list[Mapping[str, float]] = []
+    for question in questions:
+        extraction_started = perf_counter()
+        query_context = extract_query_context(question, config)
+        extraction_seconds += perf_counter() - extraction_started
+        retrieval_started = perf_counter()
+        structured = retrieve_structured(
+            question,
+            query_context,
+            structured_index,
+            facts_by_id,
+            config,
+        )
+        retrieval_seconds += perf_counter() - retrieval_started
+        rerank_started = perf_counter()
+        reranked = rank_structured_lookup(question, query_context, structured, config)
+        reranking_seconds += perf_counter() - rerank_started
+        metrics = dict(compute_exact_cell_metrics(reranked, labels[question.question_id], config))
+        metrics.update(
+            compute_stage_miss_metrics(
+                structured,
+                reranked,
+                labels[question.question_id],
+                config,
+            )
+        )
+        metric_rows.append(metrics)
+        traces.append(
+            {
+                "question_id": question.question_id,
+                "query_context": _query_context_trace(query_context),
+                "metrics": metrics,
+                "structured": [_fact_candidate_trace(item) for item in structured],
+                "reranked": [_ranked_trace(item) for item in reranked],
+            }
+        )
+    return {
+        "evidence_count": len(facts),
+        "aggregate_metrics": _aggregate(metric_rows),
+        "question_rankings": traces,
+        "index_artifacts": {"structured": structured_index},
+        "timings_seconds": {
+            "index_build": index_seconds,
+            "query_context_extraction": extraction_seconds,
+            "candidate_retrieval": retrieval_seconds,
+            "reranking": reranking_seconds,
+            "total": perf_counter() - started,
+        },
+    }
+
+
+def _sensitivity_budgets(config: Config) -> tuple[int, ...]:
+    retrieval = _config_section(config, "retrieval")
+    sensitivity = _mapping(
+        retrieval.get("budget_matched_sensitivity"),
+        "retrieval.budget_matched_sensitivity",
+    )
+    values = sensitivity.get("final_candidate_counts")
+    if sensitivity.get("enabled") is not True or not isinstance(values, list):
+        raise ValueError("M1 requires enabled budget-matched sensitivity")
+    if not values or not all(
+        isinstance(value, int) and not isinstance(value, bool) for value in values
+    ):
+        raise ValueError("M1 sensitivity budgets must be an integer list")
+    budgets = tuple(cast(list[int], values))
+    if any(value <= 0 for value in budgets) or len(set(budgets)) != len(budgets):
+        raise ValueError("M1 sensitivity budgets must be unique positive integers")
+    return budgets
+
+
+def _timed_call(operation: Callable[[], T]) -> tuple[T, float]:
+    started = perf_counter()
+    return operation(), perf_counter() - started
+
+
+def _retrieve_m1_routes(
+    question: Question,
+    query_context: QueryContext,
+    dense_index: IndexArtifact,
+    sparse_index: IndexArtifact,
+    structured_index: IndexArtifact,
+    facts_by_id: Mapping[str, FinancialFact],
+    config: Config,
+) -> tuple[
+    list[RetrievalCandidate],
+    list[RetrievalCandidate],
+    list[FactCandidate],
+    Mapping[str, float],
+]:
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        dense_future = executor.submit(
+            _timed_call,
+            lambda: retrieve_dense(question, dense_index, config),
+        )
+        sparse_future = executor.submit(
+            _timed_call,
+            lambda: retrieve_sparse(question, sparse_index, config),
+        )
+        structured_future = executor.submit(
+            _timed_call,
+            lambda: retrieve_structured(
+                question,
+                query_context,
+                structured_index,
+                facts_by_id,
+                config,
+            ),
+        )
+        dense, dense_seconds = dense_future.result()
+        sparse, sparse_seconds = sparse_future.result()
+        structured, structured_seconds = structured_future.result()
+    return dense, sparse, structured, {
+        "dense": dense_seconds,
+        "sparse": sparse_seconds,
+        "structured": structured_seconds,
+    }
+
+
+def _run_m1(
+    questions: Sequence[Question],
+    facts: Sequence[FinancialFact],
+    labels: Mapping[str, GoldCellLabel],
+    config: Config,
+) -> Mapping[str, object]:
+    started = perf_counter()
+    evidence = list(build_fact_evidence(facts, config))
+    facts_by_id = {fact.fact_id: fact for fact in facts}
+
+    route_started = perf_counter()
+    dense_index = build_dense_index(evidence, config)
+    dense_index_seconds = perf_counter() - route_started
+    route_started = perf_counter()
+    sparse_index = build_sparse_index(evidence, config)
+    sparse_index_seconds = perf_counter() - route_started
+    route_started = perf_counter()
+    structured_index = build_structured_index(facts, config)
+    structured_index_seconds = perf_counter() - route_started
+    index_seconds = dense_index_seconds + sparse_index_seconds + structured_index_seconds
+
+    budgets = _sensitivity_budgets(config)
+    primary_budget = max(budgets)
+    extraction_seconds = 0.0
+    dense_seconds = 0.0
+    sparse_seconds = 0.0
+    structured_seconds = 0.0
+    union_seconds = 0.0
+    reranking_seconds = 0.0
+    candidate_counts: dict[str, list[int]] = {
+        "dense": [],
+        "sparse": [],
+        "structured": [],
+        "fused": [],
+    }
+    route_presence_counts: dict[str, int] = {
+        "dense": 0,
+        "sparse": 0,
+        "structured": 0,
+    }
+    route_overlap_counts: defaultdict[str, int] = defaultdict(int)
+    gold_route_coverage: dict[str, int] = {
+        "dense": 0,
+        "sparse": 0,
+        "structured": 0,
+        "any_route": 0,
+        "structured_only_vs_dense_sparse": 0,
+        **{f"fused_at_{budget}": 0 for budget in budgets},
+    }
+    traces: list[Mapping[str, object]] = []
+    metrics_by_budget: dict[int, list[Mapping[str, float]]] = {
+        budget: [] for budget in budgets
+    }
+    for question in questions:
+        extraction_started = perf_counter()
+        query_context = extract_query_context(question, config)
+        extraction_seconds += perf_counter() - extraction_started
+
+        dense, sparse, structured, route_timings = _retrieve_m1_routes(
+            question,
+            query_context,
+            dense_index,
+            sparse_index,
+            structured_index,
+            facts_by_id,
+            config,
+        )
+        dense_seconds += route_timings["dense"]
+        sparse_seconds += route_timings["sparse"]
+        structured_seconds += route_timings["structured"]
+
+        union_started = perf_counter()
+        dense_facts = project_fact_candidates(dense, facts_by_id, config)
+        sparse_facts = project_fact_candidates(sparse, facts_by_id, config)
+        fused = fuse_fact_candidates(
+            {
+                RetrievalRoute.DENSE: dense_facts,
+                RetrievalRoute.SPARSE: sparse_facts,
+                RetrievalRoute.STRUCTURED: structured,
+            },
+            config,
+        )
+        union_seconds += perf_counter() - union_started
+
+        rerank_started = perf_counter()
+        rankings = rerank_generic_budgets(question, fused, budgets, config)
+        reranking_seconds += perf_counter() - rerank_started
+        budget_metrics: dict[int, Mapping[str, float]] = {}
+        for budget in budgets:
+            metrics = dict(
+                compute_exact_cell_metrics(
+                    rankings[budget],
+                    labels[question.question_id],
+                    config,
+                )
+            )
+            metrics.update(
+                compute_stage_miss_metrics(
+                    fused[:budget],
+                    rankings[budget],
+                    labels[question.question_id],
+                    config,
+                )
+            )
+            metrics_by_budget[budget].append(metrics)
+            budget_metrics[budget] = metrics
+
+        candidate_counts["dense"].append(len(dense))
+        candidate_counts["sparse"].append(len(sparse))
+        candidate_counts["structured"].append(len(structured))
+        candidate_counts["fused"].append(len(fused))
+        gold_cells = set(labels[question.question_id].valid_cell_ids)
+        route_cell_ids = {
+            RetrievalRoute.DENSE: {
+                candidate.fact.source_address.cell_id for candidate in dense_facts
+            },
+            RetrievalRoute.SPARSE: {
+                candidate.fact.source_address.cell_id for candidate in sparse_facts
+            },
+            RetrievalRoute.STRUCTURED: {
+                candidate.fact.source_address.cell_id for candidate in structured
+            },
+        }
+        route_gold_hits = {
+            route: bool(gold_cells.intersection(cell_ids))
+            for route, cell_ids in route_cell_ids.items()
+        }
+        for route, hit in route_gold_hits.items():
+            gold_route_coverage[route.value] += int(hit)
+        gold_route_coverage["any_route"] += int(any(route_gold_hits.values()))
+        gold_route_coverage["structured_only_vs_dense_sparse"] += int(
+            route_gold_hits[RetrievalRoute.STRUCTURED]
+            and not route_gold_hits[RetrievalRoute.DENSE]
+            and not route_gold_hits[RetrievalRoute.SPARSE]
+        )
+        for budget in budgets:
+            fused_cells = {
+                candidate.fact.source_address.cell_id for candidate in fused[:budget]
+            }
+            gold_route_coverage[f"fused_at_{budget}"] += int(
+                bool(gold_cells.intersection(fused_cells))
+            )
+        for candidate in fused:
+            routes = set(candidate.route_ranks)
+            for route in (
+                RetrievalRoute.DENSE,
+                RetrievalRoute.SPARSE,
+                RetrievalRoute.STRUCTURED,
+            ):
+                route_presence_counts[route.value] += int(route in routes)
+            route_overlap_counts["+".join(sorted(route.value for route in routes))] += 1
+        traces.append(
+            {
+                "question_id": question.question_id,
+                "query_context": _query_context_trace(query_context),
+                "metrics": budget_metrics[primary_budget],
+                "budget_metrics": budget_metrics,
+                "dense": [_candidate_trace(item, rank) for rank, item in enumerate(dense, 1)],
+                "sparse": [
+                    _candidate_trace(item, rank) for rank, item in enumerate(sparse, 1)
+                ],
+                "structured": [
+                    _fact_candidate_trace(item, rank)
+                    for rank, item in enumerate(structured, 1)
+                ],
+                "fused": [
+                    _fact_candidate_trace(item, rank) for rank, item in enumerate(fused, 1)
+                ],
+                "budget_rankings": {
+                    budget: [_ranked_trace(item) for item in rankings[budget]]
+                    for budget in budgets
+                },
+            }
+        )
+
+    aggregate_by_budget = {
+        budget: _aggregate(metrics_by_budget[budget]) for budget in budgets
+    }
+    return {
+        "evidence_count": len(evidence),
+        "aggregate_metrics": aggregate_by_budget[primary_budget],
+        "budget_metrics": aggregate_by_budget,
+        "mean_candidate_counts": {
+            route: fmean(counts) for route, counts in candidate_counts.items()
+        },
+        "route_presence_counts": route_presence_counts,
+        "route_overlap_counts": dict(sorted(route_overlap_counts.items())),
+        "gold_route_coverage": gold_route_coverage,
+        "question_rankings": traces,
+        "index_artifacts": {
+            "dense": dense_index,
+            "sparse": sparse_index,
+            "structured": structured_index,
+        },
+        "timings_seconds": {
+            "index_build": index_seconds,
+            "dense_index_build": dense_index_seconds,
+            "sparse_index_build": sparse_index_seconds,
+            "structured_index_build": structured_index_seconds,
+            "query_context_extraction": extraction_seconds,
+            "dense_retrieval": dense_seconds,
+            "sparse_retrieval": sparse_seconds,
+            "structured_retrieval": structured_seconds,
+            "candidate_union": union_seconds,
             "reranking": reranking_seconds,
             "total": perf_counter() - started,
         },
@@ -335,24 +766,107 @@ def _validate_execution_contract(config: Config, condition_id: str) -> None:
 
     retrieval = _config_section(config, "retrieval")
     routes = _mapping(retrieval.get("routes"), "retrieval.routes")
-    expected_routes = {"dense": True, "sparse": True, "structured": False}
-    if dict(routes) != expected_routes:
-        raise NotImplementedError(f"Pilot routes must equal {expected_routes}")
-    dense = _mapping(retrieval.get("dense"), "retrieval.dense")
-    sparse = _mapping(retrieval.get("sparse"), "retrieval.sparse")
     union = _mapping(retrieval.get("candidate_union"), "retrieval.candidate_union")
-    if dense.get("similarity") != "cosine" or dense.get("normalize_embeddings") is not True:
-        raise NotImplementedError("Pilot dense retrieval requires normalized cosine similarity")
-    if sparse.get("algorithm") != "bm25":
-        raise NotImplementedError("Pilot sparse retrieval requires BM25")
-    if union.get("enabled") is not True or union.get("strategy") != "reciprocal_rank_fusion":
-        raise NotImplementedError("Pilot candidate union requires reciprocal-rank fusion")
     if _config_section(config, "indexes").get("overwrite") is not True:
         raise NotImplementedError("Pilot index builders require indexes.overwrite: true")
     reranker = _config_section(config, "reranker")
-    expected_reranker = (
-        (False, "none") if condition_id == "b0" else (True, "generic_cross_encoder")
-    )
+    if condition_id in {"b0", "b1"}:
+        expected_routes = {"dense": True, "sparse": True, "structured": False}
+        if dict(routes) != expected_routes:
+            raise NotImplementedError(f"Pilot routes must equal {expected_routes}")
+        dense = _mapping(retrieval.get("dense"), "retrieval.dense")
+        sparse = _mapping(retrieval.get("sparse"), "retrieval.sparse")
+        if (
+            dense.get("similarity") != "cosine"
+            or dense.get("normalize_embeddings") is not True
+        ):
+            raise NotImplementedError(
+                "Pilot dense retrieval requires normalized cosine similarity"
+            )
+        if sparse.get("algorithm") != "bm25":
+            raise NotImplementedError("Pilot sparse retrieval requires BM25")
+        if union.get("enabled") is not True or union.get("strategy") != "reciprocal_rank_fusion":
+            raise NotImplementedError("Pilot candidate union requires reciprocal-rank fusion")
+        expected_reranker = (
+            (False, "none") if condition_id == "b0" else (True, "generic_cross_encoder")
+        )
+    elif condition_id == "b2":
+        expected_routes = {"dense": False, "sparse": False, "structured": True}
+        if dict(routes) != expected_routes:
+            raise NotImplementedError(f"B2 routes must equal {expected_routes}")
+        if union.get("enabled") is not False or union.get("strategy") != "structured_lookup":
+            raise NotImplementedError("B2 requires direct structured lookup")
+        structured = _mapping(retrieval.get("structured"), "retrieval.structured")
+        if (
+            structured.get("ranking_strategy")
+            != "concept_then_context_compatibility"
+            or structured.get("unknown_field_policy") != "no_penalty"
+        ):
+            raise NotImplementedError(
+                "B2 structured lookup policy must use the implemented ranking and "
+                "unknown-field behavior"
+            )
+        query_context = _config_section(config, "query_context")
+        extractor = _mapping(query_context.get("extractor"), "query_context.extractor")
+        if (
+            query_context.get("enabled") is not True
+            or query_context.get("mode") != "automatic"
+            or extractor.get("implementation") != "deterministic_regex_v1"
+            or extractor.get("revision") != "1"
+        ):
+            raise NotImplementedError("B2 requires the pinned automatic query extractor")
+        expected_reranker = (True, "structured_metric_matcher")
+    elif condition_id == "m1":
+        expected_routes = {"dense": True, "sparse": True, "structured": True}
+        if dict(routes) != expected_routes:
+            raise NotImplementedError(f"M1 routes must equal {expected_routes}")
+        if (
+            union.get("enabled") is not True
+            or union.get("strategy") != "reciprocal_rank_fusion"
+            or union.get("deduplicate_by") != "stable_source_cell_id"
+            or union.get("top_k") != 100
+        ):
+            raise NotImplementedError("M1 requires the frozen source-cell RRF union")
+        dense = _mapping(retrieval.get("dense"), "retrieval.dense")
+        sparse = _mapping(retrieval.get("sparse"), "retrieval.sparse")
+        structured = _mapping(retrieval.get("structured"), "retrieval.structured")
+        if (
+            dense.get("similarity") != "cosine"
+            or dense.get("normalize_embeddings") is not True
+            or sparse.get("algorithm") != "bm25"
+            or structured.get("ranking_strategy")
+            != "concept_then_context_compatibility"
+            or structured.get("unknown_field_policy") != "no_penalty"
+        ):
+            raise NotImplementedError("M1 requires the frozen three-route implementations")
+        query_context = _config_section(config, "query_context")
+        extractor = _mapping(query_context.get("extractor"), "query_context.extractor")
+        if (
+            query_context.get("enabled") is not True
+            or query_context.get("mode") != "automatic"
+            or extractor.get("implementation") != "deterministic_regex_v1"
+            or extractor.get("revision") != "1"
+        ):
+            raise NotImplementedError("M1 requires the pinned automatic query extractor")
+        budgets = _sensitivity_budgets(config)
+        if budgets != (20, 50, 100):
+            raise NotImplementedError("M1 requires candidate budgets 20, 50 and 100")
+        if reranker.get("input_top_k") != 100 or reranker.get("output_top_k") != 20:
+            raise NotImplementedError("M1 requires a 100-input, 20-output generic reranker")
+        training = _config_section(config, "training")
+        generation = _config_section(config, "generation")
+        evaluation = _config_section(config, "evaluation")
+        if (
+            training.get("enabled") is not False
+            or training.get("project_training") is not False
+            or training.get("negative_strategy") != "none"
+            or generation.get("llm_enabled") is not False
+            or evaluation.get("downstream_answer_metrics_enabled") is not False
+        ):
+            raise NotImplementedError("M1 requires the retrieval-only no-training contract")
+        expected_reranker = (True, "generic_cross_encoder")
+    else:
+        raise NotImplementedError("Only B0, B1, B2 and M1 development pilots are implemented")
     if (reranker.get("enabled"), reranker.get("kind")) != expected_reranker:
         raise NotImplementedError(f"{condition_id} reranker contract is {expected_reranker}")
 
@@ -365,10 +879,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def run_condition(config: Config) -> Path:
-    """Execute B0 or B1 while preserving the development-only validity boundary."""
+    """Execute an implemented development condition under the validity boundary."""
 
     if "retrieval_pilot" not in config:
-        raise NotImplementedError("A configured B0/B1 retrieval pilot is required")
+        raise NotImplementedError("A configured development retrieval pilot is required")
     pilot = _config_section(config, "retrieval_pilot")
     if pilot.get("enabled") is not True:
         raise ValueError("retrieval_pilot.enabled must be true")
@@ -382,8 +896,12 @@ def run_condition(config: Config) -> Path:
         result = _run_b0(questions, tables, labels, config)
     elif condition_id == "b1":
         result = _run_b1(questions, facts, labels, config)
+    elif condition_id == "b2":
+        result = _run_b2(questions, facts, labels, config)
+    elif condition_id == "m1":
+        result = _run_m1(questions, facts, labels, config)
     else:
-        raise NotImplementedError("Only the approved B0/B1 development pilot is implemented")
+        raise NotImplementedError("Only the approved B0/B1/B2/M1 pilots are implemented")
     payload = {
         "status": "development_retrieval_pilot_complete",
         "condition_id": condition_id,

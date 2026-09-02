@@ -158,6 +158,23 @@ annotation time and blind independent agreement were not collected. The set is
 therefore a validated first-pass development artifact, not yet a confirmatory
 benchmark.
 
+As of 2 September 2026, items 5–6 also pass on the 500-question closed development
+corpus. B0 produced complete-table evidence rankings, B1 produced exact-cell hybrid
+rankings and B2 produced automatic structured exact-cell rankings. The reviewed B2 run reached
+80.8% development Hit@1 and 97.2% Recall@20. Its extractor was corrected after error
+inspection on the same questions. These values demonstrate engineering feasibility
+only. Twenty-three questions expressed a named segment, region or product context that did not
+appear as a matching fact-header dimension, so B2 masked those constraints rather than guessing.
+Item 7 and every confirmatory generalisation claim remain open.
+
+M1 is also implemented as of 2 September 2026. It runs the dense, sparse and structured routes
+concurrently, deduplicates their reciprocal-rank-fused union by stable source-cell identity, and
+uses the unchanged B1 generic cross-encoder with matched input budgets of 20, 50 and 100. At the
+primary budget of 100, M1 reached 78.2% Hit@1 and 98.6% Recall@20, compared with B1's 78.2% and
+97.6%. Candidate-generation misses fell from 2.0% to 0.4%, but additional reranking misses rose
+from 0.4% to 1.0%. These development results isolate context-aware reranking as the next M2 gate;
+they do not establish generalisation or superiority.
+
 ## Reproducibility rules
 
 - Python 3.11 and `uv` with a pinned lockfile;
@@ -180,3 +197,5 @@ During the interface-only scaffold phase, unimplemented scientific operations mu
 | 2026-08-17 | Recorded the validated 30-question first pass and its open gates | Separate reproducible cell-label validation from benchmark and scale claims | Primary researcher approved labels; methods gates remain open |
 | 2026-08-24 | Added a deterministic, human-reviewable 500-question construction workflow using real tables, source-aligned questions and controlled hard negatives | Reduce annotation burden without treating automatic labels as gold; preserve researcher criticism and later blind review | Primary researcher reviewed and approved 500/500; independent review pending |
 | 2026-08-24 | Passed the table-wide `FinancialFact` round-trip on 8,082 facts, including all 500 targets and 1,000 natural hard negatives | Verify that the proposed representation preserves approved evidence before retrieval implementation | Automated reproducibility gate passed; B0/B1 and independent review remain open |
+| 2026-09-02 | Implemented and ran the B0–B2 development retrieval conditions; added automatic structured context and dirty-worktree provenance | Close the engineering feasibility gate before candidate-union work without presenting development tuning as confirmatory evidence | Development gate passed; independent review and held-out evaluation remain open |
+| 2026-09-02 | Implemented and ran M1 with concurrent dense, sparse and structured retrieval, source-cell RRF deduplication, route provenance and matched B1/M1 budgets | Test whether candidate union improves exact-cell availability before training a project-specific reranker | Candidate approved implementation; development result only |

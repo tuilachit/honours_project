@@ -183,7 +183,8 @@ The parsed constraints are used by the structured route in B2 and M1–M3, and b
 2. **Sparse route:** exact and lexical matching over questions, concepts, headers, units and dimension text.
 3. **Structured route:** constraint matching over common fields and arbitrary dimension pairs.
 
-M1–M3 run the routes in parallel and deduplicate the candidate union by stable evidence identity.
+M1–M3 run the routes in parallel and deduplicate the candidate union by stable source-cell
+identity.
 
 ### 8.4 Context-aware reranker
 

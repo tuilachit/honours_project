@@ -62,9 +62,28 @@ def rerank_generic(
     """Rerank the configured fused prefix with a pinned generic cross-encoder."""
 
     settings = _settings(config)
-    input_candidates = candidates[: int(cast(str | int, settings["input_top_k"]))]
+    input_top_k = int(cast(str | int, settings["input_top_k"]))
+    return rerank_generic_budgets(question, candidates, (input_top_k,), config)[input_top_k]
+
+
+def rerank_generic_budgets(
+    question: Question,
+    candidates: Sequence[FactCandidate],
+    budgets: Sequence[int],
+    config: Config,
+) -> Mapping[int, list[RankedFact]]:
+    """Score the largest prefix once and derive rankings for each smaller budget."""
+
+    ordered_budgets = tuple(dict.fromkeys(budgets))
+    if not ordered_budgets or any(budget <= 0 for budget in ordered_budgets):
+        raise ValueError("Generic reranker budgets must be positive")
+    settings = _settings(config)
+    input_top_k = int(cast(str | int, settings["input_top_k"]))
+    if max(ordered_budgets) > input_top_k:
+        raise ValueError("A sensitivity budget exceeds reranker.input_top_k")
+    input_candidates = candidates[: max(ordered_budgets)]
     if not input_candidates:
-        return []
+        return {budget: [] for budget in ordered_budgets}
     name, revision = _profile(config)
     model = _load_reranker(
         name,
@@ -82,26 +101,34 @@ def rerank_generic(
         show_progress_bar=False,
     )
     scores = np.asarray(raw_scores, dtype=np.float64).reshape(-1)
-    scored = sorted(
-        zip(scores, input_candidates, strict=True),
-        key=lambda item: (-float(item[0]), item[1].fact.source_address.cell_id),
-    )[: int(cast(str | int, settings["output_top_k"]))]
-    return [
-        RankedFact(
-            question_id=question.question_id,
-            fact=candidate.fact,
-            rank=rank,
-            score=float(score),
-            candidate=candidate,
-            component_scores={
-                "cross_encoder": float(score),
-                "fusion": float(
-                    cast(str | int | float, candidate.metadata.get("fusion_score", 0.0))
-                ),
-            },
-        )
-        for rank, (score, candidate) in enumerate(scored, start=1)
-    ]
+    scored_in_input_order = list(zip(scores, input_candidates, strict=True))
+    output_top_k = int(cast(str | int, settings["output_top_k"]))
+    rankings: dict[int, list[RankedFact]] = {}
+    for budget in ordered_budgets:
+        scored = sorted(
+            scored_in_input_order[:budget],
+            key=lambda item: (-float(item[0]), item[1].fact.source_address.cell_id),
+        )[:output_top_k]
+        rankings[budget] = [
+            RankedFact(
+                question_id=question.question_id,
+                fact=candidate.fact,
+                rank=rank,
+                score=float(score),
+                candidate=candidate,
+                component_scores={
+                    "cross_encoder": float(score),
+                    "fusion": float(
+                        cast(
+                            str | int | float,
+                            candidate.metadata.get("fusion_score", 0.0),
+                        )
+                    ),
+                },
+            )
+            for rank, (score, candidate) in enumerate(scored, start=1)
+        ]
+    return rankings
 
 
 def rerank_context_aware(

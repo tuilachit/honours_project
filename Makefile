@@ -53,12 +53,12 @@ run-b1: fact-roundtrip
 		--base-config $(BASE_CONFIG) \
 		--condition-config configs/b1_fact_hybrid.yaml
 
-run-b2:
+run-b2: fact-roundtrip
 	$(PYTHON) -m scripts.run_condition \
 		--base-config $(BASE_CONFIG) \
 		--condition-config configs/b2_structured_lookup.yaml
 
-run-m1:
+run-m1: fact-roundtrip
 	$(PYTHON) -m scripts.run_condition \
 		--base-config $(BASE_CONFIG) \
 		--condition-config configs/m1_candidate_union.yaml

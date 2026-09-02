@@ -6,7 +6,11 @@ from pathlib import Path
 from typing import cast
 
 from src.config import Config
-from src.eval.retrieval import compute_chunk_evidence_coverage, compute_exact_cell_metrics
+from src.eval.retrieval import (
+    compute_chunk_evidence_coverage,
+    compute_exact_cell_metrics,
+    compute_stage_miss_metrics,
+)
 from src.facts.evidence import build_fact_evidence, build_flattened_evidence
 from src.retrieval.fusion import fuse_route_candidates, project_fact_candidates
 from src.retrieval.sparse import build_sparse_index, retrieve_sparse
@@ -136,6 +140,22 @@ def test_exact_and_chunk_metrics_use_cell_identity(tmp_path: Path) -> None:
     assert compute_chunk_evidence_coverage([chunk_candidate], label, config)[
         "evidence_coverage_at_1"
     ] == 1.0
+
+
+def test_stage_miss_metrics_accept_fact_candidates(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    fact = _fact("fact-1", "cell-1", "revenue", 2024)
+    label = GoldCellLabel("q1", ("cell-1",))
+    candidate = FactCandidate("q1", fact, "evidence-1")
+    ranked = [RankedFact("q1", fact, 1, 1.0, candidate)]
+
+    metrics = compute_stage_miss_metrics([candidate], ranked, label, config)
+
+    assert metrics == {
+        "candidate_generation_miss": 0.0,
+        "reranking_miss": 0.0,
+        "final_miss": 0.0,
+    }
 
 
 def test_projection_rejects_chunks_and_maps_singular_fact(tmp_path: Path) -> None:

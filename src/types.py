@@ -343,5 +343,7 @@ class RunMetadata:
     """Immutable provenance attached to every persisted result."""
 
     git_commit: str
+    git_dirty: bool
+    git_worktree_sha256: str | None
     config_hash: str
     timestamp: str

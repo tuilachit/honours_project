@@ -40,7 +40,7 @@ The primary corpus is the cleaned T²-RAGBench release, pinned in [`configs/data
 
 ## Repository status
 
-This repository is currently an **experiment scaffold with implemented data-audit, pilot-validation, prospective-screening and synthetic-candidate construction workflows**. The primary researcher completed first-pass review of all 500 generated candidates and approved 500/500; an independent blind review sample remains required before confirmatory use. The reproducibility contracts, condition configurations and typed interfaces define the intended study, but retrieval, reranking, training, evaluation and figure-generation algorithms intentionally raise `NotImplementedError` until future implementation tasks.
+This repository is currently an **experiment scaffold with implemented data-audit, pilot-validation, prospective-screening, synthetic-candidate construction and B0–M1 development retrieval workflows**. The primary researcher completed first-pass review of all 500 generated candidates and approved 500/500; an independent blind review sample remains required before confirmatory use. B0 complete-table retrieval, B1 hybrid `FinancialFact` retrieval, B2 automatic structured lookup and M1 three-route candidate union now produce provenance-stamped development results. M2–M3 training, held-out evaluation, generation and figure workflows remain future implementation tasks and continue to fail loudly rather than creating placeholder evidence.
 
 The T²-RAGBench feasibility audit validates the pinned metadata files. The exact-cell pilot validator then checks the first-pass annotation file against those raw records, verifies every table hash and source-cell value, derives stable cell IDs, and writes a provenance-stamped result. The current pilot is development material with open feasibility gates; see [`docs/pilot_feasibility_report.md`](docs/pilot_feasibility_report.md).
 
@@ -77,6 +77,10 @@ make review-pack
 make screening-batch
 make synthetic-500
 make fact-roundtrip
+make run-b0
+make run-b1
+make run-b2
+make run-m1
 ```
 
-The run and evaluation targets are present as explicit workflow contracts. They will become executable end to end only after the intentionally stubbed algorithms are implemented; the scaffold does not generate placeholder scientific results. Raw data and generated result envelopes remain gitignored, while the pinned manifests, first-pass annotations, fixed prospective screening log and methods report are version controlled.
+The B0–M1 run targets are executable over the reviewed development corpus. M1 runs dense, sparse and structured retrieval concurrently, deduplicates the union by stable source-cell identity, and reports matched final candidate budgets of 20, 50 and 100 using the unchanged B1 generic reranker. M2–M3 and confirmatory evaluation remain intentionally incomplete. The scaffold does not generate placeholder scientific results. Raw data and generated result envelopes remain gitignored, while the pinned manifests, first-pass annotations, fixed prospective screening log and methods report are version controlled.

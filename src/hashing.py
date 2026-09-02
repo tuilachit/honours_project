@@ -21,5 +21,11 @@ def sha256_file(path: Path) -> str:
 def sha256_mapping(payload: Mapping[str, object]) -> str:
     """Hash a mapping using the project's canonical JSON encoding."""
 
+    return sha256_json(payload)
+
+
+def sha256_json(payload: object) -> str:
+    """Hash a JSON-compatible value using the project's canonical encoding."""
+
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()

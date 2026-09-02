@@ -327,9 +327,9 @@ query_context:
   apply_to_routes:
     - structured
   extractor:
-    implementation: null
+    implementation: deterministic_regex_v1
     model: null
-    revision: null
+    revision: "1"
     temperature: 0.0
     max_output_tokens: 512
   arbitrary_dimensions_enabled: true

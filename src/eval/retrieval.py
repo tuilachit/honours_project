@@ -6,7 +6,7 @@ from collections.abc import Mapping, Sequence
 from typing import cast
 
 from src.config import Config
-from src.types import GoldCellLabel, RankedFact, RetrievalCandidate
+from src.types import FactCandidate, GoldCellLabel, RankedFact, RetrievalCandidate
 
 
 def _cutoffs(config: Config, key: str) -> tuple[int, ...]:
@@ -66,7 +66,7 @@ def compute_chunk_evidence_coverage(
 
 
 def compute_stage_miss_metrics(
-    candidates: Sequence[RetrievalCandidate],
+    candidates: Sequence[RetrievalCandidate | FactCandidate],
     ranked_facts: Sequence[RankedFact],
     gold_label: GoldCellLabel,
     config: Config,
@@ -75,11 +75,14 @@ def compute_stage_miss_metrics(
 
     del config
     valid = set(gold_label.valid_cell_ids)
-    candidate_cells = {
-        cell_id
-        for candidate in candidates
-        if isinstance((cell_id := candidate.evidence.metadata.get("cell_id")), str)
-    }
+    candidate_cells: set[str] = set()
+    for candidate in candidates:
+        if isinstance(candidate, FactCandidate):
+            candidate_cells.add(candidate.fact.source_address.cell_id)
+            continue
+        cell_id = candidate.evidence.metadata.get("cell_id")
+        if isinstance(cell_id, str):
+            candidate_cells.add(cell_id)
     ranked_cells = {ranked.fact.source_address.cell_id for ranked in ranked_facts}
     candidate_hit = bool(valid.intersection(candidate_cells))
     final_hit = bool(valid.intersection(ranked_cells))
